@@ -41,7 +41,8 @@
     --container-width: 90%;
     --container-max-width: 65rem;
     --border-radius: 15px;
-    --spacing-unit: 20px;  /* Default spacing between sections */
+    --spacing-unit: 20px;  /* Space between panels */
+    --panel-padding: 15px; /* Internal panel padding */
     
     /* Typography */
     --font-family-base: 'Roboto Mono', 'NotoColorEmojiLimited', monospace;

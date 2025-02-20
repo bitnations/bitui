@@ -184,7 +184,7 @@ nav .page-title {
 
 /* Main content panels */
 main .panel:not(.control-panel) {
-  padding: 15px;
+  padding: var(--panel-padding);
   border-radius: var(--border-radius);
   border: 1px solid rgba(0,0,0,0.15);
   box-sizing: border-box;
