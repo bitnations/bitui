@@ -312,3 +312,13 @@ canvas {
   padding-left: 8px;
   overflow: visible;
 }
+
+/* Add to the control panel styles */
+.control-panel .btn {
+    margin-top: 20px;
+}
+
+/* Update button hover states for dark mode */
+.control-panel .btn:hover {
+    opacity: 0.9;
+}
