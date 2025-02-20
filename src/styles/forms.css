@@ -133,29 +133,6 @@ a.btn-sm:hover {
   -moz-box-shadow: 1px 1px 4px rgba(0,0,0,0.5);
   -webkit-box-shadow: 1px 1px 4px rgba(0,0,0,0.5);
 }
- button {
-   text-decoration: none;
-   display: inline-block;
-   border: none;
-   margin: 0 auto;
-   /* min-width: 100px; */
-   padding: 5px;
-   color: black !important;
-   line-height: 2em;
-   text-align: center;
-   /* background-color: black; */
-   opacity: 0.85;
-   overflow: hidden;
-   /* Transition */
-     -webkit-transition: all ease 0.25s;
-     -moz-transition: all ease 0.25s;
-     -o-transition: all ease 0.25s;
-     transition: all ease 0.25s;
- }
- button:hover {
-   text-decoration: none;
- }
-
  button.btn-sm {
    padding: 0;
  }

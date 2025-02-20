@@ -6,7 +6,7 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-2GS26FH5H1"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
 
     gtag('config', 'G-2GS26FH5H1');
@@ -19,21 +19,6 @@
 </head>
 
 <body>
-  <!-- Navigation -->
-  <nav>
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <div class="nav-back-btn">
-            <a href="#" class="f-blue">←</a>
-          </div>
-          <div class="page-title">
-            <h1 class="font-regular">BitUI Framework</h1>
-          </div>
-        </div>
-      </div>
-    </div>
-  </nav>
 
   <!-- Add this right after the nav section -->
   <div class="control-panel">
@@ -44,63 +29,30 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-6-sm">
+        <div class="col-12-sm">
           <label for="border-radius">Border Radius</label>
-          <input 
-            type="range" 
-            id="border-radius" 
-            min="0" 
-            max="50" 
-            value="15"
-            class="style-control"
-            data-style-property="--border-radius"
-            data-unit="px"
-          >
+          <input type="range" id="border-radius" min="0" max="50" value="15" class="style-control"
+            data-style-property="--border-radius" data-unit="px">
           <span id="border-radius-value">15px</span>
         </div>
-        <div class="col-6-sm">
+        <div class="col-12-sm">
           <label for="spacing">Section Spacing</label>
-          <input 
-            type="range" 
-            id="spacing" 
-            min="0" 
-            max="200" 
-            value="20"
-            class="style-control"
-            data-style-property="--spacing-unit"
-            data-unit="px"
-          >
+          <input type="range" id="spacing" min="0" max="200" value="20" class="style-control"
+            data-style-property="--spacing-unit" data-unit="px">
           <span id="spacing-value">20px</span>
         </div>
       </div>
       <div class="row">
-        <div class="col-6-sm">
+        <div class="col-12-sm">
           <label for="panel-padding">Panel Padding</label>
-          <input 
-            type="range" 
-            id="panel-padding" 
-            min="15" 
-            max="100" 
-            value="15"
-            class="style-control"
-            data-style-property="--panel-padding"
-            data-unit="px"
-          >
+          <input type="range" id="panel-padding" min="5" max="100" value="5" class="style-control"
+            data-style-property="--panel-padding" data-unit="px">
           <span id="panel-padding-value">15px</span>
         </div>
-        <div class="col-6-sm">
+        <div class="col-12-sm">
           <label for="font-size">Text Size</label>
-          <input 
-            type="range" 
-            id="font-size" 
-            min="12" 
-            max="48" 
-            step="1"
-            value="16"
-            class="style-control"
-            data-style-property="--font-size-base"
-            data-unit="px"
-          >
+          <input type="range" id="font-size" min="12" max="48" step="1" value="16" class="style-control"
+            data-style-property="--font-size-base" data-unit="px">
           <span id="font-size-value">16px</span>
         </div>
       </div>
@@ -110,125 +62,320 @@
   <!-- Main Content -->
   <main class="content">
     <div class="container">
+
       <!-- Introduction -->
       <section class="panel light lg">
         <div class="row">
           <div class="col-12">
-            <h2 class="panel-title">Modern CSS Framework</h2>
+            <h2 class="panel-title">BitUI</h2>
             <p class="center">Lightweight, flexible, and easy to use.</p>
           </div>
         </div>
       </section>
 
-      <!-- Typography -->
-      <section id="typography" class="panel dark lg">
-        <h2 class="panel-title">Typography</h2>
-        
-        <!-- Font Weights -->
+      <!-- Grid Test Section -->
+      <section class="">
+        <h3>Flex-Grid Columns</h3>
+
         <div class="row">
-          <div class="col-4-sm">
-            <p class="font-light">Light Weight</p>
+          <div class="col-1">
+            <div class="panel light">
+              <p>col-1</p>
+            </div>
           </div>
-          <div class="col-4-sm">
-            <p class="font-regular">Regular Weight</p>
+          <div class="col-1">
+            <div class="panel light">
+              <p>col-2</p>
+            </div>
           </div>
-          <div class="col-4-sm">
-            <p class="font-heavy">Heavy Weight</p>
+          <div class="col-1">
+            <div class="panel light">
+              <p>col-3</p>
+            </div>
+          </div>
+          <div class="col-1">
+            <div class="panel light">
+              <p>col-4</p>
+            </div>
+          </div>
+          <div class="col-1">
+            <div class="panel light">
+              <p>col-5</p>
+            </div>
+          </div>
+          <div class="col-1">
+            <div class="panel light">
+              <p>col-6</p>
+            </div>
+          </div>
+          <div class="col-1">
+            <div class="panel light">
+              <p>col-7</p>
+            </div>
+          </div>
+          <div class="col-1">
+            <div class="panel light">
+              <p>col-8</p>
+            </div>
+          </div>
+          <div class="col-1">
+            <div class="panel light">
+              <p>col-9</p>
+            </div>
+          </div>
+          <div class="col-1">
+            <div class="panel light">
+              <p>col-10</p>
+            </div>
+          </div>
+          <div class="col-1">
+            <div class="panel light">
+              <p>col-11</p>
+            </div>
+          </div>
+          <div class="col-1">
+            <div class="panel light">
+              <p>col-12</p>
+            </div>
           </div>
         </div>
 
-        <!-- Colors -->
         <div class="row">
-          <div class="col-3-sm">
-            <p class="f-red">Red Text</p>
+          <div class="col-2">
+            <div class="panel light">
+              <p>col-1</p>
+            </div>
           </div>
-          <div class="col-3-sm">
-            <p class="f-blue">Blue Text</p>
+          <div class="col-2">
+            <div class="panel light">
+              <p>col-2</p>
+            </div>
           </div>
-          <div class="col-3-sm">
-            <p class="f-green">Green Text</p>
+          <div class="col-2">
+            <div class="panel light">
+              <p>col-3</p>
+            </div>
           </div>
-          <div class="col-3-sm">
-            <p class="f-purple">Purple Text</p>
+          <div class="col-2">
+            <div class="panel light">
+              <p>col-4</p>
+            </div>
+          </div>
+          <div class="col-2">
+            <div class="panel light">
+              <p>col-5</p>
+            </div>
+          </div>
+          <div class="col-2">
+            <div class="panel light">
+              <p>col-6</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-3">
+            <div class="panel light">
+              <p>col-1</p>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="panel light">
+              <p>col-2</p>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="panel light">
+              <p>col-3</p>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="panel light">
+              <p>col-4</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-4">
+            <div class="panel light">
+              <p>col-1</p>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="panel light">
+              <p>col-2</p>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="panel light">
+              <p>col-3</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-6">
+            <div class="panel light">
+              <p>col-1</p>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="panel light">
+              <p>col-2</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <div class="panel light">
+              <p>col-1</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-1">
+            <div class="panel light">
+              <p>col-1</p>
+            </div>
+          </div>
+          <div class="col-11-sm">
+            <div class="panel light">
+              <p>col-11</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-2">
+            <div class="panel light">
+              <p>col-2</p>
+            </div>
+          </div>
+          <div class="col-10-sm">
+            <div class="panel light">
+              <p>col-10</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-3">
+            <div class="panel light">
+              <p>col-3</p>
+            </div>
+          </div>
+          <div class="col-9-sm">
+            <div class="panel light">
+              <p>col-9</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-4">
+            <div class="panel light">
+              <p>col-4</p>
+            </div>
+          </div>
+          <div class="col-8-sm">
+            <div class="panel light">
+              <p>col-8</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-6">
+            <div class="panel light">
+              <p>col-6</p>
+            </div>
+          </div>
+          <div class="col-6-sm">
+            <div class="panel light">
+              <p>col-6</p>
+            </div>
           </div>
         </div>
       </section>
 
+
+      <!-- Typography -->
+      <section id="typography" class="panel light">
+        <h2 class="panel-title">Typography</h2>
+
+        <!-- Headings -->
+        <div class="row">
+          <div class="col-12">
+            <h1>h1</h1>
+          </div>
+          <div class="col-12">
+            <h2>h2</h2>
+          </div>
+          <div class="col-12">
+            <h3>h3</h3>
+          </div>
+          <div class="col-12">
+            <h4>h4</h4>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa maiores velit dignissimos, ad soluta
+              dolorem accusamus. Labore cum harum ducimus alias optio ipsum magnam aut, laudantium numquam voluptates
+              consectetur blanditiis.</p>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum corrupti, quaerat quasi enim impedit,
+              inventore unde eligendi cupiditate esse, in sit incidunt officiis. Ex voluptatum eveniet et, beatae totam
+              quod!</p>
+          </div>
+        </div>
+
+      </section>
+
       <!-- Components -->
       <section id="components" class="panel light lg">
-        <h2 class="panel-title">Components</h2>
+        <h2 class="panel-title">Buttons</h2>
 
         <!-- Buttons -->
         <div class="row">
+
           <div class="col-12">
-            <h3>Buttons</h3>
+            <a href="#">
+              <button class="btn green">Success</button>
+            </a>
           </div>
-          <div class="col-3-sm">
-            <button class="btn green">Success</button>
+
+          <div class="col-12">
+            <a href="#">
+              <button class="btn blue">Info</button>
+            </a>
           </div>
-          <div class="col-3-sm">
-            <button class="btn blue">Info</button>
-          </div>
-          <div class="col-3-sm">
-            <button class="btn red">Danger</button>
-          </div>
-          <div class="col-3-sm">
-            <button class="btn purple">Action</button>
+
+          <div class="col-12">
+            <a href="#">
+              <button class="btn red">Danger</button>
+            </a>
           </div>
         </div>
-
-        <!-- Small Buttons -->
+        
         <div class="row">
-          <div class="col-12">
-            <h3>Small Buttons</h3>
+          <div class="col-4">
+            <a href="#">
+              <button class="btn purple">Action Col-4</button>
+            </a>
           </div>
-          <div class="col-3-sm">
-            <button class="btn sm green">Small</button>
-          </div>
-          <div class="col-3-sm">
-            <button class="btn sm blue">Small</button>
-          </div>
-          <div class="col-3-sm">
-            <button class="btn sm holo">Holo</button>
-          </div>
-          <div class="col-3-sm">
-            <button class="btn sm disabled">Disabled</button>
-          </div>
-        </div>
-
-        <!-- Cards -->
-        <div class="row">
-          <div class="col-12">
-            <h3>Cards</h3>
-          </div>
-          <div class="col-4-sm">
-            <div class="card">
-              <div class="panel-text">
-                <h4>Basic Card</h4>
-                <p>Regular card component</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-4-sm">
-            <div class="card green">
-              <div class="panel-text">
-                <h4>Success Card</h4>
-                <p>With status indicator</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-4-sm">
-            <div class="card red">
-              <div class="panel-text">
-                <h4>Alert Card</h4>
-                <p>With status indicator</p>
-              </div>
-            </div>
+          <div class="col-8">
+            <a href="#">
+              <button class="btn purple">Action Col-8</button>
+            </a>
           </div>
         </div>
 
         <!-- Forms -->
-        <div class="row">
+        <!-- <div class="row">
           <div class="col-12">
             <h3>Form Elements</h3>
           </div>
@@ -243,20 +390,20 @@
           <div class="col-12">
             <textarea placeholder="Textarea element"></textarea>
           </div>
-        </div>
+        </div> -->
 
         <!-- Progress -->
-        <div class="row">
+        <!-- <div class="row">
           <div class="col-12">
             <h3>Progress Bars</h3>
             <div class="meter">
               <span style="width: 75%">75%</span>
             </div>
           </div>
-        </div>
+        </div> -->
 
         <!-- Alerts -->
-        <div class="row">
+        <!-- <div class="row">
           <div class="col-12">
             <h3>Alerts</h3>
             <div class="alert alert-success">
@@ -268,62 +415,14 @@
               <span class="dismiss-btn">×</span>
             </div>
           </div>
-        </div>
+        </div> -->
       </section>
 
-      <!-- Add a test section with obvious spacing -->
-      <section class="panel light lg">
-        <div class="row">
-          <div class="col-6-sm">
-            <div style="background: #eee; height: 100px;">
-              Column 1
-            </div>
-          </div>
-          <div class="col-6-sm">
-            <div style="background: #ddd; height: 100px;">
-              Column 2
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Grid Test Section -->
-      <section class="panel light lg">
-        <h3>Grid Spacing Test</h3>
-        <div class="row">
-          <div class="col-4-sm">
-            <div style="background: #e0e0e0; padding: 20px; height: 100px;">
-              Column 1
-            </div>
-          </div>
-          <div class="col-4-sm">
-            <div style="background: #d0d0d0; padding: 20px; height: 100px;">
-              Column 2
-            </div>
-          </div>
-          <div class="col-4-sm">
-            <div style="background: #c0c0c0; padding: 20px; height: 100px;">
-              Column 3
-            </div>
-          </div>
-        </div>
-      </section>
     </div>
   </main>
 
-  <!-- Footer -->
-  <footer class="legal">
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <p class="font-small f-gray">BitUI Framework v1.0.0 &copy; 2025</p>
-        </div>
-      </div>
-    </div>
-  </footer>
-
   <script src="src/scripts/style-controls.js"></script>
-  
+
 </body>
 
 </html>

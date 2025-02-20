@@ -1,18 +1,3 @@
-/* Colors */
-:root {
-  --red: rgba(225, 85, 84, 1);
-  --red-hover: rgba(225, 123, 123, 1);
-  --orange: rgba(255, 165, 0, 1);
-  --green: rgba(59, 178, 115, 1);
-  --graph-green: rgba(43,174,83,1);
-  --green-hover: rgba(59, 178, 115, 0.85);
-  --blue: rgba(77, 157, 224, 1);
-  --blue-hover: rgba(77, 163, 234, 1);
-  --graph-blue: #08B2E3;
-  --purple: rgba(119, 104, 174, 1);
-  --purple-hover: rgba(138, 122, 193, 1);
-}
-
 /* Navigation */
 nav {
   top: 0;
@@ -44,8 +29,8 @@ nav .page-title {
 
 /* Page Layout */
 .content {
-  padding-top: 80px;
-  padding-bottom: 80px;
+  /* padding-top: 80px;
+  padding-bottom: 80px; */
 }
 .page-content {
   overflow: auto;
@@ -140,15 +125,16 @@ nav .page-title {
 /* Control Panel */
 .control-panel {
   position: fixed;
-  top: 70px;
-  right: 20px;
-  width: 400px;
+  top: 0;
+  right: 0;
+  width: 250px;
+  height: 100vh;
   padding: 15px;
   background: white;
   border-radius: var(--border-radius);
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   z-index: 1000;
-  transition: all 0.3s ease;
+  transition: all 0.3sease;
   margin: 0 !important;
   font-size: 14px !important;
 }
@@ -232,6 +218,9 @@ input[type="range"].style-control::-webkit-slider-thumb:hover {
 }
 
 /* Buttons */
+button {
+  width: 100%;
+}
 .btn {
   color: white;
   padding: 15px;
@@ -239,7 +228,8 @@ input[type="range"].style-control::-webkit-slider-thumb:hover {
   user-select: none;
   border-radius: 15px;
   text-align: center;
-  border: 1px solid rgba(0,0,0,0);
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0);
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -379,9 +369,10 @@ canvas {
 
 /* Fixed horizontal spacing for grid */
 .row {
-  margin: 0 -15px; /* Fixed horizontal negative margin */
+  /* margin: 0 -15px; Fixed horizontal negative margin */
 }
 
 [class^="col-"] {
-  padding: 0 15px; /* Fixed horizontal padding */
+  /* padding: 0 15px; Fixed horizontal padding */
+  padding: 0;
 }

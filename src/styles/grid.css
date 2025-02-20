@@ -1,28 +1,28 @@
 /* Grid System */
 .container {
-    margin-left: auto;
-    margin-right: auto;
-    width: var(--container-width);
+  margin-left: auto;
+  margin-right: auto;
+  width: var(--container-width);
 }
 
 .row {
-    position: relative;
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
 }
 
 .row::after {
-    content: "";
-    display: table;
-    clear: both;
+  content: "";
+  display: table;
+  clear: both;
 }
 
 /* Base column styles */
 [class^="col-"] {
-    float: left;
-    padding: 0 15px; /* Fixed horizontal padding */
-    box-sizing: border-box;
+  float: left;
+  box-sizing: border-box;
 }
 
 /* Column sizes for small screens */
