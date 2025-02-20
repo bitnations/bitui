@@ -29,4 +29,12 @@ class StyleController {
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     new StyleController();
+
+    // Panel toggle functionality
+    const controlPanel = document.getElementById('controlPanel');
+    const toggleButton = document.getElementById('togglePanel');
+    
+    toggleButton.addEventListener('click', () => {
+        controlPanel.classList.toggle('closed');
+    });
 }); 
