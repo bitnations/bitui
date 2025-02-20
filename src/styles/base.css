@@ -1,0 +1,45 @@
+/* Base Styles */
+html, 
+body {
+    margin: 0 auto;
+    padding: 0;
+    font-family: var(--font-family-base);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-base);
+    background: #FBFBFB;
+    user-select: none;
+    overflow-x: hidden;
+}
+
+/* Typography */
+h1, h2, h3, h4 { margin: 1em; }
+p { line-height: 1.5em; }
+
+/* Links */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover,
+a:visited {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Typography Utilities */
+.font-light { font-weight: 300; }
+.font-regular { font-weight: 400; }
+.font-heavy { font-weight: 700; }
+.font-small { font-size: 12px; }
+
+/* Text Alignment */
+.left { text-align: left; }
+.right { text-align: right; }
+.center { 
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+.justify { text-align: justify; }
+.float-right { float: right; } 
