@@ -16,6 +16,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BitUI Framework</title>
   <link rel="stylesheet" href="src/styles/main.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
 </head>
 
 <body>
@@ -34,15 +39,8 @@
       <div class="row">
         <div class="col-12-sm">
           <label for="theme-mode">Light / Dark Mode</label>
-          <input 
-            type="range" 
-            id="theme-mode" 
-            min="0" 
-            max="100" 
-            value="0" 
-            class="style-control"
-            data-style-property="--theme-mode"
-          >
+          <input type="range" id="theme-mode" min="0" max="100" value="0" class="style-control"
+            data-style-property="--theme-mode">
           <span id="theme-mode-value">Light</span>
         </div>
       </div>
@@ -94,6 +92,11 @@
           Reset to Defaults
         </button>
       </div>
+      <div class="col-12">
+        <button class="btn blue" id="">
+          ↧ Download
+        </button>
+      </div>
     </div>
   </div>
 
@@ -102,25 +105,29 @@
     <div class="container">
 
       <!-- Introduction -->
-      <section class="panel light lg">
-        <div class="row">
-          <div class="col-12">
-            <h1 class="panel-title">BitUI</h1>
-            <h4 class="center">Lightweight, flexible, and easy to use.</h4>
-            <br>
-            <div class="panel dark">
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo fugit minus est, ratione laudantium obcaecati amet repellendus, reprehenderit magnam, illo et voluptatem porro! Cumque libero possimus qui adipisci quae voluptatum!</p>
+      <section>
+        <div class="panel light">
+          <div class="row">
+            <div class="col-12">
+              <h1 class="panel-title">BitUI</h1>
+              <h4 class="center">Lightweight, flexible, and easy to use.</h4>
             </div>
-            
+            <div class="col-12">
+              <div class="panel dark">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo fugit minus est, ratione
+                  laudantium obcaecati amet repellendus, reprehenderit magnam, illo et voluptatem porro! Cumque libero
+                  possimus qui adipisci quae voluptatum!</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- Grid Test Section -->
-      <div class="panel light">
-        <h2 class="panel-title">Flex-Grid Columns</h2>
-      </div>
-      <section class="left">
+      <!-- Flex-Box Grid -->
+      <section>
+        <div class="panel light">
+          <h2 class="panel-title">Flex-Grid Columns</h2>
+        </div>
 
         <div class="row">
           <div class="col-1">
@@ -347,76 +354,123 @@
       </section>
 
       <!-- Typography -->
-      <div class="panel light">
-        <h2 class="panel-title">Typography</h2>
-      </div>
-      <section id="typography" class="panel light">
-        
+      <section id="typography" class="left">
+        <!-- Title -->
+        <div class="panel light">
+          <h2 class="panel-title">Typography</h2>
+        </div>
         <!-- Headings -->
-        <div class="row">
-          <div class="col-12">
-            <h1>h1</h1>
+        <div class="panel light">
+          <div class="row">
+            <div class="col-12">
+              <h1>h1</h1>
+            </div>
+            <div class="col-12">
+              <h2>h2</h2>
+            </div>
+            <div class="col-12">
+              <h3>h3</h3>
+            </div>
+            <div class="col-12">
+              <h4>h4</h4>
+            </div>
           </div>
-          <div class="col-12">
-            <h2>h2</h2>
-          </div>
-          <div class="col-12">
-            <h3>h3</h3>
-          </div>
-          <div class="col-12">
-            <h4>h4</h4>
+          <!-- Text -->
+          <div class="row">
+            <div class="col-12">
+              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa maiores velit dignissimos, ad soluta
+                dolorem accusamus. Labore cum harum ducimus alias optio ipsum magnam aut, laudantium numquam voluptates
+                consectetur blanditiis.</p>
+              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum corrupti, quaerat quasi enim impedit,
+                inventore unde eligendi cupiditate esse, in sit incidunt officiis. Ex voluptatum eveniet et, beatae
+                totam
+                quod!</p>
+            </div>
           </div>
         </div>
-
-        <div class="row">
-          <div class="col-12">
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa maiores velit dignissimos, ad soluta
-              dolorem accusamus. Labore cum harum ducimus alias optio ipsum magnam aut, laudantium numquam voluptates
-              consectetur blanditiis.</p>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum corrupti, quaerat quasi enim impedit,
-              inventore unde eligendi cupiditate esse, in sit incidunt officiis. Ex voluptatum eveniet et, beatae totam
-              quod!</p>
-          </div>
-        </div>
-
       </section>
 
-      <!-- Components -->
-      <section id="components" class="panel light lg">
-        <h2 class="panel-title">Buttons</h2>
+      <!-- Buttons -->
+      <section id="components" class="">
+        <!-- Title -->
+        <div class="panel light">
+          <h2 class="panel-title">Buttons</h2>
+        </div>
 
-        <!-- Buttons -->
         <div class="row">
-
-          <div class="col-12">
+          <div class="col-4">
             <a href="#">
               <button class="btn green">Success</button>
             </a>
           </div>
 
-          <div class="col-12">
+          <div class="col-4">
             <a href="#">
               <button class="btn blue">Info</button>
             </a>
           </div>
 
-          <div class="col-12">
+          <div class="col-4">
             <a href="#">
               <button class="btn red">Danger</button>
             </a>
           </div>
         </div>
-        
-        <div class="row">
-          <div class="col-4">
-            <a href="#">
-              <button class="btn purple">Action Col-4</button>
-            </a>
+
+      </section>
+
+      <!-- Examples -->
+      <section id="examples">
+        <!-- Title -->
+        <div class="panel light">
+          <h2 class="panel-title">Examples</h2>
+        </div>
+
+
+        <div class="panel light">
+          <div class="row">
+            <div class="col-6">
+              <div class="panel dark">
+                <h3>Left Column</h3>
+                <p>Content goes here</p>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="panel dark">
+                <h3>Right Column</h3>
+                <p>More content here</p>
+              </div>
+            </div>
           </div>
-          <div class="col-8">
-            <a href="#">
-              <button class="btn purple">Action Col-8</button>
-            </a>
+        </div>
+
+
+        <div class="row">
+          <div class="col-12">
+
+            <div class="">
+              <div class="code-block">
+                <button class="copy-btn">Copy</button>
+                <pre><code class="language-markup">
+&lt;div class="panel light"&gt;
+  &lt;div class="row"&gt;
+    &lt;div class="panel dark"&gt;
+      &lt;div class="col-6"&gt;
+        &lt;h3&gt;Left Column&lt;/h3&gt;
+        &lt;p&gt;Content goes here&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="panel dark"&gt;
+      &lt;div class="col-6"&gt;
+        &lt;h3&gt;Right Column&lt;/h3&gt;
+        &lt;p&gt;More content here&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+                </code></pre>
+              </div>
+            </div>
           </div>
         </div>
 

@@ -146,4 +146,38 @@ document.addEventListener('DOMContentLoaded', () => {
     toggleButton.addEventListener('click', () => {
         controlPanel.classList.toggle('closed');
     });
+
+    // Copy button functionality
+    document.querySelectorAll('.code-block').forEach(block => {
+        const copyBtn = block.querySelector('.copy-btn');
+        const code = block.querySelector('code');
+
+        copyBtn.addEventListener('click', async () => {
+            try {
+                // Get text content and clean it up
+                const text = code.textContent
+                    .replace(/^\n+|\n+$/g, '') // Remove leading/trailing newlines
+                    .replace(/^[ \t]+/gm, ''); // Remove leading spaces/tabs
+
+                await navigator.clipboard.writeText(text);
+                
+                // Show success state
+                copyBtn.textContent = 'Copied!';
+                copyBtn.classList.add('success');
+                
+                // Reset after 2 seconds
+                setTimeout(() => {
+                    copyBtn.textContent = 'Copy';
+                    copyBtn.classList.remove('success');
+                }, 2000);
+            } catch (err) {
+                console.error('Failed to copy:', err);
+                copyBtn.textContent = 'Failed';
+                
+                setTimeout(() => {
+                    copyBtn.textContent = 'Copy';
+                }, 2000);
+            }
+        });
+    });
 }); 
