@@ -136,7 +136,7 @@
 
 /* Main content panels */
 main .panel:not(.control-panel) {
-  padding: var(--panel-padding);
+  padding: var(--panel-padding-y) var(--panel-padding-x);
   border-radius: var(--border-radius);
   border: 1px solid rgba(0,0,0,0.15);
   box-sizing: border-box;

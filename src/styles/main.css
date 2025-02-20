@@ -42,7 +42,8 @@
     --container-max-width: 65rem;
     --border-radius: 15px;
     --spacing-unit: 20px;  /* Space between panels */
-    --panel-padding: 5px; /* Internal panel padding */
+    --panel-padding-x: 15px; /* Horizontal panel padding */
+    --panel-padding-y: 5px;  /* Vertical panel padding */
     /* Typography */
     --font-family-base: 'Roboto Mono', 'NotoColorEmojiLimited', monospace;
     --font-size-base: 16px;
