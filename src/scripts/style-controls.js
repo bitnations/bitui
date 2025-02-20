@@ -5,11 +5,14 @@ class StyleController {
         this.themeSlider = document.getElementById('theme-mode');
         this.resetButton = document.getElementById('reset-defaults');
         this.storageKey = 'bitui-preferences';
+        this.panelStateKey = 'bitui-panel-state';  // New storage key for panel state
+        this.controlPanel = document.getElementById('controlPanel');
+        this.toggleButton = document.getElementById('togglePanel');
         this.defaultValues = {
             'border-radius': '15',
-            'spacing': '20',
+            'spacing': '10',
             'panel-padding-x': '15',
-            'panel-padding-y': '15',
+            'panel-padding-y': '10',
             'font-size': '16',
             'theme-mode': '0'
         };
@@ -71,6 +74,13 @@ class StyleController {
 
         // Reset button
         this.resetButton.addEventListener('click', () => this.resetToDefaults());
+
+        // Panel toggle functionality with state persistence
+        this.loadPanelState();
+        this.toggleButton.addEventListener('click', () => {
+            this.controlPanel.classList.toggle('closed');
+            this.savePanelState();
+        });
     }
 
     updateStyle(control) {
@@ -179,6 +189,18 @@ class StyleController {
         });
     }
 
+    savePanelState() {
+        localStorage.setItem(this.panelStateKey, 
+            this.controlPanel.classList.contains('closed'));
+    }
+
+    loadPanelState() {
+        const isClosed = localStorage.getItem(this.panelStateKey) === 'true';
+        if (isClosed) {
+            this.controlPanel.classList.add('closed');
+        }
+    }
+
     resetToDefaults() {
         // Apply default values to all controls
         Object.entries(this.defaultValues).forEach(([id, value]) => {
@@ -195,20 +217,16 @@ class StyleController {
 
         // Clear localStorage
         localStorage.removeItem(this.storageKey);
+
+        // Also clear panel state
+        localStorage.removeItem(this.panelStateKey);
+        this.controlPanel.classList.remove('closed');
     }
 }
 
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     new StyleController();
-
-    // Panel toggle functionality
-    const controlPanel = document.getElementById('controlPanel');
-    const toggleButton = document.getElementById('togglePanel');
-    
-    toggleButton.addEventListener('click', () => {
-        controlPanel.classList.toggle('closed');
-    });
 
     // Copy button functionality
     document.querySelectorAll('.code-block').forEach(block => {

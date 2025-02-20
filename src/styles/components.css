@@ -176,7 +176,7 @@ main .panel:not(.control-panel) {
   border: 1px solid rgba(0,0,0,0.15);
   box-sizing: border-box;
   /* We will want to make this dynamic: panel vertrical spacing */
-  margin: 0 0 15px 0;
+  margin: 0 0 10px 0;
 }
 
 main .panel:not(.control-panel):last-child {
