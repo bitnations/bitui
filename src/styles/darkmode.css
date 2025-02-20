@@ -1,24 +1,4 @@
-/* @media (prefers-color-scheme: dark) {
-  html, body {
-    --text-color: #eee;
-    --bkg-color: #1f1f1f;
-  }
-  html, body {
-    background: var(--bkg-color) !important;
-  }
-  h1, h2, h3, h4, p, span, nav {
-    color: var(--text-color);
-  }
-  .panel, .btn.holo {
-    color: var(--text-color);
-  }
-  nav, .panel.light, .control-panel, .highlight {
-    background: #2e2e2e;
-  }
-  .panel.dark, .btn.holo, .btn.disabled {
-    background: #262626;
-  }
-  .btn.holo:hover {
-    background: #424242;
-  }
-} */
+/* Transitions */
+html, body, .panel, .control-panel {
+  transition: background-color 0.3s;
+}

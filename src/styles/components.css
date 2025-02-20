@@ -389,3 +389,32 @@ pre code {
 pre[class*=language-] {
   margin: 0 !important;
 }
+
+/* Theme slider notches */
+#theme-mode {
+    cursor: pointer;
+}
+datalist {
+    display: flex;
+    justify-content: space-between;
+    margin-top: -5px;
+    padding: 0 10px;
+}
+
+datalist option {
+    padding: 0;
+    width: 2px;
+    height: 8px;
+    background: var(--text-color);
+    opacity: 0.5;
+}
+
+/* Improve slider appearance in Webkit browsers */
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    background: var(--blue);
+    cursor: pointer;
+}

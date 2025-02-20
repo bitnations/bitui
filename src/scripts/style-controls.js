@@ -13,6 +13,39 @@ class StyleController {
             'font-size': '16',
             'theme-mode': '0'
         };
+
+        // Define theme mode colors
+        this.themeModes = {
+            light: {
+                bg: 'rgb(251, 251, 251)',
+                panel: 'rgb(255, 255, 255)',
+                panelDark: 'rgb(245, 245, 245)',
+                text: '#4D4D4D',
+                heading: '#2E2E2E'
+            },
+            warm: {
+                bg: 'rgb(255, 243, 230)',         // Warmer, more orange tint
+                panel: 'rgb(255, 248, 240)',      // Slightly warmer panels
+                panelDark: 'rgb(250, 240, 230)',  // Warmer dark panels
+                text: '#4D4D4D',
+                heading: '#2E2E2E'
+            },
+            dim: {
+                bg: 'rgb(38, 38, 42)',            // Slightly blue-ish dark
+                panel: 'rgb(45, 45, 50)',         // Darker panels with hint of blue
+                panelDark: 'rgb(35, 35, 40)',     // Even darker panels
+                text: '#FBFBFB',
+                heading: '#FFFFFF'
+            },
+            dark: {
+                bg: 'rgb(31, 31, 31)',
+                panel: 'rgb(46, 46, 46)',
+                panelDark: 'rgb(38, 38, 38)',
+                text: '#FBFBFB',
+                heading: '#FFFFFF'
+            }
+        };
+
         this.init();
     }
 
@@ -54,35 +87,65 @@ class StyleController {
     }
 
     updateTheme(value) {
-        // Background color
-        this.root.style.setProperty(
-            '--bg-color', 
-            `rgb(${251 - (251 - 30) * value}, ${251 - (251 - 30) * value}, ${251 - (251 - 30) * value})`
-        );
+        let mode, nextMode, progress;
         
-        // Panel backgrounds
-        this.root.style.setProperty(
-            '--panel-bg', 
-            `rgb(${255 - (255 - 46) * value}, ${255 - (255 - 46) * value}, ${255 - (255 - 46) * value})`
-        );
-        
-        this.root.style.setProperty(
-            '--panel-dark-bg', 
-            `rgb(${245 - (245 - 38) * value}, ${245 - (245 - 38) * value}, ${245 - (245 - 38) * value})`
-        );
-
-        // Text colors
-        if (value > 0.5) {
-            this.root.style.setProperty('--text-color', '#FBFBFB');
-            this.root.style.setProperty('--heading-color', '#FFFFFF');
-        } else {
-            this.root.style.setProperty('--text-color', '#4D4D4D');
-            this.root.style.setProperty('--heading-color', '#2E2E2E');
+        // Adjust breakpoints for smoother transitions
+        if (value <= 0.33) {  // Light to Warm (0-33%)
+            mode = 'light';
+            nextMode = 'warm';
+            progress = value / 0.33;
+        } else if (value <= 0.50) {  // Warm (33-50%)
+            mode = 'warm';
+            nextMode = 'warm';
+            progress = 1;
+        } else if (value <= 0.66) {  // Dim (50-66%)
+            mode = 'dim';
+            nextMode = 'dim';
+            progress = 0;
+        } else {  // Dim to Dark (66-100%)
+            mode = 'dim';
+            nextMode = 'dark';
+            progress = (value - 0.66) / 0.34;
         }
 
-        // Update value display
+        // Interpolate between modes
+        const current = this.themeModes[mode];
+        const next = this.themeModes[nextMode];
+
+        // Helper function to interpolate RGB colors
+        const interpolateRGB = (color1, color2, progress) => {
+            const rgb1 = color1.match(/\d+/g).map(Number);
+            const rgb2 = color2.match(/\d+/g).map(Number);
+            const rgb = rgb1.map((c1, i) => {
+                const c2 = rgb2[i];
+                return Math.round(c1 + (c2 - c1) * progress);
+            });
+            return `rgb(${rgb.join(', ')})`;
+        };
+
+        // Update colors
+        this.root.style.setProperty('--bg-color', 
+            interpolateRGB(current.bg, next.bg, progress));
+        this.root.style.setProperty('--panel-bg', 
+            interpolateRGB(current.panel, next.panel, progress));
+        this.root.style.setProperty('--panel-dark-bg', 
+            interpolateRGB(current.panelDark, next.panelDark, progress));
+
+        // Text colors switch at midpoints
+        if (value > 0.5) {
+            this.root.style.setProperty('--text-color', next.text);
+            this.root.style.setProperty('--heading-color', next.heading);
+        } else {
+            this.root.style.setProperty('--text-color', current.text);
+            this.root.style.setProperty('--heading-color', current.heading);
+        }
+
+        // Update display text
         const display = document.getElementById('theme-mode-value');
-        display.textContent = value > 0.5 ? 'Dark' : 'Light';
+        if (value <= 0.15) display.textContent = 'Light';
+        else if (value <= 0.45) display.textContent = 'Warm';
+        else if (value <= 0.80) display.textContent = 'Dim';
+        else display.textContent = 'Dark';
     }
 
     savePreferences() {
