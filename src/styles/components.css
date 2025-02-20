@@ -234,7 +234,7 @@ input[type="range"].style-control::-webkit-slider-thumb:hover {
   border: 1px solid rgba(0,0,0,0.35);
 }
 .btn.disabled {
-  cursor: default;
+  cursor: not-allowed;
   background: #FBFBFB;
   border: 1px solid rgba(0,0,0,0.2);
   color: gray;
@@ -247,6 +247,7 @@ input[type="range"].style-control::-webkit-slider-thumb:hover {
 .btn.red:hover { background: var(--red-hover); }
 .btn.purple { background: var(--purple); }
 .btn.purple:hover { background: var(--purple-hover); }
+.btn.disabled:hover { background-color: #FBFBFB !important; }
 
 /* Inline Edit Button */
 .edit-btn {
@@ -315,16 +316,6 @@ canvas {
   line-height: 21px;
   padding-left: 8px;
   overflow: visible;
-}
-
-/* Add to the control panel styles */
-.control-panel .btn {
-    margin-top: 20px;
-}
-
-/* Update button hover states for dark mode */
-.control-panel .btn:hover {
-    opacity: 0.9;
 }
 
 /* Code blocks */
