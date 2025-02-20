@@ -9,13 +9,14 @@ The project is organized as follows:
 ```
 bitui-project
 ├── src
-│   ├── index.html        # Main HTML document for the static website
 │   ├── styles
 │   │   └── main.css      # CSS styles for the website
 │   └── scripts
 │       └── main.js       # JavaScript code for interactivity
 ├── assets                 # Directory for additional assets (images, fonts, etc.)
+│── index.html             # Main HTML document for the static website (root)
 ├── README.md              # Documentation for the project
+├── CNAME                  # For Domain
 └── .gitignore             # Files and directories to ignore by version control
 ```
 
