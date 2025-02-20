@@ -10,7 +10,7 @@ class StyleController {
         this.toggleButton = document.getElementById('togglePanel');
         this.defaultValues = {
             'border-radius': '15',
-            'spacing': '10',
+            'spacing': '1',
             'panel-padding-x': '15',
             'panel-padding-y': '10',
             'font-size': '16',
