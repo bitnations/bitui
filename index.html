@@ -23,12 +23,32 @@
   <!-- Update the control panel -->
   <div class="control-panel" id="controlPanel">
     <button class="toggle-panel" id="togglePanel">
-      <span class="toggle-icon">›</span>
+      <p class="toggle-icon">›</p>
     </button>
     <div class="container">
       <div class="row">
         <div class="col-12">
-          <h3 class="panel-title">Global Style Controls</h3>
+          <h3 class="panel-title">Theme</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12-sm">
+          <label for="theme-mode">Light / Dark Mode</label>
+          <input 
+            type="range" 
+            id="theme-mode" 
+            min="0" 
+            max="100" 
+            value="0" 
+            class="style-control"
+            data-style-property="--theme-mode"
+          >
+          <span id="theme-mode-value">Light</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <h3 class="panel-title">Styles</h3>
         </div>
       </div>
       <div class="row">

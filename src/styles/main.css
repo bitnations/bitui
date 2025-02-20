@@ -48,4 +48,10 @@
     --font-family-base: 'Roboto Mono', 'NotoColorEmojiLimited', monospace;
     --font-size-base: 16px;
     --line-height-base: 1.4;
+    /* Theme Colors */
+    --bg-color: #FBFBFB;
+    --text-color: #4D4D4D;
+    --heading-color: rgb(46, 46, 46);
+    --panel-bg: #FFF;
+    --panel-dark-bg: #F5F5F5;
 }

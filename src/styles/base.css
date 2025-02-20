@@ -5,17 +5,17 @@ html, body {
   font-family: var(--font-family-base);
   font-size: var(--font-size-base);
   line-height: var(--line-height-base);
-  background: #FBFBFB;
+  background: var(--bg-color);
+  color: var(--text-color);
   user-select: none;
   overflow-x: hidden;
 }
 
 /* Typography */
-h1 { font-size: calc(var(--font-size-base) * 2.5); margin: 0; }
-h2 { font-size: calc(var(--font-size-base) * 2); margin: 0; }
-h3 { font-size: calc(var(--font-size-base) * 1.75); margin: 0; }
-h4 { font-size: calc(var(--font-size-base) * 1.5); margin: 0; }
-p { font-size: var(--font-size-base); margin: 0; }
+h1, h2, h3, h4, p { 
+  color: var(--heading-color);
+  margin: 0;
+}
 
 /* Links */
 a {text-decoration: none; color: inherit;}
