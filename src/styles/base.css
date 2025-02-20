@@ -1,49 +1,36 @@
 /* Base Styles */
-html, 
-body {
-    margin: 0 auto;
-    padding: 0;
-    font-family: var(--font-family-base);
-    font-size: var(--font-size-base);
-    line-height: var(--line-height-base);
-    background: #FBFBFB;
-    user-select: none;
-    overflow-x: hidden;
+html, body {
+  margin: 0 auto;
+  padding: 0;
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  background: #FBFBFB;
+  user-select: none;
+  overflow-x: hidden;
 }
 
 /* Typography */
-h1 { font-size: calc(var(--font-size-base) * 2.5); }
-h2 { font-size: calc(var(--font-size-base) * 2); }
-h3 { font-size: calc(var(--font-size-base) * 1.75); }
-h4 { font-size: calc(var(--font-size-base) * 1.5); }
-p { font-size: var(--font-size-base); }
+h1 { font-size: calc(var(--font-size-base) * 2.5); margin: 0; }
+h2 { font-size: calc(var(--font-size-base) * 2); margin: 0; }
+h3 { font-size: calc(var(--font-size-base) * 1.75); margin: 0; }
+h4 { font-size: calc(var(--font-size-base) * 1.5); margin: 0; }
+p { font-size: var(--font-size-base); margin: 0; }
 
 /* Links */
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-a:hover,
-a:visited {
-    text-decoration: none;
-    color: inherit;
-}
+a {text-decoration: none; color: inherit;}
+a:hover, a:visited { text-decoration: none; color: inherit;}
 
 /* Typography Utilities */
-.font-light { font-weight: 300; }
+.font-light   { font-weight: 300; }
 .font-regular { font-weight: 400; }
-.font-heavy { font-weight: 700; }
-.font-small { font-size: calc(var(--font-size-base) * 0.75); }
-.font-large { font-size: calc(var(--font-size-base) * 1.25); }
+.font-heavy   { font-weight: 700; }
+.font-small   { font-size: calc(var(--font-size-base) * 0.75); }
+.font-large   { font-size: calc(var(--font-size-base) * 1.25); }
 
 /* Text Alignment */
-.left { text-align: left; }
-.right { text-align: right; }
-.center { 
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-}
+.left    { text-align: left; }
+.right   { text-align: right; }
+.center  { text-align: center; margin-left: auto; margin-right: auto; }
 .justify { text-align: justify; }
 .float-right { float: right; } 

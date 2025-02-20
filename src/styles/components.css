@@ -1,51 +1,7 @@
-/* Navigation */
-nav {
-  top: 0;
-  left: 0;
-  height: 60px;
-  position: fixed;
-  z-index: 1000;
-  width: 100%;
-  background: white;
-  border-radius: 0;
-  border-bottom: 1px solid rgba(0,0,0,0.15);
-}
-nav .nav-back-btn {
-  float: left;
-  width: 75px;
-  padding-left: 15px;
-  text-align: left;
-}
-nav .page-title {
-  float: left;
-  text-align: center;
-  width: calc(100% - 180px);
-}
-.menu {
-  height: 100vh;
-  width: 100%;
-  padding-top: 5px;
-}
-
 /* Page Layout */
 .content {
-  /* padding-top: 80px;
-  padding-bottom: 80px; */
+  padding: 20px 0;
 }
-.page-content {
-  overflow: auto;
-  padding-top: 5px;
-}
-/* Hide Scrollbar */
-.page-content::-webkit-scrollbar {
-  display: none;
-}
-/* Hide scrollbar for IE, Edge and Firefox */
-.page-content {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
-}
-
 /* Font Styles */
 .f-white {
   color: white;
@@ -82,11 +38,11 @@ nav .page-title {
 
 /* Panels */
 .panel:not(.control-panel) {
-  padding: 15px;
+  padding: var(--panel-padding);
   border-radius: var(--border-radius);
   border: 1px solid rgba(0,0,0,0.15);
   box-sizing: border-box;
-  margin-bottom: var(--spacing-unit);
+  margin: 0 0 var(--spacing-unit) 0;
 }
 .panel:not(.control-panel):last-child {
   margin-bottom: 0;
@@ -218,21 +174,16 @@ input[type="range"].style-control::-webkit-slider-thumb:hover {
 }
 
 /* Buttons */
-button {
-  width: 100%;
-}
 .btn {
   color: white;
   padding: 15px;
   cursor: pointer;
   user-select: none;
-  border-radius: 15px;
+  border-radius: var(--border-radius);
   text-align: center;
   width: 100%;
   border: 1px solid rgba(0, 0, 0, 0);
   box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
 }
 .btn.sm {
   padding: 7px;
@@ -252,30 +203,14 @@ button {
   border: 1px solid rgba(0,0,0,0.2);
   color: gray;
 }
-.btn.green {
-  background: var(--green);
-}
-.btn.green:hover {
-  background: var(--green-hover);
-}
-.btn.blue {
-  background: var(--blue);
-}
-.btn.blue:hover {
-  background: var(--blue-hover);
-}
-.btn.red {
-  background: var(--red);
-}
-.btn.red:hover {
-  background: var(--red-hover);
-}
-.btn.purple {
-  background: var(--purple);
-}
-.btn.purple:hover {
-  background: var(--purple-hover);
-}
+.btn.green { background: var(--green); }
+.btn.green:hover { background: var(--green-hover); }
+.btn.blue { background: var(--blue); }
+.btn.blue:hover { background: var(--blue-hover); }
+.btn.red { background: var(--red); }
+.btn.red:hover { background: var(--red-hover); }
+.btn.purple { background: var(--purple); }
+.btn.purple:hover { background: var(--purple-hover); }
 
 /* Inline Edit Button */
 .edit-btn {
@@ -349,30 +284,4 @@ canvas {
   line-height: 21px;
   padding-left: 8px;
   overflow: visible;
-}
-
-/* Link Color */
-.link {
-  color:rgba(77, 157, 224, 1) !important;
-}
-
-/* Version & Leagal Footer */
-.legal {
-  position: fixed;
-  margin: 0 auto;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  color: gray;
-  font-size: 14px;
-}
-
-/* Fixed horizontal spacing for grid */
-.row {
-  /* margin: 0 -15px; Fixed horizontal negative margin */
-}
-
-[class^="col-"] {
-  /* padding: 0 15px; Fixed horizontal padding */
-  padding: 0;
 }
