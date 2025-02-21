@@ -4,36 +4,59 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BitUI Demo</title>
+  <!-- CSS -->
   <link rel="stylesheet" href="bitui.css">
+  <!-- Zip Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 </head>
 
 <body>
   <!-- Main Content -->
   <main class="content">
     <div class="container">
+
       <!-- Introduction -->
       <section>
-        <div class="panel light">
-          <h1 class="panel-title">BitUI</h1>
+        <div class="row">
+          <div class="col-12">
+            <div class="panel light center">
+              <h1>BitUI</h1>
+            </div>
+          </div>
         </div>
-        <div class="panel light">
-          <div class="row">
-            <div class="col-12">
-              <p>BitUI is a free-to-use, lightweight HTML + CSS frontend framework designed for simplicity and performance. Built as the foundation for BitNations, BitUI provides a minimal, flexible grid system and utility classes to help you build responsive, fast-loading web applications with ease.</p>
+        <div class="row">
+          <div class="col-12">
+            <div class="panel light">
+              <p>BitUI is a free-to-use, lightweight HTML + CSS frontend framework designed for simplicity and
+                performance. Built as the foundation for BitNations, BitUI provides a minimal, flexible grid system to
+                build responsive, fast-loading web applications with ease.</p>
               <ol>
                 <li>Move the sliders on the right to your liking</li>
                 <li>Download CSS</li>
                 <li>Use on your site</li>
-              </ul>
+              </ol>
             </div>
           </div>
         </div>
       </section>
 
+
       <!-- Flex-Box Grid -->
       <section>
-        <div class="panel light">
-          <h2 class="panel-title">Flex-Grid Columns</h2>
+        <div class="row">
+          <div class="col-12">
+            <div class="panel light center">
+              <h1>Columns</h1>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <div class="panel light">
+              <p>BitUI uses flex grid for column system.</p>
+            </div>
+          </div>
         </div>
 
         <div class="row">
@@ -122,7 +145,146 @@
           </div>
         </div>
       </section>
+
+      <!-- Typography -->
+      <section id="typography">
+        <div class="row">
+          <div class="col-12">
+            <div class="panel light center">
+              <h1>Typography</h1>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <div class="panel light">
+              <p>BitUI uses a clean, modern typography system based on the <code class="language-css">var(--font-family-base)</code> font
+                stack (Roboto Mono, NotoColorEmojiLimited, monospace). All text adapts dynamically to our theme system
+                (Light, Warm, Dim, Dark) using global variables like <code class="language-css">--text-color</code> and
+                <code class="language-css">--heading-color</code>.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <div class="panel light center">
+              <h1>Header 1</h1>
+              <h2>Header 2</h2>
+              <h3>Header 3</h3>
+              <h4>Header 4</h4>
+              <h5>Header 5</h5>
+              <h6>Header 6</h6>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-6">
+            <div class="panel light">
+              <p>Paragraph text is styled with a default font-weight of 400. You can modify font weights using utility
+                classes:</p>
+              <p class="font-light">.font-light</p>
+              <p class="font-regular">.font-regular</p>
+              <p class="font-heavy">.font-heavy</p>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="panel light">
+              <p>Apply color utilities to text for thematic emphasis:</p>
+              <p class="f-black" style="background-color: white;">.f-black – Black text</p>
+              <p class="f-white" style="background-color: black;">.f-white – White text</p>
+              <p class="f-red">.f-red – Red text</p>
+              <p class="f-orange">.f-orange – Orange text</p>
+              <p class="f-green">.f-green – Green text</p>
+              <p class="f-blue">.f-blue – Blue text</p>
+              <p class="f-purple">.f-purple – Purple text</p>
+              <p class="f-gray">.f-gray – Gray text</p>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- EXAMPLES -->
+      <section id="examples">
+        <div class="row">
+          <div class="col-12">
+            <div class="panel light">
+              <h2 class="center">BitUI Layout Examples</h2>
+              <p>BitUI provides a flexible grid system and panel components for creating responsive layouts. Below are
+                examples demonstrating common layout patterns using <code class="language-css">.row</code>, <code class="language-css">.col-*</code>, and
+                <code class="language-css">.panel</code> classes, styled dynamically with our theme system (Light, Warm, Dim, Dark).</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Example 1: Two-Column Layout -->
+        <div class="row">
+          <div class="col-6">
+            <div class="panel dark">
+              <h3>Left Column</h3>
+              <p>This is a left column with content, styled with a dark panel. It takes up 50% of the width on desktop
+                (col-6) and stacks on mobile.</p>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="panel dark">
+              <h3>Right Column</h3>
+              <p>This is a right column with additional content, also in a dark panel. Both columns are responsive and
+                adapt to screen size.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Example 2: Three-Column Layout -->
+        <div class="row">
+          <div class="col-4">
+            <div class="panel dark">
+              <h3>Column 1</h3>
+              <p>A narrow column (33.33%) for concise content or sidebar navigation.</p>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="panel dark">
+              <h3>Column 2</h3>
+              <p>Middle column for main content, equally spaced with others.</p>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="panel dark">
+              <h3>Column 3</h3>
+              <p>Another narrow column for additional details or widgets.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Example 3: Full-Width Panel with Nested Rows -->
+        <div class="row">
+          <div class="col-12">
+            <div class="panel dark">
+              <h3 class="center">Full-Width Content</h3>
+              <div class="row">
+                <div class="col-6">
+                  <div class="panel light">
+                    <p>This nested column (50%) contains content on the left side of the full-width panel.</p>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="panel light">
+                    <p>This nested column (50%) contains content on the left side of the full-width panel.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   </main>
+
 </body>
+
 </html>
