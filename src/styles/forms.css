@@ -1,7 +1,7 @@
 /* Submit Buttons */
 form input[type="submit"], input[type="submit"] {
   user-select: none;
-  font-family: 'Roboto Mono', monospace;
+  font-family: var(--font-family-base);
   background: transparent;
   height: auto;
   padding: 0;
@@ -14,9 +14,6 @@ form input[type="submit"], input[type="submit"] {
 }
 form input[type="submit"]:active, input[type="submit"]:active {
   color: white;
-}
-form input[type="submit"]:hover {
-  /* color: white; */
 }
 /* Remove Input Submit Styling */
 form input[type="submit"].no-style {
@@ -195,7 +192,7 @@ input.clear-form:focus {
    height: 2.5em;
    width: 100%;
    padding: 0px 15px;
-   font-family: 'Roboto Mono', 'NotoColorEmojiLimited', monospace;
+   font-family: var(--font-family-base);
    border: 1px solid rgba(0,0,0,0.15);
    border-radius: 10px;
    box-sizing: border-box;
@@ -210,7 +207,7 @@ input.clear-form:focus {
 
  /* Select Form */
  select {
-  font-family: 'NotoColorEmojiLimited', 'Roboto Mono', monospace;
+  font-family: var(--font-family-base);
   background: white;
   color: black;
   font-size: 1em;
@@ -298,7 +295,6 @@ input.clear-form:focus {
 
  /* Disabled Input */
  input:disabled {
-   /* color: gray; */
    border: 1px solid rgba(0,0,0,0.25);
    box-sizing: border-box;
    -moz-box-sizing: border-box;
@@ -320,12 +316,32 @@ input.clear-form:focus {
     color:    rgba(219,219,219,1);
  }
 
- /* RANGE */
- input[type="range"] {
-   height: auto;
-   padding: 0;
-   width: 100%;
- }
+/* Custom range input styling */
+input[type="range"] {
+  padding: 0;
+  width: 100%;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 5px;
+  border-radius: calc(var(--border-radius) * 0.33);
+  background-image: linear-gradient(var(--blue), var(--blue));
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  background: var(--blue);
+  cursor: pointer;
+  box-shadow: 0 0 2px rgba(0,0,0,0.2);
+  transition: all 0.3s ease-in-out;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+ 
  /* CHECK BOX */
  input[type='checkbox'] {
    height: auto;
@@ -367,9 +383,4 @@ input.clear-form:focus {
 
 select:focus {
   outline: none;
-}
-
-/* RANGE FORMS */
-input[type='range'] {
-  /*  */
 }

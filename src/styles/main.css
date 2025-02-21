@@ -7,7 +7,6 @@
 @import 'grid.css';
 @import 'components.css';
 @import 'forms.css';
-@import 'darkmode.css';
 
 /* Font Imports
    ========================================================================== */
@@ -38,8 +37,10 @@
     --graph-green: rgba(43,174,83,1);
     --graph-blue: #08B2E3;
     /* Layout */
-    --container-width: 90%;
-    --container-max-width: 65rem;
+    --container-width: 50%; /* Default: 50% */
+    --container-min-width: 600px; /* Prevents content from getting too narrow */
+    --container-max-width: 100%;
+    --column-gap: 0.5rem; /* Default column spacing */
     --border-radius: 15px;
     --spacing-unit: 20px;  /* Space between panels */
     --panel-padding-x: 15px; /* Horizontal panel padding */

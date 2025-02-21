@@ -30,79 +30,88 @@
     <button class="toggle-panel" id="togglePanel">
       <p class="toggle-icon">›</p>
     </button>
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <h3 class="panel-title">Theme</h3>
-        </div>
+
+    <div class="">  
+      <div class="">
+        <h3 class="panel-title">Theme</h3>
       </div>
-      <div class="row">
-        <div class="col-12-sm">
-          <label for="theme-mode">Light / Dark Mode</label>
-          <input type="range" id="theme-mode" min="0" max="100" value="0" step="1" class="style-control"
-            data-style-property="--theme-mode" list="theme-stops">
-          <span id="theme-mode-value">Light</span>
-        </div>
+
+      <div class="">
+        <label for="theme-mode">Light / Dark Mode</label>
+        <input type="range" id="theme-mode" min="0" max="100" value="0" step="1" class="style-control"
+          data-style-property="--theme-mode" list="theme-stops">
+        <span id="theme-mode-value">Light</span>
       </div>
-      <div class="row">
-        <div class="col-12">
-          <h3 class="panel-title">Styles</h3>
-        </div>
+    
+      <div class="">
+        <h3 class="panel-title">Styles</h3>
       </div>
-      <div class="row">
-        <div class="col-12-sm">
-          <label for="border-radius">Border Radius</label>
-          <input type="range" id="border-radius" min="0" max="50" value="15" class="style-control"
-            data-style-property="--border-radius" data-unit="px">
-          <span id="border-radius-value">15px</span>
-        </div>
-        <div class="col-12-sm">
-          <label for="spacing">Section Spacing</label>
-          <input type="range" id="spacing" min="0" max="100" value="1" class="style-control"
-            data-style-property="--spacing-unit" data-unit="vh">
-          <span id="spacing-value">5vh</span>
-        </div>
+
+      <div class="">
+        <label for="border-radius">Border Radius</label>
+        <input type="range" id="border-radius" min="0" max="50" value="15" class="style-control"
+          data-style-property="--border-radius" data-unit="px">
+        <span id="border-radius-value">15px</span>
       </div>
-      <div class="row">
-        <div class="col-12-sm">
-          <label for="panel-padding-x">Panel Horizontal Padding</label>
-          <input type="range" id="panel-padding-x" min="5" max="25" value="15" class="style-control"
-            data-style-property="--panel-padding-x" data-unit="px">
-          <span id="panel-padding-x-value">15px</span>
-        </div>
-        <div class="col-12-sm">
-          <label for="panel-padding-y">Panel Vertical Padding</label>
-          <input type="range" id="panel-padding-y" min="5" max="100" value="10" class="style-control"
-            data-style-property="--panel-padding-y" data-unit="px">
-          <span id="panel-padding-y-value">5px</span>
-        </div>
+      <div class="">
+        <label for="spacing">Section Spacing</label>
+        <input type="range" id="spacing" min="0" max="50" value="1" step="1" class="style-control"
+          data-style-property="--spacing-unit" data-unit="vh">
+        <span id="spacing-value">5vh</span>
       </div>
-      <div class="row">
-        <div class="col-12-sm">
-          <label for="font-size">Text Size</label>
-          <input type="range" id="font-size" min="12" max="48" step="1" value="16" class="style-control"
-            data-style-property="--font-size-base" data-unit="px">
-          <span id="font-size-value">16px</span>
-        </div>
+
+      <div class="">
+        <label for="container">Container</label>
+        <input type="range" id="container" min="50" max="100" value="50" class="style-control"
+          data-style-property="--container-width" data-unit="%">
+        <span id="container-value">90%</span>
+      </div>  
+
+      <label for="column-gap">Column Gap</label>
+      <input type="range" id="column-gap" min="0" max="2" step="0.1" value="0.5" 
+             class="style-control" data-style-property="--column-gap" data-unit="rem">
+      <span id="column-gap-value">0.5rem</span>
+      
+      
+      <div class="">
+        <label for="panel-padding-x">Panel Horizontal Padding</label>
+        <input type="range" id="panel-padding-x" min="5" max="25" value="15" class="style-control"
+          data-style-property="--panel-padding-x" data-unit="px">
+        <span id="panel-padding-x-value">15px</span>
       </div>
+      <div class="">
+        <label for="panel-padding-y">Panel Vertical Padding</label>
+        <input type="range" id="panel-padding-y" min="5" max="100" value="10" class="style-control"
+          data-style-property="--panel-padding-y" data-unit="px">
+        <span id="panel-padding-y-value">5px</span>
+      </div>
+      <div class="">
+        <label for="font-size">Text Size</label>
+        <input type="range" id="font-size" min="12" max="48" step="1" value="16" class="style-control"
+          data-style-property="--font-size-base" data-unit="px">
+        <span id="font-size-value">16px</span>
+      </div>
+      
     </div>
-    <div class="row">
-      <div class="col-12">
+    
+    <div style="padding-top: 15px;">
+      <div style="margin-bottom: 5px;">
         <button class="btn disabled" id="deploy-btn">
-          ↑ Deploy Site
+          ↥ Deploy
         </button>
       </div>
-      <div class="col-12">
+      <div style="margin-bottom: 5px;">
         <button class="btn disabled" id="downlaod-btn">
           ↧ Download
         </button>
       </div>
-      <div class="col-12">
+      <div>
         <button class="btn red" id="reset-defaults">
           Reset to Defaults
         </button>
       </div>
     </div>
+
   </div>
 
   <!-- Main Content -->
@@ -112,11 +121,11 @@
       <!-- Introduction -->
       <section>
         <div class="panel light">
+          <h1 class="panel-title">BitUI</h1>
+          <h4 class="center">Lightweight, flexible, and easy to use.</h4>
+        </div>
+        <div class="panel light">
           <div class="row">
-            <div class="col-12">
-              <h1 class="panel-title">BitUI</h1>
-              <h4 class="center">Lightweight, flexible, and easy to use.</h4>
-            </div>
             <div class="col-12">
               <div class="panel dark">
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo fugit minus est, ratione
@@ -125,11 +134,6 @@
               </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      <section>
-        <div class="row">
         </div>
       </section>
       
@@ -230,12 +234,9 @@
 
       <!-- Typography -->
       <section id="typography" class="left">
-        <!-- Title -->
-         
         <div class="panel light">
           <h2 class="panel-title">Typography</h2>
         </div>
-
         <!-- Headings -->
         <div class="panel light">
           <div class="row">
@@ -273,20 +274,20 @@
         <div class="panel light">
           <h2 class="panel-title">Buttons</h2>
         </div>
-
+        <!-- Green -->
         <div class="row">
           <div class="col-4">
             <a href="#">
               <button class="btn green">Success</button>
             </a>
           </div>
-
+          <!-- Blue -->
           <div class="col-4">
             <a href="#">
               <button class="btn blue">Info</button>
             </a>
           </div>
-
+          <!-- Red -->
           <div class="col-4">
             <a href="#">
               <button class="btn red">Danger</button>
@@ -357,5 +358,4 @@
   <script src="src/scripts/style-controls.js"></script>
 
 </body>
-
 </html>
