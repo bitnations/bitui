@@ -94,3 +94,8 @@
   font-size: 14px !important;
   margin-bottom: 15px;
 }
+
+/* Form padding */
+.control-panel input[type="range"] {
+  padding: 0 !important;
+}

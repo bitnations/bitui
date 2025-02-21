@@ -157,3 +157,7 @@ code[class*=language-], pre[class*=language-] {
   text-shadow: none !important;
   color: var(--text-color) !important;
 }
+
+:not(pre)>code[class*=language-], pre[class*=language-] {
+  background-color: var(--bg-color) !important; 
+}
