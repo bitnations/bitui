@@ -35,7 +35,7 @@ section {
 .panel:not(.control-panel) {
   padding: var(--panel-padding);
   border-radius: var(--border-radius);
-  border: 1px solid rgba(0,0,0,0.15);
+  border: 1px solid var(--panel-border);
   box-sizing: border-box;
 }
 .panel:not(.control-panel):last-child {
@@ -178,7 +178,7 @@ pre[class*=language-] {
 main .panel:not(.control-panel) {
   padding: var(--panel-padding-y) var(--panel-padding-x);
   border-radius: var(--border-radius);
-  border: 1px solid rgba(0,0,0,0.15);
+  border: 1px solid var(--panel-border);
   box-sizing: border-box;
   margin: 0 0 10px 0;
 }

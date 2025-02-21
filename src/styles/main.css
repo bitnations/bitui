@@ -50,10 +50,41 @@
     --font-family-base: 'Roboto Mono', 'NotoColorEmojiLimited', monospace;
     --font-size-base: 16px;
     --line-height-base: 1.4;
-    /* Theme Colors */
-    --bg-color: #FBFBFB;
-    --text-color: #4D4D4D;
+    /* Default (Light) Theme */
+    --bg-color: rgb(251, 251, 251);
+    --text-color: rgb(77, 77, 77);
     --heading-color: rgb(46, 46, 46);
-    --panel-bg: #FFF;
-    --panel-dark-bg: #F5F5F5;
+    --panel-bg: rgb(255, 255, 255);
+    --panel-dark-bg: rgb(245, 245, 245);
+    --panel-border: rgb(230, 230, 230);
+}
+
+/* Warm Theme */
+[data-theme="warm"] {
+  --bg-color: rgb(247, 238, 220);  /* Pale Sand */
+  --text-color: rgb(90, 75, 58);    /* Soft Umber */
+  --heading-color: rgb(70, 57, 42); /* Deep Taupe */
+  --panel-bg: rgb(255, 248, 231);   /* Cosmic Latte */
+  --panel-dark-bg: rgb(233, 222, 202); /* Faded Beige */
+  --panel-border: rgb(203, 184, 163); /* Muted Gold */
+}
+
+/* Dim Theme */
+[data-theme="dim"] {
+  --bg-color: rgb(24, 35, 46);      /* Gunmetal Blue */
+  --text-color: rgb(196, 201, 208); /* Cloud Gray */
+  --heading-color: rgb(208, 213, 220); /* Soft Silver */
+  --panel-bg: rgb(31, 44, 58);      /* Slate Blue */
+  --panel-dark-bg: rgb(37, 54, 70); /* Deep Slate */
+  --panel-border: rgb(60, 76, 94);  /* Steel Gray */
+}
+
+/* Dark Theme */
+[data-theme="dark"] {
+  --bg-color: rgb(0, 0, 0);
+  --text-color: rgb(255, 255, 255);
+  --heading-color: rgb(179, 179, 179);
+  --panel-bg: rgb(12, 12, 12);
+  --panel-dark-bg: rgb(12, 12, 12);
+  --panel-border: rgb(51, 51, 51);
 }

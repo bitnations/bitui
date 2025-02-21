@@ -73,16 +73,15 @@
              class="style-control" data-style-property="--column-gap" data-unit="rem">
       <span id="column-gap-value">0.5rem</span>
       
-      
       <div class="">
         <label for="panel-padding-x">Panel Horizontal Padding</label>
-        <input type="range" id="panel-padding-x" min="5" max="25" value="15" class="style-control"
+        <input type="range" id="panel-padding-x" min="0" max="30" value="15" class="style-control"
           data-style-property="--panel-padding-x" data-unit="px">
         <span id="panel-padding-x-value">15px</span>
       </div>
       <div class="">
         <label for="panel-padding-y">Panel Vertical Padding</label>
-        <input type="range" id="panel-padding-y" min="5" max="100" value="10" class="style-control"
+        <input type="range" id="panel-padding-y" min="0" max="100" value="10" class="style-control"
           data-style-property="--panel-padding-y" data-unit="px">
         <span id="panel-padding-y-value">5px</span>
       </div>
@@ -116,16 +115,13 @@
         <div class="panel light">
           <div class="row">
             <div class="col-12">
-              <div class="panel dark">
-                <p>BitUI is a free-to-use, lightweight HTML + CSS frontend framework designed for simplicity and performance. Built as the foundation for BitNations, BitUI provides a minimal, flexible grid system and utility classes to help you build responsive, fast-loading web applications with ease.</p>
-                <ol>
-                  <li>Move the sliders on the right to your liking</li>
-                  <li>Download CSS</li>
-                  <li>Use on your site</li>
-                </ul>
-              </div>
+              <p>BitUI is a free-to-use, lightweight HTML + CSS frontend framework designed for simplicity and performance. Built as the foundation for BitNations, BitUI provides a minimal, flexible grid system and utility classes to help you build responsive, fast-loading web applications with ease.</p>
+              <ol>
+                <li>Move the sliders on the right to your liking</li>
+                <li>Download CSS</li>
+                <li>Use on your site</li>
+              </ol>
             </div>
-            
           </div>
         </div>
       </section>
@@ -140,12 +136,12 @@
         <div class="row">
           <div class="col-1">
             <div class="panel light">
-              <p class="f-gray">1</p>
+              <span class="f-gray">1</span>
             </div>
           </div>
           <div class="col-11">
             <div class="panel light">
-              <p class="f-gray">11</p>
+              <span class="f-gray">11</span>
             </div>
           </div>
         </div>
@@ -153,12 +149,12 @@
         <div class="row">
           <div class="col-2">
             <div class="panel light">
-              <p class="f-gray">2</p>
+              <span class="f-gray">2</span>
             </div>
           </div>
           <div class="col-10">
             <div class="panel light">
-              <p class="f-gray">10</p>
+              <span class="f-gray">10</span>
             </div>
           </div>
         </div>
@@ -166,12 +162,12 @@
         <div class="row">
           <div class="col-3">
             <div class="panel light">
-              <p class="f-gray">3</p>
+              <span class="f-gray">3</span>
             </div>
           </div>
           <div class="col-9">
             <div class="panel light">
-              <p class="f-gray">9</p>
+              <span class="f-gray">9</span>
             </div>
           </div>
         </div>
@@ -179,12 +175,12 @@
         <div class="row">
           <div class="col-4">
             <div class="panel light">
-              <p class="f-gray">4</p>
+              <span class="f-gray">4</span>
             </div>
           </div>
           <div class="col-8">
             <div class="panel light">
-              <p class="f-gray">8</p>
+              <span class="f-gray">8</span>
             </div>
           </div>
         </div>
@@ -192,12 +188,12 @@
         <div class="row">
           <div class="col-5">
             <div class="panel light">
-              <p class="f-gray">5</p>
+              <span class="f-gray">5</span>
             </div>
           </div>
           <div class="col-7">
             <div class="panel light">
-              <p class="f-gray">7</p>
+              <span class="f-gray">7</span>
             </div>
           </div>
         </div>
@@ -205,12 +201,12 @@
         <div class="row">
           <div class="col-6">
             <div class="panel light">
-              <p class="f-gray">6</p>
+              <span class="f-gray">6</span>
             </div>
           </div>
           <div class="col-6">
             <div class="panel light">
-              <p class="f-gray">6</p>
+              <span class="f-gray">6</span>
             </div>
           </div>
         </div>
@@ -218,43 +214,30 @@
         <div class="row">
           <div class="col-12">
             <div class="panel light">
-              <p class="f-gray">12</p>
+              <span class="f-gray">12</span>
             </div>
           </div>
         </div>
       </section>
-
-
       
       <!-- Typography -->
       <!-- <section id="typography" class="left">
-        <div class="panel light">
-          <h2 class="panel-title">Typography</h2>
-        </div>
-        <div class="panel light">
-          <div class="row">
+        <div class="row">
+          <div class="panel light">
             <div class="col-12">
-              <h1>h1</h1>
-            </div>
-            <div class="col-12">
-              <h2>h2</h2>
-            </div>
-            <div class="col-12">
-              <h3>h3</h3>
-            </div>
-            <div class="col-12">
-              <h4>h4</h4>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-12">
-              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa maiores velit dignissimos, ad soluta
-                dolorem accusamus. Labore cum harum ducimus alias optio ipsum magnam aut, laudantium numquam voluptates
-                consectetur blanditiis.</p>
-              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum corrupti, quaerat quasi enim impedit,
-                inventore unde eligendi cupiditate esse, in sit incidunt officiis. Ex voluptatum eveniet et, beatae
-                totam
-                quod!</p>
+              <h1 class="center">Simple Typography</h1>
+              <p>
+                foobar uses fonts.
+              </p>
+              <h1>Header 1</h1>
+              <h2>Header 2</h2>
+              <h3>Header 3</h3>
+              <h4>Header 4</h4>
+              <h5>Header 5</h5>
+              <h6>Header 6</h6>
+              <p>
+                Additionally, should you choose to style any of the headers or paragraph font-weights, simply add the class .font-light, <span class="font-regular">.font-regular</span>, or <span class="font-heavy">.font-heavy</span> to your markup. Paragraph text is set by default to a font-weight of 200. Note: the .font-heavy class should not be used as a replacement for semantic bold body copy.
+              </p>
             </div>
           </div>
         </div>
