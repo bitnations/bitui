@@ -67,6 +67,6 @@ bitUI is licensed under the **MIT License** (`LICENSE`). This means you can free
 ## Support
 If you have questions or need help, please:
 - Open an issue on GitHub.
-- Contact us via [@TheBitG0D](https://x.com/TheBitG0D) on X or visit our website (if applicable).
+- Contact us via [@TheBitG0D](https://x.com/TheBitG0D) on X or visit our website [bitui.co](https://bitui.co).
 
 **Happy coding with bitUI!**
