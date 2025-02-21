@@ -114,59 +114,6 @@ section {
 .btn.purple:hover { background: var(--purple-hover); }
 .btn.disabled:hover { background-color: #FBFBFB !important; }
 
-/* Cards */
-/* .card {
-  user-select: none;
-  background: white;
-  cursor: pointer;
-  border-radius: var(--border-radius);
-}
-.card.red {
-  animation: red-blinker 2s linear infinite;
-}
-.card.orange {
-  animation: orange-blinker 2s linear infinite;
-}
-.card.green {
-  animation: green-blinker 2s linear infinite;
-}
-
-@keyframes red-blinker {
-  50% {
-    border: 1px solid var(--red);
-  }
-}
-@keyframes orange-blinker {
-  50% {
-    border: 1px solid var(--orange);
-  }
-}
-@keyframes green-blinker {
-  50% {
-    border: 1px solid var(--green);
-  }
-} */
-
-/* Progress bars */
-/* .meter {
-  user-select: none;
-  height: auto;
-  background: #e2e2e2;
-  border-radius: var(--border-radius);
-  width: 97%;
-}
-.meter > span {
-  display: block;
-  height: 100%;
-  border-radius: var(--border-radius);
-  background-color: var(--green);
-  position: relative;
-  overflow: hidden;
-  line-height: 21px;
-  padding-left: 8px;
-  overflow: visible;
-} */
-
 /* Code blocks */
 pre {
     margin: 0;
@@ -327,7 +274,6 @@ main .panel:not(.control-panel) {
   border-radius: var(--border-radius);
   border: 1px solid rgba(0,0,0,0.15);
   box-sizing: border-box;
-  /* We will want to make this dynamic: panel vertrical spacing */
   margin: 0 0 10px 0;
 }
 
