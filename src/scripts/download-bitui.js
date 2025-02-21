@@ -61,6 +61,6 @@ document.getElementById('download-css').addEventListener('click', function () {
     .catch(error => {
         console.error("Error fetching files:", error);
         // Optional: Notify user or handle the error gracefully (e.g., show an alert)
-        alert("There was an error downloading BitUI. Please check the console for details.");
+        alert("There was an error downloading bitUI. Please check the console for details.");
     });
   });

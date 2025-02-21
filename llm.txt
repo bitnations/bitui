@@ -1,0 +1,135 @@
+bitUI Framework Documentation (Updated)
+=======================================
+
+Overview
+--------
+bitUI is a lightweight, responsive HTML + CSS framework built for speed and simplicity. It offers:
+
+- A **12-column flex grid** for easy layout
+- **Panels** for consistent content styling
+- **Utility classes** for typography, alignment, and colors
+- **Themes** (light, warm, dim, dark) controlled by data attributes
+- **CSS variables** for quick customization
+
+Core Concepts
+------------
+1. **Layout Structure**
+   - **Container** (`.container`) to center and limit width
+   - **Row** (`.row`) wraps columns using flex display
+   - **Columns** (`.col-1` through `.col-12`), with smaller screen variants (`.col-4-sm`)
+   - **Panels** (`.panel light` / `.panel dark`) for grouped content blocks
+
+2. **Grid System**
+   - 12-column Flexbox grid
+   - Responsive breakpoints at 45em (720px) for `.col-*` classes  
+   - Small-screen classes (`.col-*-sm`) override defaults under 720px  
+   - Column-gap controlled by `--column-gap` variable
+
+3. **Themes**
+   - Set `data-theme="light"`, `"warm"`, `"dim"`, or `"dark"` on a parent element (often `<body>`)
+   - Colors, backgrounds, borders, and fonts adapt automatically
+   - Example: `<body data-theme="dark">`
+
+4. **Panels**
+   - **Light** panel: `<div class="panel light"> ... </div>`
+   - **Dark** panel: `<div class="panel dark"> ... </div>`
+   - Use for card-like sections, forms, or grouping content
+   - Spacing, borders, and rounding set via root variables
+
+5. **CSS Variables** (partial list)
+   - `--container-width`: Default container width (e.g., 50%)
+   - `--container-min-width`: Prevents overly narrow layouts (e.g., 600px)
+   - `--border-radius`: Rounding for panels, buttons, etc. (e.g., 15px)
+   - `--panel-padding-x`, `--panel-padding-y`: Panel padding
+   - `--font-size-base`: Default text size (e.g., 16px)
+   - `--line-height-base`: Default line height (e.g., 1.4)
+   - `--bg-color`, `--text-color`, `--heading-color`, etc., vary by theme
+
+6. **Typography & Utilities**
+   - **Fonts**: Roboto Mono + NotoColorEmojiLimited (monospace fallback)
+   - **Weights**: `.font-light` (300), `.font-regular` (400), `.font-heavy` (700)
+   - **Sizing**: `.font-small` (0.75x base), `.font-large` (1.25x base)
+   - **Alignment**: `.left`, `.center`, `.right`, `.justify`
+   - **Text Colors**: `.f-red`, `.f-orange`, `.f-green`, `.f-blue`, `.f-purple`, `.f-gray`, `.f-white`, `.f-black`
+
+7. **Buttons**
+   - Base button: `<button class="btn">`
+   - Color variants: `.green`, `.blue`, `.red`, `.purple`
+   - Holo style: `.btn.holo` (border + white background)
+   - Disabled state: `.btn.disabled` (dimmed + no pointer events)
+
+Basic Template
+--------------
+```html
+<body data-theme="light">
+  <main class="content">
+    <div class="container">
+      <section>
+        <div class="panel light">
+          <div class="row">
+            <div class="col-12">
+              <h1>Welcome to bitUI</h1>
+              <p class="font-regular">Your content goes here.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+</body>
+```
+
+Common Layout Patterns
+----------------------
+1. **Two-Column Layout**  
+```html
+<div class="row">
+  <div class="col-6">
+    <div class="panel light">
+      <h3>Left Side</h3>
+      <p>50% width on desktop, stacks on mobile.</p>
+    </div>
+  </div>
+  <div class="col-6">
+    <div class="panel light">
+      <h3>Right Side</h3>
+      <p>Also 50% width on desktop.</p>
+    </div>
+  </div>
+</div>
+```
+
+2. **Multi-Theme Panels**  
+```html
+<div class="row">
+  <div class="col-6">
+    <div class="panel dark">
+      <h3>Dark Panel</h3>
+      <p>Adapts automatically to dark theme settings.</p>
+    </div>
+  </div>
+  <div class="col-6">
+    <div class="panel light">
+      <h3>Light Panel</h3>
+      <p>Default panel style with light background.</p>
+    </div>
+  </div>
+</div>
+```
+
+3. **Example Button**  
+```html
+<button class="btn green">Save Changes</button>
+<button class="btn holo">Secondary Action</button>
+<button class="btn disabled">Disabled</button>
+```
+
+Best Practices
+--------------
+1. **Panel for Grouping**: Wrap sections in `<div class="panel ...">` for consistent spacing and borders.  
+2. **Utilize Themes**: Toggle `data-theme` at the root to switch between light, warm, dim, or dark.  
+3. **Responsive Mindset**: Use `.col-*-sm` classes to specify different column layouts under 720px.  
+4. **Utility Classes**: For quick style tweaks (alignment, text color, etc.) without writing extra CSS.  
+5. **Modular Design**: Keep content in panels and columns, nesting additional rows/columns as needed.
+
+With bitUI, you can quickly assemble modern interfaces by combining these core classes and utilities.
