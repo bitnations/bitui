@@ -41,9 +41,6 @@ section {
 .panel:not(.control-panel):last-child {
   margin-bottom: 0;
 }
-.panel.lg {
-  padding: 15px;
-}
 .panel.dark {
   background: var(--panel-dark-bg);
 }
@@ -175,97 +172,6 @@ pre code {
 
 pre[class*=language-] {
   margin: 0 !important;
-}
-
-/* ************** */
-/* Control Panel */
-/* ************ */
-
-.control-panel {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 250px;
-  height: 100vh;
-  padding: 15px;
-  background: var(--panel-bg);
-  border-radius: 0;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-  transition: background-color, transform 0.3s ease;
-  margin: 0 !important;
-  font-size: 14px !important;
-}
-
-/* Toggle button */
-.toggle-panel {
-  position: absolute;
-  left: -30px;
-  top: 20px;
-  width: 30px;
-  height: 60px;
-  background: var(--panel-bg);
-  border: none;
-  border-radius: 15px 0 0 15px;
-  box-shadow: -3px 0px 5px -1px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.toggle-icon {
-  font-size: 20px;
-  transition: transform 0.3s ease;
-}
-
-/* Panel closed state */
-.control-panel.closed {
-  transform: translateX(280px);
-}
-
-.control-panel.closed .toggle-icon {
-  transform: rotate(180deg);
-}
-
-/* Style controls should have fixed spacing */
-.style-control {
-  width: 100%;
-  margin: 10px 0 !important;
-}
-
-.style-control + span {
-  display: inline-block;
-  min-width: 45px;
-  text-align: right;
-  font-size: 0.9em;
-  color: var(--blue);
-  margin: 0 !important;
-}
-
-/* Control panel internal spacing should be fixed */
-.control-panel .row {
-  margin: 0 !important;
-}
-
-.control-panel [class^="col-"] {
-  padding: 5px !important;
-  margin: 0 !important;
-}
-
-.control-panel .panel-title {
-  padding: 10px 0 !important;
-  margin: 0 !important;
-  font-size: 18px !important;
-}
-
-.control-panel label {
-  font-size: 14px !important;
-}
-
-.control-panel span {
-  font-size: 12px !important;
 }
 
 /* Main content panels */
