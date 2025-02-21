@@ -16,11 +16,12 @@
   transition: background-color, transform 0.3s ease;
   margin: 0 !important;
   font-size: 14px !important;
+  overflow: scroll;
 }
 
 /* Toggle button */
 .toggle-panel {
-  position: absolute;
+  /* position: absolute; */
   left: -30px;
   top: 20px;
   width: 30px;
