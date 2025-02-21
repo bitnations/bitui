@@ -21,7 +21,7 @@
 
 /* Toggle button */
 .toggle-panel {
-  /* position: absolute; */
+  position: absolute;
   left: -30px;
   top: 20px;
   width: 30px;
