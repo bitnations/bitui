@@ -26,7 +26,7 @@ document.getElementById('download-css').addEventListener('click', function () {
           '--panel-padding-x', '--panel-padding-y',
           '--font-family-base', '--font-size-base', '--line-height-base',
           '--bg-color', '--text-color', '--heading-color',
-          '--panel-bg', '--panel-dark-bg'
+          '--panel-bg', '--panel-dark-bg', '--panel-border'
       ];
 
       // Replace CSS variables with computed values
