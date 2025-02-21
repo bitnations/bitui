@@ -83,8 +83,8 @@
   --bg-color: rgb(24, 35, 46);      /* Gunmetal Blue */
   --text-color: rgb(196, 201, 208); /* Cloud Gray */
   --heading-color: rgb(208, 213, 220); /* Soft Silver */
-  --panel-bg: rgb(31, 44, 58);      /* Slate Blue */
-  --panel-dark-bg: rgb(37, 54, 70); /* Deep Slate */
+  --panel-bg: rgb(37, 54, 70);      /* Deep Slate */
+  --panel-dark-bg: rgb(31, 44, 58); /* Slate Blue */
   --panel-border: rgb(60, 76, 94);  /* Steel Gray */
 }
 
@@ -93,7 +93,7 @@
   --bg-color: rgb(0, 0, 0);
   --text-color: rgb(255, 255, 255);
   --heading-color: rgb(179, 179, 179);
-  --panel-bg: rgb(12, 12, 12);
+  --panel-bg: rgb(16, 16, 16);
   --panel-dark-bg: rgb(0, 0, 0);
   --panel-border: rgb(51, 51, 51);
 }

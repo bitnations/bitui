@@ -19,15 +19,15 @@ const themes = {
     bg: 'rgb(24, 35, 46)',
     text: 'rgb(196, 201, 208)',
     heading: 'rgb(208, 213, 220)',
-    panel: 'rgb(31, 44, 58)',
-    panelDark: 'rgb(37, 54, 70)',
+    panel: 'rgb(37, 54, 70)',
+    panelDark: 'rgb(31, 44, 58)',
     border: 'rgb(60, 76, 94)'
   },
   dark: {
     bg: 'rgb(0, 0, 0)',
     text: 'rgb(255, 255, 255)',
     heading: 'rgb(179, 179, 179)',
-    panel: 'rgb(12, 12, 12)',
+    panel: 'rgb(16, 16, 16)',
     panelDark: 'rgb(0, 0, 0)',
     border: 'rgb(51, 51, 51)'
   }
