@@ -33,13 +33,10 @@ section {
 
 /* Panels */
 .panel:not(.control-panel) {
-  padding: var(--panel-padding);
+  padding: var(--panel-padding-y) var(--panel-padding-x);
   border-radius: var(--border-radius);
   border: 1px solid var(--panel-border);
   box-sizing: border-box;
-}
-.panel:not(.control-panel):last-child {
-  margin-bottom: 0;
 }
 .panel.dark {
   background: var(--panel-dark-bg);
@@ -50,25 +47,6 @@ section {
 .locked {
  opacity: 0.5;
 }
-.panel.dash {
-  height: 210px;
-  padding: 15px;
-  overflow: hidden;
-}
-.panel.blank {
-  height: 35px;
-}
-.panel-title {
-  text-align: center;
-  padding: 10px 0;
-}
-.panel-text {
-  padding: 15px;
-}
-.panel-item {
-  padding: 4px;
-}
-
 /* Buttons */
 .btn {
   color: white;
@@ -82,9 +60,6 @@ section {
   width: 100%;
   border: 1px solid rgba(0, 0, 0, 0);
   box-sizing: border-box;
-}
-.btn.sm {
-  padding: 7px;
 }
 .btn.holo {
   background: #FFF;
@@ -172,17 +147,13 @@ pre code {
 
 pre[class*=language-] {
   margin: 0 !important;
+  padding: 0 !important;
+  background-color: var(--panel-bg) !important;
+  border: 1px solid var(--panel-border) !important;
+  border-radius: var(--border-radius) !important;
 }
 
-/* Main content panels */
-main .panel:not(.control-panel) {
-  padding: var(--panel-padding-y) var(--panel-padding-x);
-  border-radius: var(--border-radius);
-  border: 1px solid var(--panel-border);
-  box-sizing: border-box;
-  margin: 0 0 10px 0;
-}
-
-main .panel:not(.control-panel):last-child {
-  margin-bottom: 0;
+code[class*=language-], pre[class*=language-] {
+  text-shadow: none !important;
+  color: var(--text-color) !important;
 }

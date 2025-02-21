@@ -12,8 +12,17 @@
 /* Font Imports
    ========================================================================== */
 @font-face {
-    font-family: 'Roboto Mono';
-    src: url("../fonts/RobotoMono-Regular.ttf") format('truetype');
+  font-family: 'Roboto Mono';
+  src: url("../fonts/RobotoMono-VariableFont_wght.ttf") format('truetype');
+  font-weight: 100 900; /* Allows any weight from 100 to 900 */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto Mono';
+  src: url("../fonts/RobotoMono-Italic-VariableFont_wght.ttf") format('truetype');
+  font-weight: 100 900; /* Allows any weight from 100 to 900 */
+  font-style: italic;
 }
 
 @font-face {
@@ -85,6 +94,6 @@
   --text-color: rgb(255, 255, 255);
   --heading-color: rgb(179, 179, 179);
   --panel-bg: rgb(12, 12, 12);
-  --panel-dark-bg: rgb(12, 12, 12);
+  --panel-dark-bg: rgb(0, 0, 0);
   --panel-border: rgb(51, 51, 51);
 }
