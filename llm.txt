@@ -1,9 +1,9 @@
-BitUI Framework Documentation (Updated)
+bitUI Framework Documentation (Updated)
 =======================================
 
 Overview
 --------
-BitUI is a lightweight, responsive HTML + CSS framework built for speed and simplicity. It offers:
+bitUI is a lightweight, responsive HTML + CSS framework built for speed and simplicity. It offers:
 
 - A **12-column flex grid** for easy layout
 - **Panels** for consistent content styling
@@ -68,7 +68,7 @@ Basic Template
         <div class="panel light">
           <div class="row">
             <div class="col-12">
-              <h1>Welcome to BitUI</h1>
+              <h1>Welcome to bitUI</h1>
               <p class="font-regular">Your content goes here.</p>
             </div>
           </div>
@@ -132,4 +132,4 @@ Best Practices
 4. **Utility Classes**: For quick style tweaks (alignment, text color, etc.) without writing extra CSS.  
 5. **Modular Design**: Keep content in panels and columns, nesting additional rows/columns as needed.
 
-With BitUI, you can quickly assemble modern interfaces by combining these core classes and utilities.
+With bitUI, you can quickly assemble modern interfaces by combining these core classes and utilities.

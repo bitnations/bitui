@@ -1,10 +1,10 @@
-# BitUI Project
+# bitUI Project
 
-Welcome to **BitUI**, a modular and lightweight, minimalist UI Kitk built by BitNations. BitUI provides a flexible, customizable, and user-friendly UI solution for developers, inspired by the BitNations ecosystem. This repository serves as both the source code for BitUI and a static website acting as documentation and a landing page for the framework.
+Welcome to **bitUI**, a modular and lightweight, minimalist UI Kitk built by BitNations. bitUI provides a flexible, customizable, and user-friendly UI solution for developers, inspired by the BitNations ecosystem. This repository serves as both the source code for bitUI and a static website acting as documentation and a landing page for the framework.
 
 ## Project Overview
 
-BitUI is designed to help developers create modern, responsive, and visually appealing user interfaces with minimal effort. It includes a collection of CSS styles, JavaScript utilities, and HTML templates that you can download, customize, and integrate into your projects. The framework is open-source and free for anyone to use under the MIT License.
+bitUI is designed to help developers create modern, responsive, and visually appealing user interfaces with minimal effort. It includes a collection of CSS styles, JavaScript utilities, and HTML templates that you can download, customize, and integrate into your projects. The framework is open-source and free for anyone to use under the MIT License.
 
 ## Getting Started
 
@@ -16,16 +16,16 @@ BitUI is designed to help developers create modern, responsive, and visually app
 1. Open `index.html` in a web browser to explore the documentation and landing page.
 2. No additional setup is required for viewing the static site.
 
-### Download BitUI for Use
+### Download bitUI for Use
 1. Visit the landing page (`index.html`) and click the **"Download CSS"** button to get a ZIP file containing:
-   - `bitui.css`: The compiled CSS styles for BitUI.
-   - `demo.html`: A sample HTML file demonstrating BitUI usage.
-   - `LICENSE.txt`: The MIT License governing BitUI’s use.
+   - `bitui.css`: The compiled CSS styles for bitUI.
+   - `demo.html`: A sample HTML file demonstrating bitUI usage.
+   - `LICENSE.txt`: The MIT License governing bitUI’s use.
 2. Extract the ZIP file and use the provided files in your project.
 3. Use the HTML structure and classes (e.g., `.row`, `.col-6`, `.panel`) as shown in `demo.html` to build your UI.
 
-## Using BitUI
-BitUI provides a simple, class-based system for creating layouts and components. Key features include:
+## Using bitUI
+bitUI provides a simple, class-based system for creating layouts and components. Key features include:
 
 - A responsive grid system (e.g., `.row`, `.col-12`, `.col-6`).
 - Predefined panel styles (e.g., `.panel`, `.panel-light`, `.panel-dark`).
@@ -41,7 +41,7 @@ Refer to the `demo.html` file and the landing page for examples and documentatio
 4. Offer documentation and examples for developers.
 
 ## Contributing
-We welcome contributions to BitUI! Whether you want to report bugs, suggest features, or submit code, here’s how you can help:
+We welcome contributions to bitUI! Whether you want to report bugs, suggest features, or submit code, here’s how you can help:
 
 1. **Fork the Repository**  
    Create your own fork of this repository on GitHub.
@@ -58,7 +58,7 @@ We welcome contributions to BitUI! Whether you want to report bugs, suggest feat
    - Include a clear description of your changes and any relevant issue numbers.
 
 ## License
-BitUI is licensed under the **MIT License** (`LICENSE`). This means you can freely use, modify, and distribute BitUI for both personal and commercial projects, provided you include the copyright notice and license text in any distributions. See the `LICENSE` file for full details.
+bitUI is licensed under the **MIT License** (`LICENSE`). This means you can freely use, modify, and distribute bitUI for both personal and commercial projects, provided you include the copyright notice and license text in any distributions. See the `LICENSE` file for full details.
 
 ## Acknowledgements
 - Inspired by the BitNations ecosystem and community.
@@ -69,4 +69,4 @@ If you have questions or need help, please:
 - Open an issue on GitHub.
 - Contact us via [@TheBitG0D](https://x.com/TheBitG0D) on X or visit our website (if applicable).
 
-**Happy coding with BitUI!**
+**Happy coding with bitUI!**
