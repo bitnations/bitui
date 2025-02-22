@@ -47,44 +47,6 @@ section {
 .locked {
  opacity: 0.5;
 }
-/* Buttons */
-.btn {
-  color: white;
-  padding: 15px;
-  cursor: pointer;
-  user-select: none;
-  border-radius: var(--border-radius);
-  font-family: var(--font-family-base);
-  font-size: var(--font-size-base);
-  text-align: center;
-  width: 100%;
-  border: 1px solid rgba(0, 0, 0, 0);
-  box-sizing: border-box;
-}
-.btn.holo {
-  background: #FFF;
-  color: #222;
-  border: 1px solid rgba(0,0,0,0.2);
-}
-.btn.holo:hover {
-  background: #FBFBFB;
-  border: 1px solid rgba(0,0,0,0.35);
-}
-.btn.disabled {
-  cursor: not-allowed;
-  background: #FBFBFB;
-  border: 1px solid rgba(0,0,0,0.2);
-  color: gray;
-}
-.btn.green { background: var(--green); }
-.btn.green:hover { background: var(--green-hover); }
-.btn.blue { background: var(--blue); }
-.btn.blue:hover { background: var(--blue-hover); }
-.btn.red { background: var(--red); }
-.btn.red:hover { background: var(--red-hover); }
-.btn.purple { background: var(--purple); }
-.btn.purple:hover { background: var(--purple-hover); }
-.btn.disabled:hover { background-color: #FBFBFB !important; }
 
 .legal {
   bottom:0;

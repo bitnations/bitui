@@ -433,66 +433,99 @@
           <div class="col-6">
             <div class="panel dark">
               <h3 class="center">Standard Inputs</h3>
-              <div class="field">
-                <label for="email">Email</label>
-                <input type="text" id="email" placeholder="example@email.com">
-              </div>
-              <div class="field">
-                <label for="password">Password</label>
-                <input type="password" id="password">
-              </div>
-              <div class="field">
-                <label for="number">Number</label>
-                <input type="number" id="number" class="number-input">
-              </div>
-              <div class="field">
-                <label for="clear">Clear Input</label>
-                <input type="text" id="clear" class="clear-form" placeholder="Enter text">
-              </div>
-            </div>
-          </div>
-      
-          <div class="col-6">
-            <div class="panel dark">
-              <h3 class="center">Textarea</h3>
-              <div class="field">
-                <label for="textarea">Description</label>
-                <textarea id="textarea" placeholder="Enter your description here..."></textarea>
-              </div>
-      
-              <h3 class="center">Select</h3>
-              <div class="field">
-                <label for="theme">Select Theme</label>
-                <select id="theme">
-                  <option value="light">Light</option>
-                  <option value="warm">Warm</option>
-                  <option value="dim">Dim</option>
-                  <option value="dark">Dark</option>
-                </select>
-              </div>
+              <label for="email">Email</label>
+              <input type="text" id="email" placeholder="example@email.com">
+              <label for="password">Password</label>
+              <input type="password" id="password">
+              <label for="number">Number</label>
+              <input type="number" id="number" class="number-input">
             </div>
           </div>
 
           <div class="col-6">
             <div class="panel dark">
               <h3 class="center">Form States</h3>
-              <div class="field">
-                <label for="error-input">Error Input</label>
-                <input type="text" id="error-input" class="error" placeholder="This field has an error">
-              </div>
-              <div class="field">
-                <label for="success-input">Success Input</label>
-                <input type="text" id="success-input" class="success" placeholder="This field is valid">
-              </div>
-              <div class="field">
-                <label for="disabled-input">Disabled Input</label>
-                <input type="text" id="disabled-input" disabled placeholder="This field is disabled">
-              </div>
+              <label for="error-input">Error Input</label>
+              <input type="text" id="error-input" class="error" placeholder="This field has an error">
+              <label for="success-input">Success Input</label>
+              <input type="text" id="success-input" class="success" placeholder="This field is valid">
+              <label for="disabled-input">Disabled Input</label>
+              <input type="text" id="disabled-input" disabled placeholder="This field is disabled">
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-6">
+            <div class="panel dark">
+              <h3 class="center">Textarea</h3>
+              <label for="textarea">Description</label>
+              <textarea id="textarea" placeholder="Enter your description here..."></textarea>
             </div>
           </div>
           
+          <div class="col-6">
+            <div class="panel dark">
+              <h3 class="center">Select</h3>
+              <label for="theme">Select Theme</label>
+              <select id="theme">
+                <option value="light">Light</option>
+                <option value="warm">Warm</option>
+                <option value="dim">Dim</option>
+                <option value="dark">Dark</option>
+              </select>
+            </div>
+          </div>
         </div>
+
+        <div class="row">
+          <div class="col-12">
+            <div class="panel dark">
+              <h3 class="center">Ranges, Radios, Checkboxes</h3>
+              <input type="range" min="0" max="100" value="50" step="1">
       
+              <div class="row">
+                <div class="col-6">
+                  <div class="panel light">
+                    <input type="radio" id="Choice1" name="contact" value="choice1" />
+                    <label for="Choice1">Choice 1</label>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="panel light">
+                    <input type="radio" id="Choice2" name="contact" value="choice2" />
+                    <label for="Choice2">Choice 2</label>
+                  </div>
+                </div>
+              
+                <div class="col-6">
+                  <div class="panel light">
+                    <input type="radio" id="Choice3" name="contact" value="choice3" />
+                    <label for="Choice3">Choice 3</label>
+                  </div>
+                </div>
+                
+                <div class="col-6">
+                  <div class="panel light">
+                    <input type="radio" id="Choice4" name="contact" value="choice4" />
+                    <label for="Choice4">Choice 4</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row center">
+                <div class="col-12 center">
+                  <div class="panel light">
+                    <input type="checkbox" id="subscribeNews" name="subscribe" value="newsletter" />
+                    <label for="subscribeNews">Subscribe to newsletter?</label>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
         <div class="row">
           <div class="col-12">
             <div class="panel dark">
@@ -503,7 +536,6 @@
               <button class="btn purple">Purple Button</button>
               <button class="btn holo">Holo Button</button>
               <button class="btn disabled">Disabled Button</button>
-              <a href="#" class="btn-sm">Links</a>
             </div>
           </div>
         </div>
@@ -511,7 +543,7 @@
         <div class="row">
           <div class="col-12">
             <div class="panel dark">
-              <h3>Alerts</h3>
+              <h3 class="center">Alerts</h3>
               <div class="alert alert-success">
                 Success: Form submitted successfully!
                 <span class="dismiss-btn">×</span>

@@ -16,6 +16,7 @@
   margin: 0 !important;
   font-size: 14px !important;
   overflow: visible;
+  user-select: none;
   transition: background-color, transform 0.3s ease;
 }
 
@@ -109,4 +110,9 @@
 /* Form padding */
 .control-panel input[type="range"] {
   padding: 0 !important;
+}
+
+.control-panel input {
+  font-size: 14px !important;
+  margin: 0 !important;
 }
