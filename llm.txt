@@ -1,62 +1,63 @@
-bitUI Framework Documentation (Updated)
+bitUI Framework Documentation
 =======================================
 
 Overview
 --------
-bitUI is a lightweight, responsive HTML + CSS framework built for speed and simplicity. It offers:
+bitUI is a simple, lightweight HTML + CSS framework for building clean, responsive layouts. It offers:
 
-- A **12-column flex grid** for easy layout
+- A **12-column Flexbox grid** (using float-based column widths for older browsers)
 - **Panels** for consistent content styling
 - **Utility classes** for typography, alignment, and colors
 - **Themes** (light, warm, dim, dark) controlled by data attributes
 - **CSS variables** for quick customization
 
+Important Note on Customization
+-------------------------------
+bitUI lets you set core CSS variables — such as font family, border radius, container widths, column gap, and text size — **before** downloading your final stylesheet. The AI will rely on bitUI’s **existing classes** (e.g., ```.row```, ```.col-4```, ```.panel```), but won’t change these core variables or your custom settings.
+
 Core Concepts
 ------------
-1. **Layout Structure**
-   - **Container** (`.container`) to center and limit width
-   - **Row** (`.row`) wraps columns using flex display
-   - **Columns** (`.col-1` through `.col-12`), with smaller screen variants (`.col-4-sm`)
-   - **Panels** (`.panel light` / `.panel dark`) for grouped content blocks
+1. Layout Structure  
+   - **Container** (```.container```) centers and limits width using your custom CSS variables.  
+   - **Row** (```.row```) creates a flex container that holds **Columns**.  
+   - **Columns** (```.col-1``` through ```.col-12```) float left, with optional **-sm** variants for smaller screens.  
+   - **Panels** (```.panel light``` or ```.panel dark```) group content with consistent spacing and styling.
 
-2. **Grid System**
-   - 12-column Flexbox grid
-   - Responsive breakpoints at 45em (720px) for `.col-*` classes  
-   - Small-screen classes (`.col-*-sm`) override defaults under 720px  
-   - Column-gap controlled by `--column-gap` variable
+2. Grid System
+   - **12-column Flexbox grid** with float-based column widths for broad browser support.
+   - **Responsive breakpoints** at **45em (720px)**. Above 720px, normal ```.col-X``` classes apply; below 720px, use ```.col-X-sm``` classes.
+   - Column widths are computed as percentages: e.g., ```.col-6``` = 50%, ```.col-4``` = 33.33%, etc.
+   - **```--column-gap```** controls spacing between columns (applied as margins).
 
-3. **Themes**
-   - Set `data-theme="light"`, `"warm"`, `"dim"`, or `"dark"` on a parent element (often `<body>`)
-   - Colors, backgrounds, borders, and fonts adapt automatically
-   - Example: `<body data-theme="dark">`
+3. Themes
+   - Set ```data-theme="light"```, ```data-theme="warm"```, ```data-theme="dim"```, or ```data-theme="dark"``` on a parent element (usually ```<body>```).
+   - Colors, backgrounds, borders, and fonts adapt automatically.
+   - Example: ```<body data-theme="dark">```
 
-4. **Panels**
-   - **Light** panel: `<div class="panel light"> ... </div>`
-   - **Dark** panel: `<div class="panel dark"> ... </div>`
-   - Use for card-like sections, forms, or grouping content
-   - Spacing, borders, and rounding set via root variables
+4. Panels
+   - Light panel: ```<div class="panel light"> ... </div>```
+   - Dark panel: ```<div class="panel dark"> ... </div>```
+   - Ideal for card-like sections, forms, or grouping related content
+   - Spacing, borders, and rounding (```--border-radius```) controlled by root variables
 
-5. **CSS Variables** (partial list)
-   - `--container-width`: Default container width (e.g., 50%)
-   - `--container-min-width`: Prevents overly narrow layouts (e.g., 600px)
-   - `--border-radius`: Rounding for panels, buttons, etc. (e.g., 15px)
-   - `--panel-padding-x`, `--panel-padding-y`: Panel padding
-   - `--font-size-base`: Default text size (e.g., 16px)
-   - `--line-height-base`: Default line height (e.g., 1.4)
-   - `--bg-color`, `--text-color`, `--heading-color`, etc., vary by theme
+5. Typography & Utilities
+   - **Font weights**: ```.f-light``` (300), ```.f-regular``` (400), ```.f-heavy``` (700)
+   - **Font sizes**: ```.f-small``` (0.75x base), ```.f-large``` (1.25x base)
+   - **Text alignment**: ```.left```, ```.center```, ```.right```, ```.justify```
+     - Note: ```.center``` sets ```margin-left: auto; margin-right: auto; text-align: center```
+   - **Text colors**: ```.f-red```, ```.f-orange```, ```.f-green```, ```.f-blue```, ```.f-purple```, ```.f-gray```, ```.f-white```, ```.f-black```
+   - **Floats**: ```.float-right``` can float elements to the right (useful for images or small elements)
 
-6. **Typography & Utilities**
-   - **Fonts**: Roboto Mono + NotoColorEmojiLimited (monospace fallback)
-   - **Weights**: `.font-light` (300), `.font-regular` (400), `.font-heavy` (700)
-   - **Sizing**: `.font-small` (0.75x base), `.font-large` (1.25x base)
-   - **Alignment**: `.left`, `.center`, `.right`, `.justify`
-   - **Text Colors**: `.f-red`, `.f-orange`, `.f-green`, `.f-blue`, `.f-purple`, `.f-gray`, `.f-white`, `.f-black`
+6. Buttons
+   - Base button: ```<button class="btn">```
+   - Color variants: ```.btn green```, ```.btn blue```, ```.btn red```, ```.btn purple```
+   - Holo style: ```.btn holo``` (border + white background)
+   - Disabled state: ```.btn disabled``` (dimmed + no pointer events)
 
-7. **Buttons**
-   - Base button: `<button class="btn">`
-   - Color variants: `.green`, `.blue`, `.red`, `.purple`
-   - Holo style: `.btn.holo` (border + white background)
-   - Disabled state: `.btn.disabled` (dimmed + no pointer events)
+7. Row & Column Alignment
+   - Row alignment: ```.row.left```, ```.row.center```, ```.row.right```
+   - Column alignment: ```.col.left```, ```.col.center```, ```.col.right```
+   - Control how columns and text are positioned within the grid.
 
 Basic Template
 --------------
@@ -81,13 +82,13 @@ Basic Template
 
 Common Layout Patterns
 ----------------------
-1. **Two-Column Layout**  
+1. Two-Column Layout
 ```html
 <div class="row">
   <div class="col-6">
     <div class="panel light">
       <h3>Left Side</h3>
-      <p>50% width on desktop, stacks on mobile.</p>
+      <p>50% width on desktop; stacks on mobile.</p>
     </div>
   </div>
   <div class="col-6">
@@ -99,7 +100,7 @@ Common Layout Patterns
 </div>
 ```
 
-2. **Multi-Theme Panels**  
+2. Multi-Theme Panels
 ```html
 <div class="row">
   <div class="col-6">
@@ -117,7 +118,7 @@ Common Layout Patterns
 </div>
 ```
 
-3. **Example Button**  
+3. Example Button
 ```html
 <button class="btn green">Save Changes</button>
 <button class="btn holo">Secondary Action</button>
@@ -126,10 +127,19 @@ Common Layout Patterns
 
 Best Practices
 --------------
-1. **Panel for Grouping**: Wrap sections in `<div class="panel ...">` for consistent spacing and borders.  
-2. **Utilize Themes**: Toggle `data-theme` at the root to switch between light, warm, dim, or dark.  
-3. **Responsive Mindset**: Use `.col-*-sm` classes to specify different column layouts under 720px.  
-4. **Utility Classes**: For quick style tweaks (alignment, text color, etc.) without writing extra CSS.  
-5. **Modular Design**: Keep content in panels and columns, nesting additional rows/columns as needed.
+1. **Panel for Grouping**: Wrap sections in ```<div class="panel ...">``` for consistent spacing and borders.
 
-With bitUI, you can quickly assemble modern interfaces by combining these core classes and utilities.
+2. **Utilize Themes**: Toggle ```data-theme``` at the root to switch between light, warm, dim, or dark.
+
+3. **Responsive Mindset**: Use ```.col-*-sm``` classes under 720px for mobile-friendly designs.
+
+4. **Utility Classes**: Leverage classes like ```.f-green``` or ```.right``` for quick style tweaks without extra CSS.
+
+5. **Modular Design**: Keep content in panels and columns; nest additional rows/columns as needed.
+
+```
+
+With bitUI, you can assemble modern interfaces quickly by combining these core classes and utilities.  
+Adjust fonts, sizes, spacing, and colors in the downloaded CSS; let the AI focus on generating HTML using bitUI’s pre-built classes.
+
+```
