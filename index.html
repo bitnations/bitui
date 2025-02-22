@@ -30,77 +30,77 @@
     <button class="toggle-panel" id="togglePanel">
       <p class="toggle-icon">›</p>
     </button>
-
-    <div class="panel-content">
-      <div class="">
-        <h3>Theme</h3>
+  
+    <div class="tabs-wrapper"> 
+      <!-- Tabs (Moved Outside of .panel-content) -->
+      <input type="radio" id="tab-styles" name="panel-tab">
+      <input type="radio" id="tab-theme" name="panel-tab">
+  
+      <div class="tabs">
+        <label for="tab-styles">Styles</label>
+        <label for="tab-theme">Theme</label>
       </div>
-
-      <div class="">
-        <label for="theme-mode">Light / Dark Mode</label>
-        <input type="range" id="theme-mode" min="0" max="100" value="0" step="1" class="style-control"
-          data-style-property="--theme-mode" list="theme-stops">
-        <span id="theme-mode-value">Light</span>
-      </div>
-
-      <div class="">
-        <h3>Styles</h3>
-      </div>
-
-      <div class="">
-        <label for="border-radius">Border Radius</label>
-        <input type="range" id="border-radius" min="0" max="50" value="15" class="style-control"
-          data-style-property="--border-radius" data-unit="px">
-        <span id="border-radius-value">15px</span>
-      </div>
-      <div class="">
-        <label for="spacing">Section Spacing</label>
-        <input type="range" id="spacing" min="0" max="50" value="1" step="1" class="style-control"
-          data-style-property="--spacing-unit" data-unit="rem">
-        <span id="spacing-value">1rem</span>
-      </div>
-
-      <div class="">
-        <label for="container">Container</label>
-        <input type="range" id="container" min="50" max="100" value="50" class="style-control"
-          data-style-property="--container-width" data-unit="%">
-        <span id="container-value">90%</span>
-      </div>
-
-      <label for="column-gap">Column Gap</label>
-      <input type="range" id="column-gap" min="0" max="2" step="0.1" value="0.5" class="style-control"
-        data-style-property="--column-gap" data-unit="rem">
-      <span id="column-gap-value">0.5rem</span>
-
-      <div class="">
-        <label for="panel-padding-x">Panel Horizontal Padding</label>
-        <input type="range" id="panel-padding-x" min="0" max="30" value="15" class="style-control"
-          data-style-property="--panel-padding-x" data-unit="px">
-        <span id="panel-padding-x-value">15px</span>
-      </div>
-      <div class="">
-        <label for="panel-padding-y">Panel Vertical Padding</label>
-        <input type="range" id="panel-padding-y" min="0" max="100" value="10" class="style-control"
-          data-style-property="--panel-padding-y" data-unit="px">
-        <span id="panel-padding-y-value">5px</span>
-      </div>
-      <div class="">
-        <label for="font-size">Text Size</label>
-        <input type="range" id="font-size" min="12" max="48" step="1" value="16" class="style-control"
-          data-style-property="--font-size-base" data-unit="px">
-        <span id="font-size-value">16px</span>
-      </div>
-
-      <div style="padding: 15px 0 30px 0;">
-        <div class="">
-          <button class="btn green" id="download-css">Download bitUI</button>
-          <button class="btn holo" id="reset-defaults">Reset to Defaults</button>
-          👾 <a href="https://github.com/bitnations/bitui" target="_blank">Github</a>
+  
+      <!-- Tabs Container (Now Properly Targeted by CSS) -->
+      <div class="tab-container">
+        <!-- Styles Tab -->
+        <div class="tab-content" id="styles-content">
+          <h3>Styles</h3>
+  
+          <label for="border-radius">Border Radius</label>
+          <span id="border-radius-value">15px</span>
+          <input type="range" id="border-radius" min="0" max="50" value="15" class="style-control" data-style-property="--border-radius" data-unit="px">
+  
+          <label for="spacing">Section Spacing</label>
+          <span id="spacing-value">1rem</span>
+          <input type="range" id="spacing" min="0" max="100" value="1" step="1" class="style-control" data-style-property="--spacing-unit" data-unit="rem">
+  
+          <label for="container">Container Width</label>
+          <span id="container-value">50%</span>
+          <input type="range" id="container" min="50" max="100" value="50" class="style-control" data-style-property="--container-width" data-unit="%">
+  
+          <label for="column-gap">Column Gap</label>
+          <span id="column-gap-value">0.5rem</span>
+          <input type="range" id="column-gap" min="0" max="2" step="0.1" value="0.5" class="style-control" data-style-property="--column-gap" data-unit="rem">
+  
+          <label for="panel-padding-x">Panel Horizontal Padding</label>
+          <span id="panel-padding-x-value">15px</span>
+          <input type="range" id="panel-padding-x" min="0" max="30" value="15" class="style-control" data-style-property="--panel-padding-x" data-unit="px">
+  
+          <label for="panel-padding-y">Panel Vertical Padding</label>
+          <span id="panel-padding-y-value">10px</span>
+          <input type="range" id="panel-padding-y" min="0" max="100" value="10" class="style-control" data-style-property="--panel-padding-y" data-unit="px">
+  
+          <label for="font-size">Text Size</label>
+          <span id="font-size-value">16px</span>
+          <input type="range" id="font-size" min="12" max="48" step="1" value="16" class="style-control" data-style-property="--font-size-base" data-unit="px">
+        </div>
+  
+        <!-- Theme Tab -->
+        <div class="tab-content" id="theme-content">
+          <h3>Theme</h3>
+  
+          <span id="theme-mode-value">Light</span>
+          <input type="range" id="theme-mode" min="0" max="100" value="0" step="1" class="style-control" data-style-property="--theme-mode">
+  
+          <h3>Colors:</h3>
+          <div class="color-swatch" id="color-error">Error</div>
+          <div class="color-swatch" id="color-action">Action</div>
+          <div class="color-swatch" id="color-success">Success</div>
+          <div class="color-swatch" id="color-info">Info</div>
+          <button class="btn holo" id="cycleButton">Cycle Colors</button>
         </div>
       </div>
-      
     </div>
-  </div>
+  
+    <!-- Buttons at the Bottom -->
+    <div class="panel-buttons">
+      <button class="btn success" id="download-css">Download bitUI</button>
+      <button class="btn holo" id="reset-defaults">Reset to Defaults</button>
+      👾 <a href="https://github.com/bitnations/bitui" target="_blank">Github</a>
+    </div>
+  
+  </div>  
 
   <!-- Main Content -->
   <main class="content">
@@ -272,10 +272,10 @@
               </div>
             </div>
           </div>
-        </div>
+          
         <!-- Structure Code Snippet -->
         <div class="col-12">
-<pre><code class="language-html">
+          <pre><code class="language-html">
   &lt;div class="row"&gt;
     &lt;div class="col-12"&gt;
       &lt;div class="panel dark"&gt;
@@ -402,13 +402,12 @@
           <div class="col-6">
             <div class="panel dark">
               <p>Apply color utilities to text for thematic emphasis:</p>
-              <p class="f-black" style="background-color: white;">.f-black – Black text</p>
+              <p class="f-error">.f-error – Red text</p>
+              <p class="f-success">.f-success – Green text</p>
+              <p class="f-info">.f-info – Blue text</p>
+              <p class="f-action">.f-action – Purple text</p>
               <p class="f-white" style="background-color: black;">.f-white – White text</p>
-              <p class="f-red">.f-red – Red text</p>
-              <p class="f-orange">.f-orange – Orange text</p>
-              <p class="f-green">.f-green – Green text</p>
-              <p class="f-blue">.f-blue – Blue text</p>
-              <p class="f-purple">.f-purple – Purple text</p>
+              <p class="f-black" style="background-color: white;">.f-black – Black text</p>
               <p class="f-gray">.f-gray – Gray text</p>
             </div>
           </div>
@@ -420,7 +419,7 @@
         <div class="row">
           <div class="col-12">
             <div class="panel light ">
-              <h2 class="center">Forms - 🚧 Under Construction</h2>
+              <h2 class="center">Forms</h2>
               <div>
                 <p>Below are examples of form elements styled with bitUI, demonstrating inputs, textareas, selects,
                   buttons, and alerts across different states and themes.</p>
@@ -433,77 +432,114 @@
           <div class="col-6">
             <div class="panel dark">
               <h3 class="center">Standard Inputs</h3>
-              <div class="field">
-                <label for="email">Email</label>
-                <input type="text" id="email" placeholder="example@email.com">
-              </div>
-              <div class="field">
-                <label for="password">Password</label>
-                <input type="password" id="password">
-              </div>
-              <div class="field">
-                <label for="number">Number</label>
-                <input type="number" id="number" class="number-input">
-              </div>
-              <div class="field">
-                <label for="clear">Clear Input</label>
-                <input type="text" id="clear" class="clear-form" placeholder="Enter text">
-              </div>
-            </div>
-          </div>
-      
-          <div class="col-6">
-            <div class="panel dark">
-              <h3 class="center">Textarea</h3>
-              <div class="field">
-                <label for="textarea">Description</label>
-                <textarea id="textarea" placeholder="Enter your description here..."></textarea>
-              </div>
-      
-              <h3 class="center">Select</h3>
-              <div class="field">
-                <label for="theme">Select Theme</label>
-                <select id="theme">
-                  <option value="light">Light</option>
-                  <option value="warm">Warm</option>
-                  <option value="dim">Dim</option>
-                  <option value="dark">Dark</option>
-                </select>
-              </div>
+              <label for="email">Email</label>
+              <input type="text" id="email" placeholder="example@email.com">
+              <label for="password">Password</label>
+              <input type="password" id="password">
+              <label for="number">Number</label>
+              <input type="number" id="number" class="number-input">
             </div>
           </div>
 
           <div class="col-6">
             <div class="panel dark">
               <h3 class="center">Form States</h3>
-              <div class="field">
-                <label for="error-input">Error Input</label>
-                <input type="text" id="error-input" class="error" placeholder="This field has an error">
-              </div>
-              <div class="field">
-                <label for="success-input">Success Input</label>
-                <input type="text" id="success-input" class="success" placeholder="This field is valid">
-              </div>
-              <div class="field">
-                <label for="disabled-input">Disabled Input</label>
-                <input type="text" id="disabled-input" disabled placeholder="This field is disabled">
-              </div>
+              <label for="error-input">Error Input</label>
+              <input type="text" id="error-input" class="error" placeholder="This field has an error">
+              <label for="success-input">Success Input</label>
+              <input type="text" id="success-input" class="success" placeholder="This field is valid">
+              <label for="disabled-input">Disabled Input</label>
+              <input type="text" id="disabled-input" disabled placeholder="This field is disabled">
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-6">
+            <div class="panel dark">
+              <h3 class="center">Textarea</h3>
+              <label for="textarea">Description</label>
+              <textarea id="textarea" placeholder="Enter your description here..."></textarea>
             </div>
           </div>
           
+          <div class="col-6">
+            <div class="panel dark">
+              <h3 class="center">Select</h3>
+              <label for="theme">Select Theme</label>
+              <select id="theme">
+                <option value="light">Light</option>
+                <option value="warm">Warm</option>
+                <option value="dim">Dim</option>
+                <option value="dark">Dark</option>
+              </select>
+            </div>
+          </div>
         </div>
+
+        <div class="row">
+          <div class="col-12">
+            <div class="panel dark">
+              <h3 class="center">Ranges, Radios, Checkboxes</h3>
+              <input type="range" min="0" max="100" value="50" step="1">
       
+              <div class="row">
+                <div class="col-6">
+                  <div class="panel light">
+                    <input type="radio" id="Choice1" name="contact" value="choice1" />
+                    <label for="Choice1">Choice 1</label>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="panel light">
+                    <input type="radio" id="Choice2" name="contact" value="choice2" />
+                    <label for="Choice2">Choice 2</label>
+                  </div>
+                </div>
+              
+                <div class="col-6">
+                  <div class="panel light">
+                    <input type="radio" id="Choice3" name="contact" value="choice3" />
+                    <label for="Choice3">Choice 3</label>
+                  </div>
+                </div>
+                
+                <div class="col-6">
+                  <div class="panel light">
+                    <input type="radio" id="Choice4" name="contact" value="choice4" />
+                    <label for="Choice4">Choice 4</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row center">
+                <div class="col-12 center">
+                  <div class="panel light">
+                    <input type="checkbox" id="subscribeNews" name="subscribe" value="newsletter" />
+                    <label for="subscribeNews">Subscribe to newsletter?</label>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
         <div class="row">
           <div class="col-12">
             <div class="panel dark">
               <h3 class="center">Buttons</h3>
-              <button class="btn green">Green Button</button>
-              <button class="btn blue">Blue Button</button>
-              <button class="btn red">Red Button</button>
-              <button class="btn purple">Purple Button</button>
+              <button class="btn success">Success Button</button>
+              <button class="btn info">Info Button</button>
+              <button class="btn error">Error Button</button>
+              <button class="btn action">Action Button</button>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="panel light">
+              <p class="center">Holo or disabled buttons appear better in a <code class="language-css">panel light</code></p>
               <button class="btn holo">Holo Button</button>
               <button class="btn disabled">Disabled Button</button>
-              <a href="#" class="btn-sm">Links</a>
             </div>
           </div>
         </div>
@@ -511,7 +547,7 @@
         <div class="row">
           <div class="col-12">
             <div class="panel dark">
-              <h3>Alerts</h3>
+              <h3 class="center">Alerts</h3>
               <div class="alert alert-success">
                 Success: Form submitted successfully!
                 <span class="dismiss-btn">×</span>
@@ -528,15 +564,21 @@
           </div>
         </div>
       
+        <div class="legal center">BitNations, LLC © 2025</div>
       </section>
       
-      <section><div class="legal center">BitNations, LLC © 2025</div></section>
     </div>
   </main>
 
   <!-- JS -->
   <script src="src/scripts/style-controls.js"></script>
   <script src="src/scripts/download-bitui.js"></script>
+  <!-- Import the JS module and initialize -->
+  <script type="module">
+    import { initColorCycler } from "/src/scripts/colors.js";
+    initColorCycler(); // Call directly after import
+  </script>
+  
   <!-- Code Snippet -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
 </body>

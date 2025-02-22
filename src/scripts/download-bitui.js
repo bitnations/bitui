@@ -25,8 +25,8 @@ document.getElementById('download-css').addEventListener('click', function () {
         // Get computed styles from the root element
         const rootStyles = getComputedStyle(document.documentElement);
         const variables = [
-            '--red', '--red-hover', '--orange', '--green', '--green-hover',
-            '--blue', '--blue-hover', '--purple', '--purple-hover', '--graph-green', '--graph-blue',
+            '--error', '--error-hover', '--orange', '--success', '--success-hover',
+            '--info', '--info-hover', '--action', '--action-hover', '--graph-green', '--graph-blue',
             '--container-width', '--container-min-width', '--container-max-width',
             '--column-gap', '--border-radius', '--spacing-unit',
             '--panel-padding-x', '--panel-padding-y',

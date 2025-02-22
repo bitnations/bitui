@@ -1,18 +1,15 @@
-/* Base Form Styling - Applies to all themes */
-form {
-  font-family: var(--font-family-base);
-}
-
-/* Common Input Styles */
+/* Common Input / Textarea / Select Styles */
 input,
 textarea,
 select {
-  border: 1px solid var(--panel-border);
+  border: 2px solid var(--panel-border);
   border-radius: var(--border-radius);
-  font-size: 1em;
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  margin: 10px 0;
   padding: 0 15px;
   height: 2.5em;
-  width: 100%;
+  width: 100% !important;
   box-sizing: border-box;
   outline: none;
   background: var(--panel-bg);
@@ -20,6 +17,11 @@ select {
   transition: border-color 0.3s, box-shadow 0.3s, background-color 0.3s;
 }
 
+label {
+  user-select: none;
+}
+
+/* Textarea Adjustments */
 textarea {
   width: calc(100% - 30px);
   padding: 15px;
@@ -28,19 +30,20 @@ textarea {
   border-radius: var(--border-radius);
 }
 
-/* Focus State for Inputs */
+/* Focus States */
 input:focus,
 textarea:focus,
 select:focus {
-  border-color: var(--blue);
-  box-shadow: 0 0 2px 1px var(--blue-hover); /* Enhanced focus with hover variant for better visibility */
+  border: 2px solid var(--info);
 }
 
-/* Select Specific Styling */
+/* Select Arrow */
 select {
   text-align: left;
   appearance: none; /* Removes default arrow in some browsers */
-  background: var(--panel-bg) url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="var(--text-color)"><path d="M7.41 8.59L12 4l-1.41-1.41L7 5.17 2.41 0.59 1 2l5.59 5.59z"/></svg>') no-repeat right 15px center;
+  background: var(--panel-bg)
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='15' height='15' fill='var(--text-color)'><path d='M7.41 8.59L12 4l-1.41-1.41L7 5.17 2.41 0.59 1 2l5.59 5.59z'/></svg>")
+    no-repeat right 15px center;
   padding-right: 40px; /* Space for custom arrow */
 }
 
@@ -50,83 +53,17 @@ select {
   opacity: 0.5;
 }
 
-/* Submit Buttons */
-input[type="submit"],
-button.btn-sm {
-  user-select: none;
-  font-family: var(--font-family-base);
-  background: transparent;
-  padding: 5px 25px;
-  border: none;
-  border-radius: var(--border-radius);
-  color: var(--text-color);
-  cursor: pointer;
-  min-width: 100px;
-  line-height: 2em;
-  text-align: center;
-  transition: all 0.25s ease;
-}
-
-input[type="submit"]:hover,
-button.btn-sm:hover {
-  transform: scale(1.025);
-  background-color: var(--panel-dark-bg);
-  color: var(--heading-color);
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3); /* Simplified shadow */
-}
-
-input[type="submit"]:active {
-  color: white;
-  background-color: var(--panel-dark-bg);
-}
-
-/* No-Style Submit Button */
-input[type="submit"].no-style {
-  background: transparent;
-  color: var(--text-color);
-  padding: 0;
-  border: none;
-  box-shadow: none;
-}
-
-input[type="submit"].no-style:hover {
-  color: var(--graph-green);
-}
-
-/* Clear Form Input */
-input.clear-form {
-  text-align: center;
-  border-bottom: 1px solid var(--panel-border);
-  border-radius: 0;
-  outline: none;
-  height: 35px;
-  width: 200px;
-  max-width: 90%;
-  background: transparent;
-  color: var(--text-color);
-  padding: 2px 0 2px 10px;
-  box-shadow: none;
-  transition: border-color 0.3s;
-}
-
-input.clear-form:focus {
-  border-bottom-color: var(--blue);
-  color: var(--heading-color);
-}
-
-/* Form States */
+/* Form States (Error / Success / Disabled) */
 input.error,
 textarea.error,
 select.error {
-  border-left: 4px solid var(--red);
-  background: transparent;
-  color: var(--red);
+  border: 1px solid var(--error);
 }
 
 input.error::placeholder,
 textarea.error::placeholder,
 select.error::placeholder {
-  color: var(--red);
+  color: var(--error);
   opacity: 0.8;
 }
 
@@ -134,14 +71,13 @@ input.success,
 textarea.success,
 select.success {
   border: none;
-  background: var(--green);
-  color: white;
+  border: 1px solid var(--success);
 }
 
 input.success::placeholder,
 textarea.success::placeholder,
 select.success::placeholder {
-  color: var(--green);
+  color: var(--success);
   opacity: 0.8;
 }
 
@@ -149,10 +85,8 @@ input:disabled,
 textarea:disabled,
 select:disabled {
   border-color: var(--panel-border);
-  background: var(--panel-dark-bg);
-  color: rgba(219, 219, 219, 1);
+  background: var(--panel-bg);
   cursor: not-allowed;
-  opacity: 0.7;
 }
 
 /* Number Input */
@@ -160,11 +94,30 @@ select:disabled {
   width: 100px;
 }
 
+/* Radios & Checkboxes */
+input[type="radio"],
+input[type="checkbox"] {
+  width: auto !important;
+  height: auto !important;
+  margin: 0 0.5em 0 0;
+  border: none;
+  cursor: pointer;
+}
+
+input[type="radio"].error,
+input[type="checkbox"].error {
+  outline: 1px solid var(--error);
+}
+
+input[type="radio"].success,
+input[type="checkbox"].success {
+  outline: 1px solid var(--success);
+}
+
 /* Alerts */
 .alert {
   margin: 5px auto 0;
   text-align: left;
-  width: 100%;
   padding: 15px;
   border-radius: var(--border-radius);
   animation: fade-in 1s ease-out;
@@ -172,67 +125,94 @@ select:disabled {
   color: var(--text-color);
 }
 
-.alert-success,
+.alert-success {
+  background: var(--success);
+  color: white;
+}
+
 .alert-notice {
-  background: var(--blue);
+  background: var(--info);
   color: white;
 }
 
-.alert-error,
-.alert-alert {
-  background: var(--red);
+.alert-error {
+  background: var(--error);
   color: white;
 }
 
+/* Dismiss Button Inside Alerts */
 .dismiss-btn {
   float: right;
-  padding: 15px 15px 0 0;
-  color: inherit; /* Use theme color */
+  color: inherit;
   cursor: pointer;
-  transition: color 0.3s;
+  transition: opacity 0.3s;
 }
 
 .dismiss-btn:hover {
-  color: var(--heading-color);
+  opacity: 0.5;
 }
 
-/* Fade Animation */
+/* Fade Animation for Alerts */
 @keyframes fade-in {
-  0% { opacity: 0; transform: translateY(-10px); }
-  100% { opacity: 1; transform: translateY(0); }
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* Error Explanation */
-#error_explanation {
-  margin: 0 auto;
-  width: 450px;
-  text-align: left;
-  color: var(--red);
-  border: none;
-  padding: 0;
-  background: transparent;
-}
-
-#error_explanation h2 {
-  display: none;
-  font-size: 1.25em;
+/* Buttons */
+.btn {
+  color: white;
+  padding: 15px;
+  margin: 5px auto 0;
+  cursor: pointer;
+  user-select: none;
+  border-radius: var(--border-radius);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
   text-align: center;
-  color: var(--heading-color);
-}
-
-#error_explanation ul li {
-  font-size: 1em;
-  color: var(--red);
-}
-
-/* Field Layout */
-.field {
-  margin: 10px 0;
-}
-
-.field input,
-.field textarea,
-.field select {
-  margin-top: 5px; /* Reduced for tighter spacing */
   width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0);
+  box-sizing: border-box;
 }
+.btn.disabled {
+  cursor: not-allowed;
+  background-color: var(--panel-dark-bg);
+  border: 1px solid var(--panel-border);
+  color: gray;
+}
+/* Dark theme overrides */
+[data-theme="dark"] .btn.holo, 
+[data-theme="dim"] .btn.holo {
+  background: var(--panel-dark-bg);
+  color: var(--text-color);
+  border: 1px solid var(--panel-border);
+}
+[data-theme="dark"] .btn.holo:hover,
+[data-theme="dim"] .btn.holo:hover {
+  background: var(--panel-bg);
+}
+/* Light theme overrides */
+[data-theme="light"] .btn.holo,
+[data-theme="warm"] .btn.holo {
+  background: var(--panel-bg);
+  color: var(--text-color);
+  border: 1px solid var(--panel-border);
+}
+[data-theme="light"] .btn.holo:hover,
+[data-theme="warm"] .btn.holo:hover {
+  background: var(--panel-dark-bg);
+}
+/* Button Hovers */
+.btn.success { background: var(--success); }
+.btn.success:hover { background: var(--success-hover); }
+.btn.info { background: var(--info); }
+.btn.info:hover { background: var(--info-hover); }
+.btn.error { background: var(--error); }
+.btn.error:hover { background: var(--error-hover); }
+.btn.action { background: var(--action); }
+.btn.action:hover { background: var(--action-hover); }
