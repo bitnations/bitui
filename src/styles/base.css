@@ -21,15 +21,15 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 /* Links */
-a {text-decoration: none; color: inherit;}
+a {text-decoration: underline; color: inherit;}
 a:hover, a:visited { text-decoration: none; color: inherit;}
 
 /* Typography Utilities */
-.font-light   { font-weight: 300; }
-.font-regular { font-weight: 400; }
-.font-heavy   { font-weight: 700; }
-.font-small   { font-size: calc(var(--font-size-base) * 0.75); }
-.font-large   { font-size: calc(var(--font-size-base) * 1.25); }
+.f-light   { font-weight: 300; }
+.f-regular { font-weight: 400; }
+.f-heavy   { font-weight: 700; }
+.f-small   { font-size: calc(var(--font-size-base) * 0.75); }
+.f-large   { font-size: calc(var(--font-size-base) * 1.25); }
 
 /* Text Alignment */
 .left    { text-align: left; }

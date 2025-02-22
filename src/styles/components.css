@@ -86,6 +86,12 @@ section {
 .btn.purple:hover { background: var(--purple-hover); }
 .btn.disabled:hover { background-color: #FBFBFB !important; }
 
+.legal {
+  bottom:0;
+ font-size: 12px;
+ opacity: 0.5;
+}
+
 /* Code blocks */
 pre {
     margin: 0;

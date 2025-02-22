@@ -23,18 +23,28 @@
   }
 }
 
+/* Rows */
 .row {
   position: relative;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
 }
-
 .row::after {
   content: "";
   display: table;
   clear: both;
 }
+.row.left {
+  justify-content: flex-start;
+}
+.row.center {
+  justify-content: center;
+}
+.row.right {
+  justify-content: flex-end;
+}
+
 
 /* Base column styles */
 [class^="col-"] {
