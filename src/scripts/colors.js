@@ -1,5 +1,4 @@
 // colors.js
-
 function hslToHex(h, s, l) {
   s /= 100;
   l /= 100;
@@ -31,13 +30,10 @@ function generateCycledPalette(step) {
   return {
     error: hslToHex(cycleHue(baseHues.error, step), 50, 50),
     errorHover: hslToHex(cycleHue(baseHues.error, step), 50, 55),
-
     action: hslToHex(cycleHue(baseHues.action, step), 50, 50),
     actionHover: hslToHex(cycleHue(baseHues.action, step), 50, 55),
-
     success: hslToHex(cycleHue(baseHues.success, step), 50, 50),
     successHover: hslToHex(cycleHue(baseHues.success, step), 50, 55),
-
     info: hslToHex(cycleHue(baseHues.info, step), 50, 50),
     infoHover: hslToHex(cycleHue(baseHues.info, step), 50, 55)
   };
@@ -49,62 +45,41 @@ function updatePalette() {
   cycleStep += 20;
   const palette = generateCycledPalette(cycleStep);
 
-  console.log("Cycle Step:", cycleStep, "Palette:", palette);
-
   const generatedColors = {
-    error: palette.error,
-    errorHover: palette.errorHover,
-    action: palette.action,
-    actionHover: palette.actionHover,
-    success: palette.success,
-    successHover: palette.successHover,
-    info: palette.info,
-    infoHover: palette.infoHover
+    'error': palette.error,
+    'error-hover': palette.errorHover,
+    'action': palette.action,
+    'action-hover': palette.actionHover,
+    'success': palette.success,
+    'success-hover': palette.successHover,
+    'info': palette.info,
+    'info-hover': palette.infoHover
   };
 
-  // Apply colors to swatches
+  console.log('Generated colors:', generatedColors);
+
   Object.entries(generatedColors).forEach(([key, color]) => {
     document.documentElement.style.setProperty(`--${key}`, color);
-    const swatch = document.getElementById(`color-${key.replace('Hover', '').toLowerCase()}`);
-    if (swatch) swatch.style.backgroundColor = color;
   });
 
-  // Save to localStorage
-  localStorage.setItem('bitui-generated-colors', JSON.stringify(generatedColors));
-}
+  ['error', 'action', 'success', 'info'].forEach(baseKey => {
+    const swatch = document.getElementById(`color-${baseKey}`);
+    if (swatch) swatch.style.backgroundColor = generatedColors[baseKey];
+  });
 
-function loadStoredColors() {
-  const savedColors = localStorage.getItem('bitui-generated-colors');
-  if (savedColors) {
-    const colors = JSON.parse(savedColors);
-    Object.entries(colors).forEach(([key, color]) => {
-      document.documentElement.style.setProperty(`--${key}`, color);
-      const swatch = document.getElementById(`color-${key.replace('Hover', '').toLowerCase()}`);
-      if (swatch) swatch.style.backgroundColor = color;
-    });
-  }
+  localStorage.setItem('bitui-generated-colors', JSON.stringify(generatedColors));
+  console.log('Stored colors:', JSON.parse(localStorage.getItem('bitui-generated-colors')));
 }
 
 function initColorCycler() {
   document.addEventListener("DOMContentLoaded", () => {
     const cycleButton = document.getElementById("cycleButton");
-
     if (!cycleButton) {
       console.warn("Cycle button not found in the DOM.");
       return;
     }
-
     cycleButton.addEventListener("click", updatePalette);
-
-    const savedColors = localStorage.getItem('bitui-generated-colors');
-    if (savedColors) {
-      loadStoredColors();  // Load existing colors, don't generate new ones
-    } else {
-      updatePalette();  // Only generate a new palette if no colors exist
-    }
   });
 }
-
-
 
 export { initColorCycler };
