@@ -39,9 +39,10 @@ select:focus {
 
 /* Select Arrow */
 select {
+  padding: 0 15px;
   text-align: left;
-  /* Removes default arrow in some browsers */
-  /* appearance: none; */
+   /* Removes default arrow in some browsers */
+  appearance: none;
 }
 
 /* Placeholder Styles */
