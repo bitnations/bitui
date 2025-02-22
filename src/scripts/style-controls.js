@@ -1,3 +1,6 @@
+// style-controls.js
+
+// Theme definitions
 const themes = {
   light: {
     bg: 'rgb(251, 251, 251)',
@@ -33,72 +36,59 @@ const themes = {
   }
 };
 
+// Theme slider event listener
 document.getElementById('theme-mode').addEventListener('input', function (e) {
   const value = e.target.value / 100;
   let mode, nextMode, progress;
 
-  // Evenly split breakpoints
-  if (value <= 0.25) {  
+  if (value <= 0.25) {
     mode = "light";
     nextMode = "warm";
     progress = value / 0.25;
-  } else if (value <= 0.50) {  
+  } else if (value <= 0.50) {
     mode = "warm";
     nextMode = "dim";
     progress = (value - 0.25) / 0.25;
-  } else if (value <= 0.75) {  
+  } else if (value <= 0.75) {
     mode = "dim";
     nextMode = "dark";
     progress = (value - 0.50) / 0.25;
-  } else {  
+  } else {
     mode = "dark";
-    nextMode = "dark"; // No transition past 75%
+    nextMode = "dark";
     progress = 1;
   }
 
   const current = themes[mode];
   const next = themes[nextMode];
 
-  // Calculate interpolated colors
   const bgColor = interpolateColor(current.bg, next.bg, progress);
   const textColor = interpolateColor(current.text, next.text, progress);
-
-  // Calculate contrast ratio
   const contrastRatio = calculateContrastRatio(bgColor, textColor);
-  const minContrast = 4.5; // WCAG Level AA for normal text
-  const snapThreshold = 0.05; // General threshold for other transitions
+  const minContrast = 4.5;
+  const snapThreshold = 0.05;
 
-  // Special handling for Warm → Dim transition (0.25–0.50)
   let shouldSnap = false;
   if (mode === "warm" && nextMode === "dim") {
-    // Snap to Dim at progress 0.96 (value 48%) when moving toward Dim
     if (progress >= 0.96 && value > 0.48) {
       applyColors(themes.dim);
-      // console.log(`Snapped to Dim - Contrast: ${contrastRatio.toFixed(2)}`);
       return;
     }
-    // Snap to Warm at progress 1 (value 50%) when moving toward Warm
     if (progress <= 1 && value < 0.50) {
       applyColors(themes.warm);
-      // console.log(`Snapped to Warm - Contrast: ${contrastRatio.toFixed(2)}`);
       return;
     }
-    // Check for low contrast in the transition range (progress 0.48–0.96)
     if (contrastRatio < minContrast && progress > 0.48 && progress < 0.96) {
       shouldSnap = true;
     }
   } else if (contrastRatio < minContrast && (progress <= snapThreshold || progress >= (1 - snapThreshold))) {
-    // General snapping for other transitions (Light → Warm, Dim → Dark)
     shouldSnap = true;
   }
 
   if (shouldSnap) {
-    // Snap to nearest theme
     const snappedColors = progress < 0.5 ? current : next;
     applyColors(snappedColors);
-    // console.log(`Snapped to ${progress < 0.5 ? mode : nextMode} - Contrast: ${contrastRatio.toFixed(2)}`);
   } else {
-    // Apply interpolated colors for non-snapped transitions
     applyColors({
       bg: bgColor,
       text: textColor,
@@ -107,13 +97,12 @@ document.getElementById('theme-mode').addEventListener('input', function (e) {
       panelDark: interpolateColor(current.panelDark, next.panelDark, progress),
       border: interpolateColor(current.border, next.border, progress)
     });
-    // console.log(`Interpolating: ${mode} → ${nextMode}`, { progress, contrast: contrastRatio.toFixed(2) });
   }
 
   localStorage.setItem('bitui-theme-progress', value);
 });
 
-// Apply colors to CSS variables
+// Helper functions for themes
 function applyColors(colors) {
   document.documentElement.style.setProperty('--bg-color', colors.bg);
   document.documentElement.style.setProperty('--text-color', colors.text);
@@ -123,7 +112,6 @@ function applyColors(colors) {
   document.documentElement.style.setProperty('--panel-border', colors.border);
 }
 
-// Interpolate RGB colors
 function interpolateColor(color1, color2, progress) {
   if (!color1 || !color2) return color1;
   const rgb1 = color1.match(/\d+/g).map(Number);
@@ -132,14 +120,12 @@ function interpolateColor(color1, color2, progress) {
   return `rgb(${interpolatedRGB.join(', ')})`;
 }
 
-// Calculate relative luminance (WCAG formula)
 function getLuminance(rgb) {
   const [r, g, b] = rgb.match(/\d+/g).map(Number).map(v => v / 255);
   const sRGB = c => c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
   return 0.2126 * sRGB(r) + 0.7152 * sRGB(g) + 0.0722 * sRGB(b);
 }
 
-// Calculate contrast ratio between two colors
 function calculateContrastRatio(color1, color2) {
   const l1 = getLuminance(color1);
   const l2 = getLuminance(color2);
@@ -148,7 +134,7 @@ function calculateContrastRatio(color1, color2) {
   return (lighter + 0.05) / (darker + 0.05);
 }
 
-// Load saved progress
+// Load saved theme progress on page load
 document.addEventListener('DOMContentLoaded', function () {
   const savedProgress = localStorage.getItem('bitui-theme-progress');
   if (savedProgress) {
@@ -157,16 +143,17 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 
+// Reset colors to defaults
 function resetColorsToDefaults() {
   const defaultColors = {
-    error: 'rgb(225, 85, 84)',
-    errorHover: 'rgb(225, 123, 123)',
-    action: 'rgb(255, 165, 0)',
-    actionHover: 'rgb(255, 185, 0)',
-    success: 'rgb(59, 178, 115)',
-    successHover: 'rgb(59, 178, 115, 0.85)',
-    info: 'rgb(77, 157, 224)',
-    infoHover: 'rgb(77, 163, 234)'
+    error: 'rgba(225, 85, 84, 1)',
+    errorHover: 'rgba(225, 123, 123, 1)',
+    action: 'rgba(255, 165, 0, 1)',
+    actionHover: 'rgba(255, 185, 0, 1)',
+    success: 'rgba(59, 178, 115, 1)',
+    successHover: 'rgba(59, 178, 115, 0.85)',
+    info: 'rgba(77, 157, 224, 1)',
+    infoHover: 'rgba(77, 163, 234, 1)'
   };
 
   Object.entries(defaultColors).forEach(([key, color]) => {
@@ -175,10 +162,10 @@ function resetColorsToDefaults() {
     if (swatch) swatch.style.backgroundColor = color;
   });
 
-  localStorage.removeItem('bitui-generated-colors');  // Clears stored colors
+  localStorage.setItem('bitui-generated-colors', JSON.stringify(defaultColors)); // Persist reset state
 }
 
-// FUNCTIONALITY
+// StyleController class
 class StyleController {
   constructor() {
     this.root = document.documentElement;
@@ -205,9 +192,9 @@ class StyleController {
 
   init() {
     this.loadPreferences();
-    this.loadStoredColors(); // Load saved colors on init
-  
-    // Load theme from localStorage on page load
+    this.loadStoredColors(); // Load colors on init
+
+    // Load theme from localStorage
     const savedThemeProgress = localStorage.getItem('bitui-theme-progress');
     if (savedThemeProgress) {
       this.themeSlider.value = savedThemeProgress * 100;
@@ -215,26 +202,25 @@ class StyleController {
     } else {
       this.updateTheme(0); // Default to light mode
     }
-  
-    // Restore active tab from localStorage
+
+    // Restore active tab
     const savedTab = localStorage.getItem('bitui-active-tab');
     if (savedTab && document.getElementById(savedTab)) {
-      document.getElementById(savedTab).checked = true; // Set checked dynamically
+      document.getElementById(savedTab).checked = true;
     } else {
-      document.getElementById('tab-styles').checked = true; // Default if no saved tab
+      document.getElementById('tab-styles').checked = true;
     }
-  
-    // Debugging - Check if the event fires
+
+    // Tab event listeners
     document.querySelectorAll('.tabs-wrapper input[type="radio"]').forEach(tab => {
-      console.log('Tab found:', tab.id); // Should log both tabs on page load
-  
+      console.log('Tab found:', tab.id);
       tab.addEventListener('change', () => {
-        console.log('Tab selected:', tab.id); // Should log when tab is clicked
+        console.log('Tab selected:', tab.id);
         localStorage.setItem('bitui-active-tab', tab.id);
       });
     });
-  
-    // Attach event listeners to controls
+
+    // Style controls
     this.controls.forEach(control => {
       this.updateStyle(control);
       control.addEventListener('input', () => {
@@ -242,32 +228,29 @@ class StyleController {
         this.savePreferences();
       });
     });
-  
-    // Theme mode control
+
+    // Theme slider
     this.themeSlider.addEventListener('input', (e) => {
       this.updateTheme(e.target.value / 100);
       this.savePreferences();
     });
-  
+
     // Reset button
     this.resetButton.addEventListener('click', () => this.resetToDefaults());
-  
-    // Panel toggle functionality
+
+    // Panel toggle
     this.loadPanelState();
     this.toggleButton.addEventListener('click', () => {
       this.controlPanel.classList.toggle('closed');
       this.savePanelState();
     });
   }
-  
-  
 
   updateStyle(control) {
     const property = control.dataset.styleProperty;
     const unit = control.dataset.unit || '';
     this.root.style.setProperty(property, control.value + unit);
 
-    // Update displayed value
     const valueDisplay = document.getElementById(`${control.id}-value`);
     if (valueDisplay) {
       valueDisplay.textContent = control.value + unit;
@@ -283,7 +266,6 @@ class StyleController {
 
     document.documentElement.setAttribute('data-theme', theme);
 
-    // Update display text
     const display = document.getElementById('theme-mode-value');
     if (display) {
       display.textContent = theme.charAt(0).toUpperCase() + theme.slice(1);
@@ -317,21 +299,35 @@ class StyleController {
       }
     });
 
-    // Load stored theme
     const savedTheme = localStorage.getItem('bitui-theme') || "light";
     document.documentElement.setAttribute('data-theme', savedTheme);
   }
 
   loadStoredColors() {
     const savedColors = localStorage.getItem('bitui-generated-colors');
-    if (savedColors) {
-      const colors = JSON.parse(savedColors);
-      Object.entries(colors).forEach(([key, color]) => {
-        document.documentElement.style.setProperty(`--${key}`, color);
-        const swatch = document.getElementById(`color-${key.replace('Hover', '').toLowerCase()}`);
-        if (swatch) swatch.style.backgroundColor = color;
-      });
-    }
+    const defaultColors = {
+      'error': 'rgba(225, 85, 84, 1)',
+      'error-hover': 'rgba(225, 123, 123, 1)', // Hyphenated
+      'action': 'rgba(255, 165, 0, 1)',
+      'action-hover': 'rgba(255, 185, 0, 1)',
+      'success': 'rgba(59, 178, 115, 1)',
+      'success-hover': 'rgba(59, 178, 115, 0.85)',
+      'info': 'rgba(77, 157, 224, 1)',
+      'info-hover': 'rgba(77, 163, 234, 1)'
+    };
+  
+    const colorsToApply = savedColors ? JSON.parse(savedColors) : defaultColors;
+  
+    console.log('Loading colors:', colorsToApply);
+    Object.entries(colorsToApply).forEach(([key, color]) => {
+      document.documentElement.style.setProperty(`--${key}`, color);
+      console.log(`Applied --${key}: ${color}`);
+    });
+  
+    ['error', 'action', 'success', 'info'].forEach(baseKey => {
+      const swatch = document.getElementById(`color-${baseKey}`);
+      if (swatch) swatch.style.backgroundColor = colorsToApply[baseKey];
+    });
   }
 
   savePanelState() {
@@ -356,13 +352,27 @@ class StyleController {
         }
       }
     });
-
-    resetColorsToDefaults();
-
-    // Clear localStorage
+  
+    const defaultColors = {
+      'error': 'rgba(225, 85, 84, 1)',
+      'error-hover': 'rgba(225, 123, 123, 1)', // Hyphenated
+      'action': 'rgba(255, 165, 0, 1)',
+      'action-hover': 'rgba(255, 185, 0, 1)',
+      'success': 'rgba(59, 178, 115, 1)',
+      'success-hover': 'rgba(59, 178, 115, 0.85)',
+      'info': 'rgba(77, 157, 224, 1)',
+      'info-hover': 'rgba(77, 163, 234, 1)'
+    };
+  
+    Object.entries(defaultColors).forEach(([key, color]) => {
+      document.documentElement.style.setProperty(`--${key}`, color);
+      const swatch = document.getElementById(`color-${key.replace('-hover', '').toLowerCase()}`);
+      if (swatch) swatch.style.backgroundColor = defaultColors[key.replace('-hover', '')];
+    });
+  
+    localStorage.setItem('bitui-generated-colors', JSON.stringify(defaultColors));
     localStorage.removeItem(this.storageKey);
     localStorage.removeItem(this.panelStateKey);
-    localStorage.removeItem('bitui-generated-colors');
     this.controlPanel.classList.remove('closed');
   }
 }
