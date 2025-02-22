@@ -301,7 +301,7 @@
       &lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
-</code></pre>
+  </code></pre>
         </div>
       </section>
 
@@ -367,15 +367,8 @@
       <section id="typography">
         <div class="row">
           <div class="col-12">
-            <div class="panel light center">
-              <h1>Typography</h1>
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-12">
-            <div class="panel dark">
+            <div class="panel light">
+              <h1 class="center">Typography</h1>
               <p>bitUI uses a clean, modern typography system based on the <code class="language-css">var(--font-family-base)</code>. 
                 All text adapts dynamically to our theme system.
               </p>
@@ -420,7 +413,121 @@
             </div>
           </div>
         </div>
+      </section>
 
+      <!-- Form Examples -->
+      <section>
+        <div class="row">
+          <div class="col-12">
+            <div class="panel light ">
+              <h2 class="center">Forms - 🚧 Under Construction</h2>
+              <div>
+                <p>Below are examples of form elements styled with bitUI, demonstrating inputs, textareas, selects,
+                  buttons, and alerts across different states and themes.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+        <div class="row">
+          <div class="col-6">
+            <div class="panel dark">
+              <h3 class="center">Standard Inputs</h3>
+              <div class="field">
+                <label for="email">Email</label>
+                <input type="text" id="email" placeholder="example@email.com">
+              </div>
+              <div class="field">
+                <label for="password">Password</label>
+                <input type="password" id="password">
+              </div>
+              <div class="field">
+                <label for="number">Number</label>
+                <input type="number" id="number" class="number-input">
+              </div>
+              <div class="field">
+                <label for="clear">Clear Input</label>
+                <input type="text" id="clear" class="clear-form" placeholder="Enter text">
+              </div>
+            </div>
+          </div>
+      
+          <div class="col-6">
+            <div class="panel dark">
+              <h3 class="center">Textarea</h3>
+              <div class="field">
+                <label for="textarea">Description</label>
+                <textarea id="textarea" placeholder="Enter your description here..."></textarea>
+              </div>
+      
+              <h3 class="center">Select</h3>
+              <div class="field">
+                <label for="theme">Select Theme</label>
+                <select id="theme">
+                  <option value="light">Light</option>
+                  <option value="warm">Warm</option>
+                  <option value="dim">Dim</option>
+                  <option value="dark">Dark</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6">
+            <div class="panel dark">
+              <h3 class="center">Form States</h3>
+              <div class="field">
+                <label for="error-input">Error Input</label>
+                <input type="text" id="error-input" class="error" placeholder="This field has an error">
+              </div>
+              <div class="field">
+                <label for="success-input">Success Input</label>
+                <input type="text" id="success-input" class="success" placeholder="This field is valid">
+              </div>
+              <div class="field">
+                <label for="disabled-input">Disabled Input</label>
+                <input type="text" id="disabled-input" disabled placeholder="This field is disabled">
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      
+        <div class="row">
+          <div class="col-12">
+            <div class="panel dark">
+              <h3 class="center">Buttons</h3>
+              <button class="btn green">Green Button</button>
+              <button class="btn blue">Blue Button</button>
+              <button class="btn red">Red Button</button>
+              <button class="btn purple">Purple Button</button>
+              <button class="btn holo">Holo Button</button>
+              <button class="btn disabled">Disabled Button</button>
+              <a href="#" class="btn-sm">Links</a>
+            </div>
+          </div>
+        </div>
+      
+        <div class="row">
+          <div class="col-12">
+            <div class="panel dark">
+              <h3>Alerts</h3>
+              <div class="alert alert-success">
+                Success: Form submitted successfully!
+                <span class="dismiss-btn">×</span>
+              </div>
+              <div class="alert alert-error">
+                Error: Please fix the form errors.
+                <span class="dismiss-btn">×</span>
+              </div>
+              <div class="alert alert-notice">
+                Notice: Please review your information.
+                <span class="dismiss-btn">×</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      
       </section>
       
       <section><div class="legal center">BitNations, LLC © 2025</div></section>
@@ -435,119 +542,3 @@
 </body>
 
 </html>
-
-
-      <!-- Form Examples -->
-      <!-- <section>
-        <div class="row">
-          <div class="panel light col-12">
-            <h2>bitUI Form Examples</h2>
-            <div>
-              <p>Below are examples of form elements styled with bitUI, demonstrating inputs, textareas, selects,
-                buttons, and alerts across different states and themes.</p>
-            </div>
-
-            <div class="row">
-              <div class="col-6">
-                <h3>Standard Inputs</h3>
-                <div class="field">
-                  <label for="email">Email</label>
-                  <input type="text" id="email" placeholder="example@email.com">
-                </div>
-                <div class="field">
-                  <label for="password">Password</label>
-                  <input type="password" id="password">
-                </div>
-                <div class="field">
-                  <label for="number">Number</label>
-                  <input type="number" id="number" class="number-input">
-                </div>
-                <div class="field">
-                  <label for="clear">Clear Input</label>
-                  <input type="text" id="clear" class="clear-form" placeholder="Enter text">
-                </div>
-              </div>
-
-              <div class="col-6">
-                <h3>Textarea</h3>
-                <div class="field">
-                  <label for="textarea">Description</label>
-                  <textarea id="textarea" placeholder="Enter your description here..."></textarea>
-                </div>
-
-                <h3>Select</h3>
-                <div class="field">
-                  <label for="theme">Select Theme</label>
-                  <select id="theme">
-                    <option value="light">Light</option>
-                    <option value="warm">Warm</option>
-                    <option value="dim">Dim</option>
-                    <option value="dark">Dark</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-12">
-                <h3>Buttons</h3>
-                <div class="field">
-                  <button class="btn green">Green Button</button>
-                  <button class="btn blue">Blue Button</button>
-                  <button class="btn red">Red Button</button>
-                  <button class="btn purple">Purple Button</button>
-                  <button class="btn holo">Holo Button</button>
-                  <button class="btn disabled">Disabled Button</button>
-                </div>
-                <div class="field">
-                  <a href="#" class="btn-sm">Link Button</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-6">
-                <h3>Form States</h3>
-                <div class="field">
-                  <label for="error-input">Error Input</label>
-                  <input type="text" id="error-input" class="error" placeholder="This field has an error">
-                </div>
-                <div class="field">
-                  <label for="success-input">Success Input</label>
-                  <input type="text" id="success-input" class="success" placeholder="This field is valid">
-                </div>
-                <div class="field">
-                  <label for="disabled-input">Disabled Input</label>
-                  <input type="text" id="disabled-input" disabled placeholder="This field is disabled">
-                </div>
-              </div>
-
-              <div class="col-6">
-                <h3>Alerts</h3>
-                <div class="alert alert-success">
-                  Success: Form submitted successfully!
-                  <span class="dismiss-btn">×</span>
-                </div>
-                <div class="alert alert-error">
-                  Error: Please fix the form errors.
-                  <span class="dismiss-btn">×</span>
-                </div>
-                <div class="alert alert-notice">
-                  Notice: Please review your information.
-                  <span class="dismiss-btn">×</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-6">
-                <h3>Submit Buttons</h3>
-                <div class="field">
-                  <input type="submit" value="Submit">
-                  <input type="submit" value="No Style Submit" class="no-style">
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section> -->
