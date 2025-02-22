@@ -7,8 +7,8 @@
   position: fixed;
   top: 0;
   right: 0;
-  width: 250px;
-  height: 100vh;
+  width: calc(280px - 30px);
+  height: calc(100vh - 30px);
   padding: 15px;
   background: var(--panel-bg);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -70,8 +70,7 @@
 
 .style-control + span {
   display: inline-block;
-  min-width: 45px;
-  text-align: right;
+  width: 100%;
   font-size: 0.9em;
   color: var(--info);
   margin: 0 !important;
@@ -110,9 +109,78 @@
 /* Form padding */
 .control-panel input[type="range"] {
   padding: 0 !important;
+  margin: 0 !important;
 }
 
 .control-panel input {
   font-size: 14px !important;
   margin: 0 !important;
+}
+
+/* Color Pallet */
+.color-swatch {
+  width: 48%;
+  height: 50px;
+  line-height: 50px;
+  display: inline-block;
+  padding: 5px 0;
+  text-align: left;
+  margin: 5px 0;
+  text-align: center;
+  font-weight: bold;
+  color: white;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  justify-content: space-around;
+}
+
+/* Hide only the radio inputs for tabs */
+.tabs-wrapper input[type="radio"] {
+  display: none;
+}
+
+.tabs label {
+  flex: 1;
+  text-align: center;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  border-bottom: 2px solid var(--panel-border);
+  transition: all 0.2s ease-in-out;
+}
+
+.tabs label:hover {
+  background: var(--panel-dark-bg);
+}
+
+/* Active Tab Styling */
+#tab-styles:checked ~ .tabs label[for="tab-styles"],
+#tab-theme:checked ~ .tabs label[for="tab-theme"] {
+  border-bottom-color: var(--info-hover);
+  color: var(--info);
+  font-weight: bold;
+}
+
+/* Hide tab content by default */
+.tab-content {
+  display: none;
+  padding: 15px;
+}
+
+/* ✅ FIXED: Ensure content shows properly when checked */
+#tab-styles:checked ~ .tab-container #styles-content,
+#tab-theme:checked ~ .tab-container #theme-content {
+  display: block;
+}
+
+/* Ensure buttons stay at the bottom */
+.panel-buttons {
+  position: absolute;
+  bottom: 15px;
+  width: 90%;
+  text-align: center;
 }

@@ -157,6 +157,27 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 
+function resetColorsToDefaults() {
+  const defaultColors = {
+    error: 'rgb(225, 85, 84)',
+    errorHover: 'rgb(225, 123, 123)',
+    action: 'rgb(255, 165, 0)',
+    actionHover: 'rgb(255, 185, 0)',
+    success: 'rgb(59, 178, 115)',
+    successHover: 'rgb(59, 178, 115, 0.85)',
+    info: 'rgb(77, 157, 224)',
+    infoHover: 'rgb(77, 163, 234)'
+  };
+
+  Object.entries(defaultColors).forEach(([key, color]) => {
+    document.documentElement.style.setProperty(`--${key}`, color);
+    const swatch = document.getElementById(`color-${key.replace('Hover', '').toLowerCase()}`);
+    if (swatch) swatch.style.backgroundColor = color;
+  });
+
+  localStorage.removeItem('bitui-generated-colors');  // ✅ Clears stored colors
+}
+
 // FUNCTIONALITY
 class StyleController {
   constructor() {
@@ -184,6 +205,7 @@ class StyleController {
 
   init() {
     this.loadPreferences();
+    this.loadStoredColors();
 
     // Attach event listeners to controls
     this.controls.forEach(control => {
@@ -271,6 +293,18 @@ class StyleController {
     document.documentElement.setAttribute('data-theme', savedTheme);
   }
 
+  loadStoredColors() {
+    const savedColors = localStorage.getItem('bitui-generated-colors');
+    if (savedColors) {
+      const colors = JSON.parse(savedColors);
+      Object.entries(colors).forEach(([key, color]) => {
+        document.documentElement.style.setProperty(`--${key}`, color);
+        const swatch = document.getElementById(`color-${key.replace('Hover', '').toLowerCase()}`);
+        if (swatch) swatch.style.backgroundColor = color;
+      });
+    }
+  }
+
   savePanelState() {
     localStorage.setItem(this.panelStateKey, this.controlPanel.classList.contains('closed'));
   }
@@ -294,9 +328,12 @@ class StyleController {
       }
     });
 
+    resetColorsToDefaults();
+
     // Clear localStorage
     localStorage.removeItem(this.storageKey);
     localStorage.removeItem(this.panelStateKey);
+    localStorage.removeItem('bitui-generated-colors');
     this.controlPanel.classList.remove('closed');
   }
 }
