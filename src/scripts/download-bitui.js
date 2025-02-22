@@ -3,7 +3,8 @@ document.getElementById('download-css').addEventListener('click', function () {
         'src/styles/main.css',
         'src/styles/base.css',
         'src/styles/grid.css',
-        'src/styles/components.css'
+        'src/styles/components.css',
+        'src/styles/forms.css'
     ];
     const demoFile = 'src/screens/demo.html';
     const licenseFile = '/LICENSE.txt'; // Optional: You can define this, but it’s not strictly needed unless reused

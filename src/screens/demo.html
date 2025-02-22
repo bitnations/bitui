@@ -11,7 +11,6 @@
 </head>
 
 <body>
-  <!-- Main Content -->
   <main class="content">
     <div class="container">
 
@@ -26,242 +25,142 @@
         </div>
         <div class="row">
           <div class="col-12">
-            <div class="panel light">
-              <p>bitUI is a free-to-use, lightweight HTML + CSS frontend framework designed for simplicity and
-                performance. Built as the foundation for BitNations, bitUI provides a minimal, flexible grid system to
-                build responsive, fast-loading web applications with ease.</p>
-              <ol>
-                <li>Move the sliders on the right to your liking</li>
-                <li>Download CSS</li>
-                <li>Use on your site</li>
-              </ol>
+            <div class="panel dark">
+              <p>bitUI is a simple, lightweight HTML + CSS framework for building clean, responsive layouts. 
+                It features a <b>flexible 12-column grid</b>, utility classes, and minimal styling.
+              </p>
+             <ul>
+               <li>Adjust the layout with the sliders on the right</li>
+               <li>Download the CSS</li>
+               <li>Drop it into your site</li>
+             </ul>
+             <p><b>Want AI to help?</b> Copy <a href="/llm.txt" target="_blank">llm.txt</a>, paste it into your AI of choice, and let it generate your HTML.  
+                (You'll still need to download the CSS and copy the output into your site.)
+              </p>             
             </div>
           </div>
         </div>
       </section>
-
 
       <!-- Flex-Box Grid -->
       <section>
         <div class="row">
           <div class="col-12">
-            <div class="panel light center">
-              <h1>Columns</h1>
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-12">
             <div class="panel light">
-              <p>bitUI uses flex grid for column system.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-1">
-            <div class="panel light">
-              <span class="f-gray">1</span>
-            </div>
-          </div>
-          <div class="col-11">
-            <div class="panel light">
-              <span class="f-gray">11</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-2">
-            <div class="panel light">
-              <span class="f-gray">2</span>
-            </div>
-          </div>
-          <div class="col-10">
-            <div class="panel light">
-              <span class="f-gray">10</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-3">
-            <div class="panel light">
-              <span class="f-gray">3</span>
-            </div>
-          </div>
-          <div class="col-9">
-            <div class="panel light">
-              <span class="f-gray">9</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-4">
-            <div class="panel light">
-              <span class="f-gray">4</span>
-            </div>
-          </div>
-          <div class="col-8">
-            <div class="panel light">
-              <span class="f-gray">8</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-5">
-            <div class="panel light">
-              <span class="f-gray">5</span>
-            </div>
-          </div>
-          <div class="col-7">
-            <div class="panel light">
-              <span class="f-gray">7</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-6">
-            <div class="panel light">
-              <span class="f-gray">6</span>
-            </div>
-          </div>
-          <div class="col-6">
-            <div class="panel light">
-              <span class="f-gray">6</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-12">
-            <div class="panel light">
-              <span class="f-gray">12</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Typography -->
-      <section id="typography">
-        <div class="row">
-          <div class="col-12">
-            <div class="panel light center">
-              <h1>Typography</h1>
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-12">
-            <div class="panel light">
-              <p>bitUI uses a clean, modern typography system based on the <code class="language-css">var(--font-family-base)</code> font
-                stack (Roboto Mono, NotoColorEmojiLimited, monospace). All text adapts dynamically to our theme system
-                (Light, Warm, Dim, Dark) using global variables like <code class="language-css">--text-color</code> and
-                <code class="language-css">--heading-color</code>.
+              <h1 class="center">Grid</h1>
+              <p>
+                bitUI is a 12-column system using flexbox.
+                <code class="language-html">col-1</code> to <code class="language-html">col-12</code>.
+                Columns go inside <code class="language-html">rows</code>, and panels go inside columns.
+                You can nest as many <code class="language-html">row</code>, <code class="language-html">col</code>, 
+                and <code class="language-html">panel</code> elements as needed.
               </p>
             </div>
           </div>
         </div>
 
         <div class="row">
-          <div class="col-12">
-            <div class="panel light center">
-              <h1>Header 1</h1>
-              <h2>Header 2</h2>
-              <h3>Header 3</h3>
-              <h4>Header 4</h4>
-              <h5>Header 5</h5>
-              <h6>Header 6</h6>
+          <div class="col-1">
+            <div class="panel dark">
+              <span>1</span>
+            </div>
+          </div>
+          <div class="col-11">
+            <div class="panel dark">
+              <span>11</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-2">
+            <div class="panel dark">
+              <span>2</span>
+            </div>
+          </div>
+          <div class="col-10">
+            <div class="panel dark">
+              <span>10</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-3">
+            <div class="panel dark">
+              <span>3</span>
+            </div>
+          </div>
+          <div class="col-9">
+            <div class="panel dark">
+              <span>9</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-4">
+            <div class="panel dark">
+              <span>4</span>
+            </div>
+          </div>
+          <div class="col-8">
+            <div class="panel dark">
+              <span>8</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-5">
+            <div class="panel dark">
+              <span>5</span>
+            </div>
+          </div>
+          <div class="col-7">
+            <div class="panel dark">
+              <span>7</span>
             </div>
           </div>
         </div>
 
         <div class="row">
           <div class="col-6">
-            <div class="panel light">
-              <p>Paragraph text is styled with a default font-weight of 400. You can modify font weights using utility
-                classes:</p>
-              <p class="font-light">.font-light</p>
-              <p class="font-regular">.font-regular</p>
-              <p class="font-heavy">.font-heavy</p>
+            <div class="panel dark">
+              <span>6</span>
             </div>
           </div>
           <div class="col-6">
-            <div class="panel light">
-              <p>Apply color utilities to text for thematic emphasis:</p>
-              <p class="f-black" style="background-color: white;">.f-black – Black text</p>
-              <p class="f-white" style="background-color: black;">.f-white – White text</p>
-              <p class="f-red">.f-red – Red text</p>
-              <p class="f-orange">.f-orange – Orange text</p>
-              <p class="f-green">.f-green – Green text</p>
-              <p class="f-blue">.f-blue – Blue text</p>
-              <p class="f-purple">.f-purple – Purple text</p>
-              <p class="f-gray">.f-gray – Gray text</p>
+            <div class="panel dark">
+              <span>6</span>
             </div>
           </div>
         </div>
 
+        <div class="row">
+          <div class="col-12">
+            <div class="panel dark">
+              <span>12</span>
+            </div>
+          </div>
+        </div>
       </section>
 
-      <!-- EXAMPLES -->
-      <section id="examples">
+
+      <!-- Structure -->
+      <section>
         <div class="row">
           <div class="col-12">
             <div class="panel light">
-              <h2 class="center">bitUI Layout Examples</h2>
-              <p>bitUI provides a flexible grid system and panel components for creating responsive layouts. Below are
-                examples demonstrating common layout patterns using <code class="language-css">.row</code>, <code class="language-css">.col-*</code>, and
-                <code class="language-css">.panel</code> classes, styled dynamically with our theme system (Light, Warm, Dim, Dark).</p>
+              <h2 class="center">Structure</h2>
+              <p>
+                bitUI follows a simple structure:
+                <code class="language-html">row</code> → <code class="language-html">col</code> → <code class="language-html">panel</code>.
+                Content always flows in this order, and you can nest them as needed.
+              </p>
             </div>
           </div>
         </div>
-
-        <!-- Example 1: Two-Column Layout -->
-        <div class="row">
-          <div class="col-6">
-            <div class="panel dark">
-              <h3>Left Column</h3>
-              <p>This is a left column with content, styled with a dark panel. It takes up 50% of the width on desktop
-                (col-6) and stacks on mobile.</p>
-            </div>
-          </div>
-          <div class="col-6">
-            <div class="panel dark">
-              <h3>Right Column</h3>
-              <p>This is a right column with additional content, also in a dark panel. Both columns are responsive and
-                adapt to screen size.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Example 2: Three-Column Layout -->
-        <div class="row">
-          <div class="col-4">
-            <div class="panel dark">
-              <h3>Column 1</h3>
-              <p>A narrow column (33.33%) for concise content or sidebar navigation.</p>
-            </div>
-          </div>
-          <div class="col-4">
-            <div class="panel dark">
-              <h3>Column 2</h3>
-              <p>Middle column for main content, equally spaced with others.</p>
-            </div>
-          </div>
-          <div class="col-4">
-            <div class="panel dark">
-              <h3>Column 3</h3>
-              <p>Another narrow column for additional details or widgets.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Example 3: Full-Width Panel with Nested Rows -->
         <div class="row">
           <div class="col-12">
             <div class="panel dark">
@@ -280,11 +179,303 @@
               </div>
             </div>
           </div>
+          
+        <!-- Structure Code Snippet -->
+        <div class="col-12">
+          <pre><code class="language-html">
+  &lt;div class="row"&gt;
+    &lt;div class="col-12"&gt;
+      &lt;div class="panel dark"&gt;
+        &lt;h3 class="center"&gt;Full-Width Content&lt;/h3&gt;
+        &lt;div class="row"&gt;
+          &lt;div class="col-6"&gt;
+            &lt;div class="panel light"&gt;
+              &lt;p&gt;This nested column (50%)
+                  contains content on the left 
+                  side of the full-width panel.
+              &lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class="col-6"&gt;
+            &lt;div class="panel light"&gt;
+              &lt;p&gt;This nested column (50%)
+                  contains content on the right
+                  side of the full-width panel.
+              &lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  </code></pre>
         </div>
       </section>
+
+
+      <!-- Layout -->
+      <section>
+        <div class="row">
+          <div class="col-12">
+            <div class="panel light">
+              <h2 class="center">Layout</h2>
+              <p>
+                bitUI provides utility classes to align rows, columns, and text.
+                <code class="language-html">row</code> alignment affects columns,
+                while <code class="language-html">col</code> alignment affects text inside.
+              </p>
+            </div>
+          </div>
+        </div>
+      
+        <!-- Example 4: Center Column -->
+        <div class="row left">
+          <div class="col-4 left">
+            <div class="panel dark">
+              <h3>Left Column</h3>
+              <p>This column left justified using <code class="language-html">class="row left";</code></p>
+            </div>
+          </div>
+        </div>
+         
+        <div class="row center">
+          <div class="col-4 left">
+            <div class="panel dark">
+              <h3>Centered Column</h3>
+              <p>This column is centered using <code class="language-html">class="row center";</code></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row right">
+          <div class="col-4 left">
+            <div class="panel dark">
+              <h3>Right Column</h3>
+              <p>This column right justified using <code class="language-html">class="row right";</code></p>
+            </div>
+          </div>
+        </div>
+      
+        <!-- Code Example -->
+        <div class="col-12">
+  <pre><code class="language-html">
+  &lt;div class="row center"&gt;
+    &lt;div class="col-12 left"&gt;
+      &lt;div class="panel light"&gt;
+        &lt;h3&gt;This column is centered using class="row center":&lt;/h3&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  </code></pre>
+        </div>
+      </section>
+
+      <!-- Typography -->
+      <section id="typography">
+        <div class="row">
+          <div class="col-12">
+            <div class="panel light">
+              <h1 class="center">Typography</h1>
+              <p>bitUI uses a clean, modern typography system based on the <code class="language-css">var(--font-family-base)</code>. 
+                All text adapts dynamically to our theme system.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <div class="panel dark center">
+              <h1>Header 1</h1>
+              <h2>Header 2</h2>
+              <h3>Header 3</h3>
+              <h4>Header 4</h4>
+              <h5>Header 5</h5>
+              <h6>Header 6</h6>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-6">
+            <div class="panel dark">
+              <p>Paragraph text is styled with a default font-weight of 400. You can modify font weights using utility
+                classes:</p>
+              <p class="f-light">.f-light</p>
+              <p class="f-regular">.f-regular</p>
+              <p class="f-heavy">.f-heavy</p>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="panel dark">
+              <p>Apply color utilities to text for thematic emphasis:</p>
+              <p class="f-error">.f-error – Red text</p>
+              <p class="f-success">.f-success – Green text</p>
+              <p class="f-info">.f-info – Blue text</p>
+              <p class="f-action">.f-action – Purple text</p>
+              <p class="f-white" style="background-color: black;">.f-white – White text</p>
+              <p class="f-black" style="background-color: white;">.f-black – Black text</p>
+              <p class="f-gray">.f-gray – Gray text</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Form Examples -->
+      <section>
+        <div class="row">
+          <div class="col-12">
+            <div class="panel light ">
+              <h2 class="center">Forms</h2>
+              <div>
+                <p>Below are examples of form elements styled with bitUI, demonstrating inputs, textareas, selects,
+                  buttons, and alerts across different states and themes.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+        <div class="row">
+          <div class="col-6">
+            <div class="panel dark">
+              <h3 class="center">Standard Inputs</h3>
+              <label for="email">Email</label>
+              <input type="text" id="email" placeholder="example@email.com">
+              <label for="password">Password</label>
+              <input type="password" id="password">
+              <label for="number">Number</label>
+              <input type="number" id="number" class="number-input">
+            </div>
+          </div>
+
+          <div class="col-6">
+            <div class="panel dark">
+              <h3 class="center">Form States</h3>
+              <label for="error-input">Error Input</label>
+              <input type="text" id="error-input" class="error" placeholder="This field has an error">
+              <label for="success-input">Success Input</label>
+              <input type="text" id="success-input" class="success" placeholder="This field is valid">
+              <label for="disabled-input">Disabled Input</label>
+              <input type="text" id="disabled-input" disabled placeholder="This field is disabled">
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-6">
+            <div class="panel dark">
+              <h3 class="center">Textarea</h3>
+              <label for="textarea">Description</label>
+              <textarea id="textarea" placeholder="Enter your description here..."></textarea>
+            </div>
+          </div>
+          
+          <div class="col-6">
+            <div class="panel dark">
+              <h3 class="center">Select</h3>
+              <label for="theme">Select Theme</label>
+              <select id="theme">
+                <option value="light">Light</option>
+                <option value="warm">Warm</option>
+                <option value="dim">Dim</option>
+                <option value="dark">Dark</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <div class="panel dark">
+              <h3 class="center">Ranges, Radios, Checkboxes</h3>
+              <input type="range" min="0" max="100" value="50" step="1">
+      
+              <div class="row">
+                <div class="col-6">
+                  <div class="panel light">
+                    <input type="radio" id="Choice1" name="contact" value="choice1" />
+                    <label for="Choice1">Choice 1</label>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="panel light">
+                    <input type="radio" id="Choice2" name="contact" value="choice2" />
+                    <label for="Choice2">Choice 2</label>
+                  </div>
+                </div>
+              
+                <div class="col-6">
+                  <div class="panel light">
+                    <input type="radio" id="Choice3" name="contact" value="choice3" />
+                    <label for="Choice3">Choice 3</label>
+                  </div>
+                </div>
+                
+                <div class="col-6">
+                  <div class="panel light">
+                    <input type="radio" id="Choice4" name="contact" value="choice4" />
+                    <label for="Choice4">Choice 4</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row center">
+                <div class="col-12 center">
+                  <div class="panel light">
+                    <input type="checkbox" id="subscribeNews" name="subscribe" value="newsletter" />
+                    <label for="subscribeNews">Subscribe to newsletter?</label>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <div class="panel dark">
+              <h3 class="center">Buttons</h3>
+              <button class="btn success">Success Button</button>
+              <button class="btn info">Info Button</button>
+              <button class="btn error">Error Button</button>
+              <button class="btn action">Action Button</button>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="panel light">
+              <p class="center">Holo or disabled buttons appear better in a <code class="language-css">panel light</code></p>
+              <button class="btn holo">Holo Button</button>
+              <button class="btn disabled">Disabled Button</button>
+            </div>
+          </div>
+        </div>
+      
+        <div class="row">
+          <div class="col-12">
+            <div class="panel dark">
+              <h3 class="center">Alerts</h3>
+              <div class="alert alert-success">
+                Success: Form submitted successfully!
+                <span class="dismiss-btn">×</span>
+              </div>
+              <div class="alert alert-error">
+                Error: Please fix the form errors.
+                <span class="dismiss-btn">×</span>
+              </div>
+              <div class="alert alert-notice">
+                Notice: Please review your information.
+                <span class="dismiss-btn">×</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+        <div class="legal center">BitNations, LLC © 2025</div>
+      </section>
+      
     </div>
   </main>
-
 </body>
 
 </html>
