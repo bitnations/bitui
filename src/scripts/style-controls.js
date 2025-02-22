@@ -175,7 +175,7 @@ function resetColorsToDefaults() {
     if (swatch) swatch.style.backgroundColor = color;
   });
 
-  localStorage.removeItem('bitui-generated-colors');  // ✅ Clears stored colors
+  localStorage.removeItem('bitui-generated-colors');  // Clears stored colors
 }
 
 // FUNCTIONALITY
@@ -205,8 +205,9 @@ class StyleController {
 
   init() {
     this.loadPreferences();
-    this.loadStoredColors();
+    this.loadStoredColors(); // Load saved colors on init
   
+    // Load theme from localStorage on page load
     const savedThemeProgress = localStorage.getItem('bitui-theme-progress');
     if (savedThemeProgress) {
       this.themeSlider.value = savedThemeProgress * 100;
@@ -214,6 +215,24 @@ class StyleController {
     } else {
       this.updateTheme(0); // Default to light mode
     }
+  
+    // Restore active tab from localStorage
+    const savedTab = localStorage.getItem('bitui-active-tab');
+    if (savedTab && document.getElementById(savedTab)) {
+      document.getElementById(savedTab).checked = true; // Set checked dynamically
+    } else {
+      document.getElementById('tab-styles').checked = true; // Default if no saved tab
+    }
+  
+    // Debugging - Check if the event fires
+    document.querySelectorAll('.tabs-wrapper input[type="radio"]').forEach(tab => {
+      console.log('Tab found:', tab.id); // Should log both tabs on page load
+  
+      tab.addEventListener('change', () => {
+        console.log('Tab selected:', tab.id); // Should log when tab is clicked
+        localStorage.setItem('bitui-active-tab', tab.id);
+      });
+    });
   
     // Attach event listeners to controls
     this.controls.forEach(control => {
@@ -240,6 +259,7 @@ class StyleController {
       this.savePanelState();
     });
   }
+  
   
 
   updateStyle(control) {

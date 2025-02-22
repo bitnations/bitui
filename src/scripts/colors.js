@@ -95,10 +95,16 @@ function initColorCycler() {
     }
 
     cycleButton.addEventListener("click", updatePalette);
-    loadStoredColors();  // ✅ Load saved colors from localStorage
-    updatePalette(); // Generates a new palette on first load
+
+    const savedColors = localStorage.getItem('bitui-generated-colors');
+    if (savedColors) {
+      loadStoredColors();  // Load existing colors, don't generate new ones
+    } else {
+      updatePalette();  // Only generate a new palette if no colors exist
+    }
   });
 }
+
 
 
 export { initColorCycler };
