@@ -7,7 +7,7 @@ select {
   font-family: var(--font-family-base);
   font-size: var(--font-size-base);
   margin: 10px 0;
-  padding: 0 15px;
+  padding: 25px 15px;
   height: 2.5em;
   width: 100% !important;
   box-sizing: border-box;
