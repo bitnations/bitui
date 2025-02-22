@@ -93,7 +93,7 @@
 
       <div style="padding: 15px 0 30px 0;">
         <div class="">
-          <button class="btn green" id="download-css">Download bitUI</button>
+          <button class="btn success" id="download-css">Download bitUI</button>
           <button class="btn holo" id="reset-defaults">Reset to Defaults</button>
           👾 <a href="https://github.com/bitnations/bitui" target="_blank">Github</a>
         </div>
@@ -402,13 +402,12 @@
           <div class="col-6">
             <div class="panel dark">
               <p>Apply color utilities to text for thematic emphasis:</p>
-              <p class="f-black" style="background-color: white;">.f-black – Black text</p>
+              <p class="f-error">.f-error – Red text</p>
+              <p class="f-success">.f-success – Green text</p>
+              <p class="f-info">.f-info – Blue text</p>
+              <p class="f-action">.f-action – Purple text</p>
               <p class="f-white" style="background-color: black;">.f-white – White text</p>
-              <p class="f-red">.f-red – Red text</p>
-              <p class="f-orange">.f-orange – Orange text</p>
-              <p class="f-green">.f-green – Green text</p>
-              <p class="f-blue">.f-blue – Blue text</p>
-              <p class="f-purple">.f-purple – Purple text</p>
+              <p class="f-black" style="background-color: white;">.f-black – Black text</p>
               <p class="f-gray">.f-gray – Gray text</p>
             </div>
           </div>
@@ -420,7 +419,7 @@
         <div class="row">
           <div class="col-12">
             <div class="panel light ">
-              <h2 class="center">Forms - 🚧 Under Construction</h2>
+              <h2 class="center">Forms</h2>
               <div>
                 <p>Below are examples of form elements styled with bitUI, demonstrating inputs, textareas, selects,
                   buttons, and alerts across different states and themes.</p>
@@ -530,10 +529,15 @@
           <div class="col-12">
             <div class="panel dark">
               <h3 class="center">Buttons</h3>
-              <button class="btn green">Green Button</button>
-              <button class="btn blue">Blue Button</button>
-              <button class="btn red">Red Button</button>
-              <button class="btn purple">Purple Button</button>
+              <button class="btn success">Success Button</button>
+              <button class="btn info">Info Button</button>
+              <button class="btn error">Error Button</button>
+              <button class="btn action">Action Button</button>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="panel light">
+              <p class="center">Holo or disabled buttons appear better in a <code class="language-css">panel light</code></p>
               <button class="btn holo">Holo Button</button>
               <button class="btn disabled">Disabled Button</button>
             </div>

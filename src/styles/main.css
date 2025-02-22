@@ -35,17 +35,14 @@
    ========================================================================== */
 :root {
     /* Colors */
-    --red: rgba(225, 85, 84, 1);
-    --red-hover: rgba(225, 123, 123, 1);
-    --orange: rgba(255, 165, 0, 1);
-    --green: rgba(59, 178, 115, 1);
-    --green-hover: rgba(59, 178, 115, 0.85);
-    --blue: rgba(77, 157, 224, 1);
-    --blue-hover: rgba(77, 163, 234, 1);
-    --purple: rgba(119, 104, 174, 1);
-    --purple-hover: rgba(138, 122, 193, 1);
-    --graph-green: rgba(43,174,83,1);
-    --graph-blue: #08B2E3;
+    --error: rgba(225, 85, 84, 1);
+    --error-hover: rgba(225, 123, 123, 1);
+    --action: rgba(255, 165, 0, 1);
+    --action-hover: rgba(255, 185, 0, 1);
+    --success: rgba(59, 178, 115, 1);
+    --success-hover: rgba(59, 178, 115, 0.85);
+    --info: rgba(77, 157, 224, 1);
+    --info-hover: rgba(77, 163, 234, 1);
     /* Layout */
     --container-width: 50%; /* Default: 50% */
     --container-min-width: 600px; /* Prevents content from getting too narrow */

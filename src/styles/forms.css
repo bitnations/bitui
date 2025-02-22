@@ -34,7 +34,7 @@ textarea {
 input:focus,
 textarea:focus,
 select:focus {
-  border: 2px solid var(--blue);
+  border: 2px solid var(--info);
 }
 
 /* Select Arrow */
@@ -57,13 +57,13 @@ select {
 input.error,
 textarea.error,
 select.error {
-  border: 1px solid var(--red);
+  border: 1px solid var(--error);
 }
 
 input.error::placeholder,
 textarea.error::placeholder,
 select.error::placeholder {
-  color: var(--red);
+  color: var(--error);
   opacity: 0.8;
 }
 
@@ -71,13 +71,13 @@ input.success,
 textarea.success,
 select.success {
   border: none;
-  border: 1px solid var(--green);
+  border: 1px solid var(--success);
 }
 
 input.success::placeholder,
 textarea.success::placeholder,
 select.success::placeholder {
-  color: var(--green);
+  color: var(--success);
   opacity: 0.8;
 }
 
@@ -106,12 +106,12 @@ input[type="checkbox"] {
 
 input[type="radio"].error,
 input[type="checkbox"].error {
-  outline: 1px solid var(--red);
+  outline: 1px solid var(--error);
 }
 
 input[type="radio"].success,
 input[type="checkbox"].success {
-  outline: 1px solid var(--green);
+  outline: 1px solid var(--success);
 }
 
 /* Alerts */
@@ -126,17 +126,17 @@ input[type="checkbox"].success {
 }
 
 .alert-success {
-  background: var(--green);
+  background: var(--success);
   color: white;
 }
 
 .alert-notice {
-  background: var(--blue);
+  background: var(--info);
   color: white;
 }
 
 .alert-error {
-  background: var(--red);
+  background: var(--error);
   color: white;
 }
 
@@ -179,27 +179,40 @@ input[type="checkbox"].success {
   border: 1px solid rgba(0, 0, 0, 0);
   box-sizing: border-box;
 }
-.btn.holo {
-  background: transparent;
-  color: #222;
-  border: 1px solid rgba(0,0,0,0.2);
-}
-.btn.holo:hover {
-  background-color: rgba(255,255,255,0.35);
-  border: 1px solid rgba(0,0,0,0.35);
-}
 .btn.disabled {
   cursor: not-allowed;
-  background: #FBFBFB;
-  border: 1px solid rgba(0,0,0,0.2);
+  background-color: var(--panel-dark-bg);
+  border: 1px solid var(--panel-border);
   color: gray;
 }
-.btn.green { background: var(--green); }
-.btn.green:hover { background: var(--green-hover); }
-.btn.blue { background: var(--blue); }
-.btn.blue:hover { background: var(--blue-hover); }
-.btn.red { background: var(--red); }
-.btn.red:hover { background: var(--red-hover); }
-.btn.purple { background: var(--purple); }
-.btn.purple:hover { background: var(--purple-hover); }
-.btn.disabled:hover { background-color: #FBFBFB !important; }
+/* Dark theme overrides */
+[data-theme="dark"] .btn.holo, 
+[data-theme="dim"] .btn.holo {
+  background: var(--panel-dark-bg);
+  color: var(--text-color);
+  border: 1px solid var(--panel-border);
+}
+[data-theme="dark"] .btn.holo:hover,
+[data-theme="dim"] .btn.holo:hover {
+  background: var(--panel-bg);
+}
+/* Light theme overrides */
+[data-theme="light"] .btn.holo,
+[data-theme="warm"] .btn.holo {
+  background: var(--panel-bg);
+  color: var(--text-color);
+  border: 1px solid var(--panel-border);
+}
+[data-theme="light"] .btn.holo:hover,
+[data-theme="warm"] .btn.holo:hover {
+  background: var(--panel-dark-bg);
+}
+/* Button Hovers */
+.btn.success { background: var(--success); }
+.btn.success:hover { background: var(--success-hover); }
+.btn.info { background: var(--info); }
+.btn.info:hover { background: var(--info-hover); }
+.btn.error { background: var(--error); }
+.btn.error:hover { background: var(--error-hover); }
+.btn.action { background: var(--action); }
+.btn.action:hover { background: var(--action-hover); }

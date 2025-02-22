@@ -12,20 +12,20 @@ section {
 .f-black {
   color: rgba(0,0,0,1);
 }
-.f-red {
-  color: var(--red);
+.f-error {
+  color: var(--error);
 }
 .f-orange {
   color: var(--orange);
 }
-.f-green {
-  color: var(--green);
+.f-success {
+  color: var(--success);
 }
-.f-blue {
-  color: var(--blue);
+.f-info {
+  color: var(--info);
 }
-.f-purple {
-  color: var(--purple);
+.f-action {
+  color: var(--action);
 }
 .f-gray {
   color: gray;
@@ -109,8 +109,8 @@ pre code {
 
 /* Success state */
 .copy-btn.success {
-    background: var(--green);
-    border-color: var(--green);
+    background: var(--success);
+    border-color: var(--success);
 }
 
 pre[class*=language-] {
