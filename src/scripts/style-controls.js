@@ -206,7 +206,15 @@ class StyleController {
   init() {
     this.loadPreferences();
     this.loadStoredColors();
-
+  
+    const savedThemeProgress = localStorage.getItem('bitui-theme-progress');
+    if (savedThemeProgress) {
+      this.themeSlider.value = savedThemeProgress * 100;
+      this.updateTheme(savedThemeProgress);
+    } else {
+      this.updateTheme(0); // Default to light mode
+    }
+  
     // Attach event listeners to controls
     this.controls.forEach(control => {
       this.updateStyle(control);
@@ -215,16 +223,16 @@ class StyleController {
         this.savePreferences();
       });
     });
-
+  
     // Theme mode control
     this.themeSlider.addEventListener('input', (e) => {
       this.updateTheme(e.target.value / 100);
       this.savePreferences();
     });
-
+  
     // Reset button
     this.resetButton.addEventListener('click', () => this.resetToDefaults());
-
+  
     // Panel toggle functionality
     this.loadPanelState();
     this.toggleButton.addEventListener('click', () => {
@@ -232,6 +240,7 @@ class StyleController {
       this.savePanelState();
     });
   }
+  
 
   updateStyle(control) {
     const property = control.dataset.styleProperty;
