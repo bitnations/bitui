@@ -118,6 +118,12 @@ pre code {
     border-color: var(--success);
 }
 
+pre {
+  background-color: var(--panel-dark-bg) !important;
+  border: 1px solid var(--panel-border) !important;
+  border-radius: var(--border-radius) !important;
+}
+
 pre[class*=language-] {
   margin: 0 !important;
   padding: 0 !important;
