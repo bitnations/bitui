@@ -16,7 +16,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>bitUI X Demo</title>
   <!-- CSS -->
-  <link rel="stylesheet" href="../styles/main.css">
+  <link rel="stylesheet" href="/src/styles/main.css">
   <!-- Zip Library -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
   <!-- Code Snippet -->
@@ -24,6 +24,13 @@
 </head>
 
 <body>
+
+  <style>
+    /* This is for demo purposes */
+    .container {
+      width: 80%;
+    }
+  </style>
 
   <!-- Update the control panel -->
   <div class="control-panel" id="controlPanel">
@@ -273,8 +280,8 @@
   </main>
 
   <!-- JS -->
-  <script src="../scripts/style-controls.js"></script>
-  <script src="../scripts/download-bitui.js"></script>
+  <script src="/src/scripts/style-controls.js"></script>
+  <script src="/src/scripts/download-bitui.js"></script>
   <!-- Import the JS module and initialize -->
   <script type="module">
     import { initColorCycler } from "/src/scripts/colors.js";
