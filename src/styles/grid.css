@@ -1,3 +1,8 @@
+/* Page Layout */
+.content {
+  height: 100vh;
+  overflow-y: scroll;
+}
 /* Base container styles */
 .container {
   margin-left: auto;
@@ -5,6 +10,10 @@
   width: min(var(--container-width), var(--container-max-width));
   max-width: var(--container-max-width);
   min-width: var(--container-min-width);
+}
+/* Section */
+section {
+  margin: 0 0 var(--spacing-unit) 0;
 }
 
 /* Between 1024px and 720px, stop shrinking */

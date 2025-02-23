@@ -1,10 +1,15 @@
-/* Page Layout */
-.content {
-  padding: 20px 0;
+/* Sticky Component */
+.sticky-wrapper {
+  display: flex;
+  min-height: 100vh;
 }
-section {
-  margin: 0 0 var(--spacing-unit) 0;
+.sticky {
+  position: sticky;
+  top: calc(var(--column-gap) / 2);
+  height: calc(100vh - var(--column-gap));;
+  overflow-y: auto;
 }
+
 /* Font Styles */
 .f-white {
   color: white;

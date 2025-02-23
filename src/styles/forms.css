@@ -7,7 +7,7 @@ select {
   font-family: var(--font-family-base);
   font-size: var(--font-size-base);
   margin: 10px 0;
-  padding: 0 15px;
+  padding: 25px 15px;
   height: 2.5em;
   width: 100% !important;
   box-sizing: border-box;
@@ -39,12 +39,10 @@ select:focus {
 
 /* Select Arrow */
 select {
+  padding: 0 15px;
   text-align: left;
-  appearance: none; /* Removes default arrow in some browsers */
-  background: var(--panel-bg)
-    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='15' height='15' fill='var(--text-color)'><path d='M7.41 8.59L12 4l-1.41-1.41L7 5.17 2.41 0.59 1 2l5.59 5.59z'/></svg>")
-    no-repeat right 15px center;
-  padding-right: 40px; /* Space for custom arrow */
+   /* Removes default arrow in some browsers */
+  appearance: none;
 }
 
 /* Placeholder Styles */
