@@ -130,7 +130,7 @@
              <p><b>Want AI to help?</b> Copy <a href="/llm.txt" target="_blank">llm.txt</a>, paste it into your AI of choice, and let it generate your HTML.  
                 (You'll still need to download the CSS and copy the output into your site.)
               </p>             
-            </div>
+            </div>            
           </div>
         </div>
       </section>
@@ -285,23 +285,7 @@
         </div>
           
         <!-- Structure Code Snippet -->
-        <div class="col-12">
-          <pre><code class="language-html">
-  &lt;main class="content"&gt;
-    &lt;div class="container"&gt;
-      &lt;section&gt;
-        &lt;div class="row"&gt;
-          &lt;div class="col-12"&gt;
-            &lt;div class="panel light"&gt;
-              &lt;p&gt;You're all set!&lt;/p&gt;
-            &lt;/div&gt;
-          &lt;/div&gt;
-        &lt;/div&gt;
-      &lt;/section&gt;
-    &lt;/div&gt;
-  &lt;/main&gt;
-  </code></pre>
-        </div>
+        <div id="snippet-structure"></div>
 
         <!-- Sticky Component -->
         <div class="row">
@@ -317,19 +301,7 @@
           </div>
         </div>
 
-        <div class="col-12">
-<pre><code class="language-html">
-  &lt;main class="content"&gt;
-    &lt;div class="sticky-wrapper"&gt;
-      &lt;div class="container"&gt;
-        &lt;div class="col-6 sticky"&gt;This one will stick&lt;/div&gt;
-        &lt;div class="col-6"&gt;This one will scroll&lt;/div&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-
-</code></pre>
-        </div>
+        <div id="snippet-sticky"></div>
         
       </section>
 
@@ -369,35 +341,7 @@
         </div>
 
         <!-- Code Snippet 1: Nesting Layout -->
-        <div class="col-12">
-          <pre><code class="language-html">
-  &lt;div class="row"&gt;
-    &lt;div class="col-12"&gt;
-      &lt;div class="panel dark"&gt;
-        &lt;h3 class="center"&gt;Full-Width Content&lt;/h3&gt;
-        &lt;div class="row"&gt;
-          &lt;div class="col-6"&gt;
-            &lt;div class="panel light"&gt;
-              &lt;p&gt;This nested column (50%)
-                  contains content on the left 
-                  side of the full-width panel.
-              &lt;/p&gt;
-            &lt;/div&gt;
-          &lt;/div&gt;
-          &lt;div class="col-6"&gt;
-            &lt;div class="panel light"&gt;
-              &lt;p&gt;This nested column (50%)
-                  contains content on the right
-                  side of the full-width panel.
-              &lt;/p&gt;
-            &lt;/div&gt;
-          &lt;/div&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-  </code></pre>
-        </div>
+        <div id="snippet-layout"></div>
       
         <!-- Example 2: Center Column -->
         <div class="col-12">
@@ -447,17 +391,7 @@
         </div>
       
         <!-- Code Example -->
-        <div class="col-12">
-  <pre><code class="language-html">
-  &lt;div class="row center"&gt;
-    &lt;div class="col-12 left"&gt;
-      &lt;div class="panel light"&gt;
-        &lt;h3&gt;This column is centered using class="row center":&lt;/h3&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-</code></pre>
-        </div>
+        <div id="snippet-position"></div>
         
       </section>
 
@@ -680,6 +614,7 @@
   
   <!-- Code Snippet -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="../src/scripts/snippet-loader.js"></script>
 </body>
 
 </html>
