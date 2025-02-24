@@ -95,7 +95,8 @@
   
     <!-- Buttons at the Bottom -->
     <div class="panel-buttons">
-      <button class="btn success" id="download-css">Download bitUI</button>
+      <!-- <button class="btn success" id="deploy-btn">Deploy</button> -->
+      <button class="btn info" id="download-css">Download</button>
       <button class="btn holo" id="reset-defaults">Reset to Defaults</button>
       👾 <a href="https://github.com/bitnations/bitui" target="_blank">Github</a>
     </div>
@@ -150,9 +151,9 @@
               
               <div class="row">
                 <div class="col-6">
-                  <a href="/public/screens/x.html" target="_blank">
+                  <a href="/public/x.html" target="_blank">
                     <div class="btn info">
-                      𝕏 Clone →
+                      𝕏 demo →
                     </div>
                   </a>
                 </div>
@@ -282,26 +283,92 @@
             </div>
           </div>
         </div>
+          
+        <!-- Structure Code Snippet -->
+        <div class="col-12">
+          <pre><code class="language-html">
+  &lt;main class="content"&gt;
+    &lt;div class="container"&gt;
+      &lt;section&gt;
+        &lt;div class="row"&gt;
+          &lt;div class="col-12"&gt;
+            &lt;div class="panel light"&gt;
+              &lt;p&gt;You're all set!&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/section&gt;
+    &lt;/div&gt;
+  &lt;/main&gt;
+  </code></pre>
+        </div>
+
+        <!-- Sticky Component -->
         <div class="row">
           <div class="col-12">
-            <div class="panel dark">
-              <h3 class="center">Full-Width Content</h3>
-              <div class="row">
-                <div class="col-6">
-                  <div class="panel light">
-                    <p>This nested column (50%) contains content on the left side of the full-width panel.</p>
-                  </div>
+            <div class="panel light">
+              <h3 class="center">Sticky Component</h3>
+              <p>
+                You can make columns stick when scrolling (as seen in the 
+                <a href="/public/x.html" target="_blank" style="color:var(--info)">𝕏 demo</a>).
+                This is intended for columns at the top of your page.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12">
+<pre><code class="language-html">
+  &lt;main class="content"&gt;
+    &lt;div class="sticky-wrapper"&gt;
+      &lt;div class="container"&gt;
+        &lt;div class="col-6 sticky"&gt;This one will stick&lt;/div&gt;
+        &lt;div class="col-6"&gt;This one will scroll&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+</code></pre>
+        </div>
+        
+      </section>
+
+
+      <!-- Layout -->
+      <section>
+        <div class="row">
+          <div class="col-12">
+            <div class="panel light">
+              <h2 class="center">Layout</h2>
+              <p>
+                bitUI provides utility classes to align rows, columns, and text.
+                <code class="language-html">row</code> alignment affects columns,
+                while <code class="language-html">col</code> alignment affects text inside.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Example 1: Nesting Layout -->
+        <div class="col-12">
+          <div class="panel dark">
+            <h3 class="center">Nesting</h3>
+            <div class="row">
+              <div class="col-6">
+                <div class="panel light">
+                  <p>This nested column (50%) contains content on the left side of the full-width panel.</p>
                 </div>
-                <div class="col-6">
-                  <div class="panel light">
-                    <p>This nested column (50%) contains content on the left side of the full-width panel.</p>
-                  </div>
+              </div>
+              <div class="col-6">
+                <div class="panel light">
+                  <p>This nested column (50%) contains content on the left side of the full-width panel.</p>
                 </div>
               </div>
             </div>
           </div>
-          
-        <!-- Structure Code Snippet -->
+        </div>
+
+        <!-- Code Snippet 1: Nesting Layout -->
         <div class="col-12">
           <pre><code class="language-html">
   &lt;div class="row"&gt;
@@ -331,25 +398,27 @@
   &lt;/div&gt;
   </code></pre>
         </div>
-      </section>
-
-
-      <!-- Layout -->
-      <section>
-        <div class="row">
-          <div class="col-12">
-            <div class="panel light">
-              <h2 class="center">Layout</h2>
-              <p>
-                bitUI provides utility classes to align rows, columns, and text.
-                <code class="language-html">row</code> alignment affects columns,
-                while <code class="language-html">col</code> alignment affects text inside.
-              </p>
+      
+        <!-- Example 2: Center Column -->
+        <div class="col-12">
+          <div class="panel dark">
+            <h3 class="center">Position</h3>
+            <div class="row">
+              <div class="col-6">
+                <div class="panel light">
+                  <p>This nested column (50%) contains content on the left side of the full-width panel.</p>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="panel light">
+                  <p>This nested column (50%) contains content on the left side of the full-width panel.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      
-        <!-- Example 4: Center Column -->
+        
+        <!-- Code Snippet 2: Center Column -->
         <div class="row left">
           <div class="col-4 left">
             <div class="panel dark">
@@ -387,8 +456,9 @@
       &lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
-  </code></pre>
+</code></pre>
         </div>
+        
       </section>
 
       <!-- Typography -->
@@ -601,6 +671,7 @@
   <!-- JS -->
   <script src="src/scripts/style-controls.js"></script>
   <script src="src/scripts/download-bitui.js"></script>
+  <!-- <script src="src/scripts/deploy.js"></script> -->
   <!-- Import the JS module and initialize -->
   <script type="module">
     import { initColorCycler } from "/src/scripts/colors.js";

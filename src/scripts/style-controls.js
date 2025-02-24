@@ -213,9 +213,7 @@ class StyleController {
 
     // Tab event listeners
     document.querySelectorAll('.tabs-wrapper input[type="radio"]').forEach(tab => {
-      console.log('Tab found:', tab.id);
       tab.addEventListener('change', () => {
-        console.log('Tab selected:', tab.id);
         localStorage.setItem('bitui-active-tab', tab.id);
       });
     });
@@ -318,10 +316,8 @@ class StyleController {
   
     const colorsToApply = savedColors ? JSON.parse(savedColors) : defaultColors;
   
-    console.log('Loading colors:', colorsToApply);
     Object.entries(colorsToApply).forEach(([key, color]) => {
       document.documentElement.style.setProperty(`--${key}`, color);
-      console.log(`Applied --${key}: ${color}`);
     });
   
     ['error', 'action', 'success', 'info'].forEach(baseKey => {
@@ -355,7 +351,7 @@ class StyleController {
   
     const defaultColors = {
       'error': 'rgba(225, 85, 84, 1)',
-      'error-hover': 'rgba(225, 123, 123, 1)', // Hyphenated
+      'error-hover': 'rgba(225, 123, 123, 1)',
       'action': 'rgba(255, 165, 0, 1)',
       'action-hover': 'rgba(255, 185, 0, 1)',
       'success': 'rgba(59, 178, 115, 1)',
