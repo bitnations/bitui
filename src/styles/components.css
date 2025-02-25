@@ -59,84 +59,67 @@
  opacity: 0.5;
 }
 
-/* Code blocks */
-pre {
-    margin: 0;
-    padding: 15px;
-    border-radius: var(--border-radius);
-    background: #2d2d2d !important;
+/*  CODE SNIPPET STYLE */
+.snippet-container {
+  margin: 20px 0;
 }
-
-pre code {
-    font-family: var(--font-family-base);
-    font-size: 14px;
-    line-height: 1.4;
+.snippet-code {
+  position: relative;
 }
-
-/* Adjust Prism.js theme colors for dark mode */
-.control-panel pre[class*="language-"] {
-    margin: 0;
-    background: #2d2d2d;
-}
-
-.token.comment {
-    color: #6a9955;
-}
-
-/* Add spacing between example blocks */
-#examples .panel:not(:last-child) {
-    margin-bottom: 15px;
-}
-
-/* Code block container */
-.code-block {
-    position: relative;
-}
-
-/* Copy button */
-.copy-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    padding: 5px 10px;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: var(--border-radius);
-    color: #fff;
-    font-size: 12px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.copy-btn:hover {
-    background: rgba(255, 255, 255, 0.2);
-}
-
-/* Success state */
-.copy-btn.success {
-    background: var(--success);
-    border-color: var(--success);
-}
-
-pre {
-  background-color: var(--panel-dark-bg) !important;
-  border: 1px solid var(--panel-border) !important;
-  border-radius: var(--border-radius) !important;
-}
-
-pre[class*=language-] {
-  margin: 0 !important;
-  padding: 0 !important;
-  background-color: var(--panel-dark-bg) !important;
-  border: 1px solid var(--panel-border) !important;
-  border-radius: var(--border-radius) !important;
-}
-
-code[class*=language-], pre[class*=language-] {
+pre[class*="language-"] {
+  margin: 0;
+  padding: 15px;
   text-shadow: none !important;
+  background: var(--panel-dark-bg) !important;
+  border: 1px solid var(--panel-border) !important;
+  border-radius: var(--border-radius) !important;
+}
+code[class*="language-"] {
+  text-shadow: none !important;
+  font-family: var(--font-family-base);
   color: var(--text-color) !important;
 }
-
+/* Toggle Buttons */
+.snippet-toggle {
+  margin-bottom: 10px;
+}
+.toggle-btn {
+  padding: 5px 10px;
+  background: var(--panel-bg);
+  border: 1px solid var(--panel-border);
+  border-radius: var(--border-radius);
+  color: var(--text-color);
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-right: 5px;
+}
+.toggle-btn:hover {
+  background: var(--panel-bg);
+}
+.toggle-btn.active {
+  color: var(--info);
+  background: var(--panel-bg);
+  border-color: var(--panel-border);
+}
+/* Copy Button */
+.copy-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 5px 10px;
+  background: var(--panel-bg);
+  border: 1px solid var(--panel-border);
+  border-radius: var(--border-radius);
+  color: var(--text-color);
+  font-size: 12px;
+  cursor: pointer;
+}
+.copy-btn.success {
+  background: var(--success);
+  border-color: var(--success);
+  color: #FFF;
+}
 :not(pre)>code[class*=language-] {
   background-color: var(--bg-color) !important; 
 }

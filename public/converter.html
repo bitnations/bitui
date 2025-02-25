@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BitUI HTML to React Converter</title>
+  <link rel="stylesheet" href="../src/styles/main.css">
+  <style>
+    .content {
+      display: flex;
+      height: 100vh;
+    }
+    .container {
+      display: flex;
+      width: 100%;
+      gap: 20px;
+    }
+    .pane {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    textarea, pre {
+      flex: 1;
+      width: 100%;
+      padding: 10px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      resize: none;
+      background-color: #fff;
+    }
+    pre {
+      position: relative;
+      white-space: pre-wrap;
+      overflow-x: auto;
+    }
+    .copy-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      padding: 5px 10px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .copy-btn:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <main class="content">
+    <div class="container">
+      <div class="pane">
+        <h2>HTML Input</h2>
+        <textarea id="htmlInput" placeholder="Paste your HTML here..."></textarea>
+      </div>
+      <div class="pane">
+        <h2>React Output</h2>
+        <pre id="reactOutput"><code></code></pre>
+        <button class="copy-btn" id="copyBtn">Copy</button>
+      </div>
+    </div>
+  </main>
+
+  <script src="../src/scripts/react-converter.js"></script>
+  <script src="../src/scripts/converter-tool.js"></script>
+</body>
+</html>
