@@ -25,83 +25,121 @@
 
 <body>
 
-  <!-- Update the control panel -->
-  <div class="control-panel" id="controlPanel">
-    <button class="toggle-panel" id="togglePanel">
-      <p class="toggle-icon">›</p>
-    </button>
-  
-    <div class="tabs-wrapper"> 
-      <!-- Tabs (Moved Outside of .panel-content) -->
-      <input type="radio" id="tab-styles" name="panel-tab">
-      <input type="radio" id="tab-theme" name="panel-tab">
-  
-      <div class="tabs">
-        <label for="tab-styles">Styles</label>
-        <label for="tab-theme">Theme</label>
+  <!-- Control Panel -->
+<!-- Update the control panel -->
+<div class="control-panel" id="controlPanel">
+  <button class="toggle-panel" id="togglePanel">
+    <p class="toggle-icon">›</p>
+  </button>
+
+  <div class="tabs-wrapper">
+    <!-- Tabs with default selection -->
+    <input type="radio" id="tab-styles" name="panel-tab" checked>
+    <input type="radio" id="tab-theme" name="panel-tab">
+
+    <div class="tabs">
+      <label for="tab-styles">Styles</label>
+      <label for="tab-theme">Theme</label>
+    </div>
+
+    <!-- Tabs Container (Now Properly Targeted by CSS) -->
+    <div class="tab-container">
+      <!-- Styles Tab -->
+      <div class="tab-content" id="styles-content">
+        <h3>Styles</h3>
+
+        <label for="border-radius">Border Radius</label>
+        <span id="border-radius-value">15px</span>
+        <input type="range" id="border-radius" min="0" max="50" value="15" class="style-control"
+          data-style-property="--border-radius" data-unit="px">
+
+        <label for="spacing">Section Spacing</label>
+        <span id="spacing-value">1rem</span>
+        <input type="range" id="spacing" min="0" max="100" value="1" step="1" class="style-control"
+          data-style-property="--spacing-unit" data-unit="rem">
+
+        <label for="container">Container Width</label>
+        <span id="container-value">50%</span>
+        <input type="range" id="container" min="50" max="100" value="50" class="style-control"
+          data-style-property="--container-width" data-unit="%">
+
+        <label for="column-gap">Column Gap</label>
+        <span id="column-gap-value">0.5rem</span>
+        <input type="range" id="column-gap" min="0" max="2" step="0.1" value="0.5" class="style-control"
+          data-style-property="--column-gap" data-unit="rem">
+
+        <label for="panel-padding-x">Panel Horizontal Padding</label>
+        <span id="panel-padding-x-value">15px</span>
+        <input type="range" id="panel-padding-x" min="0" max="30" value="15" class="style-control"
+          data-style-property="--panel-padding-x" data-unit="px">
+
+        <label for="panel-padding-y">Panel Vertical Padding</label>
+        <span id="panel-padding-y-value">10px</span>
+        <input type="range" id="panel-padding-y" min="0" max="100" value="10" class="style-control"
+          data-style-property="--panel-padding-y" data-unit="px">
+
+        <label for="font-size">Text Size</label>
+        <span id="font-size-value">16px</span>
+        <input type="range" id="font-size" min="12" max="48" step="1" value="16" class="style-control"
+          data-style-property="--font-size-base" data-unit="px">
       </div>
-  
-      <!-- Tabs Container (Now Properly Targeted by CSS) -->
-      <div class="tab-container">
-        <!-- Styles Tab -->
-        <div class="tab-content" id="styles-content">
-          <h3>Styles</h3>
-  
-          <label for="border-radius">Border Radius</label>
-          <span id="border-radius-value">15px</span>
-          <input type="range" id="border-radius" min="0" max="50" value="15" class="style-control" data-style-property="--border-radius" data-unit="px">
-  
-          <label for="spacing">Section Spacing</label>
-          <span id="spacing-value">1rem</span>
-          <input type="range" id="spacing" min="0" max="100" value="1" step="1" class="style-control" data-style-property="--spacing-unit" data-unit="rem">
-  
-          <label for="container">Container Width</label>
-          <span id="container-value">50%</span>
-          <input type="range" id="container" min="50" max="100" value="50" class="style-control" data-style-property="--container-width" data-unit="%">
-  
-          <label for="column-gap">Column Gap</label>
-          <span id="column-gap-value">0.5rem</span>
-          <input type="range" id="column-gap" min="0" max="2" step="0.1" value="0.5" class="style-control" data-style-property="--column-gap" data-unit="rem">
-  
-          <label for="panel-padding-x">Panel Horizontal Padding</label>
-          <span id="panel-padding-x-value">15px</span>
-          <input type="range" id="panel-padding-x" min="0" max="30" value="15" class="style-control" data-style-property="--panel-padding-x" data-unit="px">
-  
-          <label for="panel-padding-y">Panel Vertical Padding</label>
-          <span id="panel-padding-y-value">10px</span>
-          <input type="range" id="panel-padding-y" min="0" max="100" value="10" class="style-control" data-style-property="--panel-padding-y" data-unit="px">
-  
-          <label for="font-size">Text Size</label>
-          <span id="font-size-value">16px</span>
-          <input type="range" id="font-size" min="12" max="48" step="1" value="16" class="style-control" data-style-property="--font-size-base" data-unit="px">
+
+      <!-- Theme Tab -->
+      <div class="tab-content" id="theme-content">
+        <h3>Theme</h3>
+
+        <label for="theme-mode">Theme Mode</label>
+        <span id="theme-mode-value">Light</span>
+        <input type="range" id="theme-mode" min="0" max="100" value="0" step="1" class="style-control"
+          data-style-property="--theme-mode">
+
+        <h3>Colors:</h3>
+        <div class="color-group">
+          <div class="color-swatch" id="color-error">
+            <span class="color-name">Error</span>
+            <span class="color-hex" id="error-hex">#FF0000</span>
+            <input type="color" class="color-input" id="error-input">
+            <button class="lock-btn" id="error-lock">🔓</button>
+          </div>
         </div>
-  
-        <!-- Theme Tab -->
-        <div class="tab-content" id="theme-content">
-          <h3>Theme</h3>
-  
-          <span id="theme-mode-value">Light</span>
-          <input type="range" id="theme-mode" min="0" max="100" value="0" step="1" class="style-control" data-style-property="--theme-mode">
-  
-          <h3>Colors:</h3>
-          <div class="color-swatch" id="color-error">Error</div>
-          <div class="color-swatch" id="color-action">Action</div>
-          <div class="color-swatch" id="color-success">Success</div>
-          <div class="color-swatch" id="color-info">Info</div>
-          <button class="btn holo" id="cycleButton">Cycle Colors</button>
+        <div class="color-group">
+          <div class="color-swatch" id="color-action">
+            <span class="color-name">Action</span>
+            <span class="color-hex" id="action-hex">#9C27B0</span>
+            <input type="color" class="color-input" id="action-input">
+            <button class="lock-btn" id="action-lock">🔓</button>
+          </div>
         </div>
+        <div class="color-group">
+          <div class="color-swatch" id="color-success">
+            <span class="color-name">Success</span>
+            <span class="color-hex" id="success-hex">#4CAF50</span>
+            <input type="color" class="color-input" id="success-input">
+            <button class="lock-btn" id="success-lock">🔓</button>
+          </div>
+        </div>
+        <div class="color-group">
+          <div class="color-swatch" id="color-info">
+            <span class="color-name">Info</span>
+            <span class="color-hex" id="info-hex">#2196F3</span>
+            <input type="color" class="color-input" id="info-input">
+            <button class="lock-btn" id="info-lock">🔓</button>
+          </div>
+        </div>
+        <button class="btn holo" id="cycleButton">Cycle Colors</button>
       </div>
     </div>
-  
-    <!-- Buttons at the Bottom -->
-    <div class="panel-buttons">
-      <!-- <button class="btn success" id="deploy-btn">Deploy</button> -->
-      <button class="btn info" id="download-css">Download</button>
-      <button class="btn holo" id="reset-defaults">Reset to Defaults</button>
-      👾 <a href="https://github.com/bitnations/bitui" target="_blank">Github</a>
-    </div>
-  
-  </div>  
+  </div>
+
+  <!-- Buttons at the Bottom -->
+  <div class="panel-buttons">
+    <!-- <button class="btn success" id="deploy-btn">Deploy</button> -->
+    <button class="btn info" id="download-css">Download</button>
+    <button class="btn holo" id="reset-defaults">Reset to Defaults</button>
+    👾 <a href="https://github.com/bitnations/bitui" target="_blank">Github</a>
+  </div>
+
+</div>
 
   <!-- Main Content -->
   <main class="content">
@@ -446,12 +484,12 @@
           <div class="col-6">
             <div class="panel dark">
               <h3 class="center">Form States</h3>
-              <label for="error-input">Error Input</label>
-              <input type="text" id="error-input" class="error" placeholder="This field has an error">
-              <label for="success-input">Success Input</label>
-              <input type="text" id="success-input" class="success" placeholder="This field is valid">
-              <label for="disabled-input">Disabled Input</label>
-              <input type="text" id="disabled-input" disabled placeholder="This field is disabled">
+              <label for="form-error-input">Error Input</label>
+              <input type="text" id="form-error-input" class="error" placeholder="This field has an error">
+              <label for="form-success-input">Success Input</label>
+              <input type="text" id="form-success-input" class="success" placeholder="This field is valid">
+              <label for="form-disabled-input">Disabled Input</label>
+              <input type="text" id="form-disabled-input" disabled placeholder="This field is disabled">
             </div>
           </div>
         </div>

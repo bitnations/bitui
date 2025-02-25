@@ -734,7 +734,7 @@ input[type="checkbox"].success {
   padding: 15px;
 }
 
-/* ✅ FIXED: Ensure content shows properly when checked */
+/* Ensure content shows properly when checked */
 #tab-styles:checked ~ .tab-container #styles-content,
 #tab-theme:checked ~ .tab-container #theme-content {
   display: block;

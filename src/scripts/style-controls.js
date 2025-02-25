@@ -362,8 +362,11 @@ class StyleController {
   
     Object.entries(defaultColors).forEach(([key, color]) => {
       document.documentElement.style.setProperty(`--${key}`, color);
-      const swatch = document.getElementById(`color-${key.replace('-hover', '').toLowerCase()}`);
-      if (swatch) swatch.style.backgroundColor = defaultColors[key.replace('-hover', '')];
+      const baseKey = key.replace('-hover', '');
+      const swatch = document.getElementById(`color-${baseKey}`);
+      if (swatch && !key.includes('-hover')) {
+        swatch.style.backgroundColor = color;
+      }
     });
   
     localStorage.setItem('bitui-generated-colors', JSON.stringify(defaultColors));
