@@ -79,12 +79,36 @@ code[class*="language-"] {
   font-family: var(--font-family-base);
   color: var(--text-color) !important;
 }
+/* Toggle Buttons */
+.snippet-toggle {
+  margin-bottom: 10px;
+}
+.toggle-btn {
+  padding: 5px 10px;
+  background: var(--panel-bg);
+  border: 1px solid var(--panel-border);
+  border-radius: var(--border-radius);
+  color: var(--text-color);
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-right: 5px;
+}
+.toggle-btn:hover {
+  background: var(--panel-bg);
+}
+.toggle-btn.active {
+  color: var(--info);
+  background: var(--panel-bg);
+  border-color: var(--panel-border);
+}
+/* Copy Button */
 .copy-btn {
   position: absolute;
   top: 10px;
   right: 10px;
   padding: 5px 10px;
-  background: var(--panel-dark-bg);
+  background: var(--panel-bg);
   border: 1px solid var(--panel-border);
   border-radius: var(--border-radius);
   color: var(--text-color);
