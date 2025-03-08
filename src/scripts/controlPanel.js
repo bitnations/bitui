@@ -7,6 +7,7 @@ const DEFAULT_COLORS = {
   info: '#2196F3'
 };
 const STYLE_STORAGE_KEY = 'bitui-style-settings';
+const CONTAINER_STORAGE_KEY = 'bitui-container-settings';
 
 /**
  * Initializes the theme mode control
@@ -452,7 +453,7 @@ function initButtons() {
  */
 function resetDefaults() {
   // Clear only style-related custom properties
-  const styleProperties = ['--border-radius', '--column-gap', '--font-size-base'];
+  const styleProperties = ['--border-radius', '--column-gap', '--font-size-base', '--container-width', '--container-padding'];
   styleProperties.forEach(prop => {
     document.documentElement.style.removeProperty(prop);
   });
@@ -479,6 +480,7 @@ function resetDefaults() {
   
   // Clear style-related localStorage items
   localStorage.removeItem(STYLE_STORAGE_KEY);
+  localStorage.removeItem(CONTAINER_STORAGE_KEY);
 }
 
 /**
@@ -555,6 +557,7 @@ function loadColorsFromStorage() {
 function saveStyleSettings() {
   try {
     const styles = {};
+    const containerSettings = {};
     
     // Get all style controls
     document.querySelectorAll('.style-control').forEach(control => {
@@ -564,12 +567,19 @@ function saveStyleSettings() {
       const property = control.dataset.styleProperty;
       if (property) {
         const unit = control.dataset.unit || '';
-        styles[property] = { value: control.value, unit };
+        
+        // Separate container settings from other style settings
+        if (property.includes('container')) {
+          containerSettings[property] = { value: control.value, unit };
+        } else {
+          styles[property] = { value: control.value, unit };
+        }
       }
     });
     
     // Save to localStorage
     localStorage.setItem(STYLE_STORAGE_KEY, JSON.stringify(styles));
+    localStorage.setItem(CONTAINER_STORAGE_KEY, JSON.stringify(containerSettings));
   } catch (error) {
     console.error('Error saving style settings to localStorage:', error);
   }
@@ -581,6 +591,9 @@ function saveStyleSettings() {
 function loadStyleSettings() {
   try {
     const savedStyles = localStorage.getItem(STYLE_STORAGE_KEY);
+    const savedContainerSettings = localStorage.getItem(CONTAINER_STORAGE_KEY);
+    let settingsLoaded = false;
+    
     if (savedStyles) {
       const styles = JSON.parse(savedStyles);
       
@@ -604,8 +617,36 @@ function loadStyleSettings() {
         }
       });
       
-      return true;
+      settingsLoaded = true;
     }
+    
+    if (savedContainerSettings) {
+      const containerStyles = JSON.parse(savedContainerSettings);
+      
+      // Apply each container style
+      Object.entries(containerStyles).forEach(([property, data]) => {
+        const { value, unit } = data;
+        
+        // Set the CSS variable
+        document.documentElement.style.setProperty(property, value + unit);
+        
+        // Update control if it exists
+        const control = document.querySelector(`.style-control[data-style-property="${property}"]`);
+        if (control) {
+          control.value = value;
+          
+          // Update value display
+          const valueDisplay = document.getElementById(`${control.id}-value`);
+          if (valueDisplay) {
+            valueDisplay.textContent = value + unit;
+          }
+        }
+      });
+      
+      settingsLoaded = true;
+    }
+    
+    return settingsLoaded;
   } catch (error) {
     console.error('Error loading style settings from localStorage:', error);
   }
