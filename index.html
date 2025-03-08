@@ -22,6 +22,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
   <!-- Code Snippet -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
+  <!-- Prism.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
 </head>
 
 <body>
@@ -56,10 +58,6 @@
             <p>
               12-column system
               <code class="language-html">col-1</code> to <code class="language-html">col-12</code>.
-              The recommended structure is:
-              <code class="language-html">row</code> > <code class="language-html">col</code> > <code class="language-html">panel</code>
-              You can nest as many <code class="language-html">row</code>, <code class="language-html">col</code>,
-              and <code class="language-html">panel</code> elements as needed.
             </p>
           </div>
         </div>
@@ -151,6 +149,13 @@
         </div>
       </div>
 
+      <!-- Code Example -->
+      <div class="row">
+        <div class="col-12">
+          <div id="snippet-columns"></div>
+        </div>
+      </div>
+
       <!-- Flex-Box Grid -->
       <div class="row">
         <div class="col-12">
@@ -197,14 +202,45 @@
         </div>
       </div>
 
+      <!-- Code Snippet: Flex -->
+      <div class="row">
+        <div class="col-12">
+          <div id="snippet-flex"></div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <div class="panel light">
+            <h2 class="center">Structure</h2>
+            <p>
+              <code class="language-html">container</code> > 
+              <code class="language-html">row</code> > 
+              <code class="language-html">col</code> > 
+              <code class="language-html">your content</code>.
+              Use <code class="language-html">panel</code> class for basic style.
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Code Example -->
+      <div class="row">
+        <div class="col-12">
+          <div id="snippet-structure"></div>
+        </div>
+      </div>
+
       <!-- Layout -->
       <div class="row">
         <div class="col-12">
           <div class="panel light">
             <h2 class="center">Layout</h2>
             <p>
-              Create complex nested layouts by placing <code class="language-html">row</code> 
+              Create nested layouts by placing <code class="language-html">row</code> 
               and <code class="language-html">col</code> elements inside each other.
+              You can nest as many <code class="language-html">row</code>, <code class="language-html">col</code>,
+              and <code class="language-html">panel</code> elements as needed.
             </p>
             <!-- Example 1: Nesting Layout -->
             <div class="row">
@@ -230,8 +266,12 @@
         </div>
       </div>
 
-      <!-- Code Snippet 1: Nesting Layout -->
-      <div id="snippet-layout"></div>
+      <!-- Code Snippet: Nesting Layout -->
+      <div class="row">
+        <div class="col-12">
+          <div id="snippet-layout"></div>
+        </div>
+      </div>
 
       <!-- Example 2: Center Column -->
       <div class="col-12">
@@ -241,7 +281,7 @@
         </div>
       </div>
 
-      <!-- Code Snippet 2: Center Column -->
+      <!-- Code Snippet: Center Column -->
       <div class="flex left">
         <div class="col-4 left">
           <div class="panel dark">
@@ -270,8 +310,11 @@
       </div>
 
       <!-- Code Example -->
-      <div id="snippet-position"></div>
-
+      <div class="row">
+        <div class="col-12">
+          <div id="snippet-position"></div>
+        </div>
+      </div>
 
       <!-- Typography -->
       <div class="row">
@@ -463,6 +506,8 @@
   <script src="src/scripts/storage.js"></script>
   <!-- Apply user preferences -->
   <script src="src/scripts/preferences.js"></script>
+  <!-- Code Snippets -->
+  <script src="src/scripts/snippets.js"></script>
   <!-- Download functionality -->
   <script src="src/scripts/download.js"></script>
   <!-- Control Panel -->
