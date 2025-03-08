@@ -235,6 +235,20 @@
     width: calc(100% - var(--column-gap));
   }
   
+  /* Retain Col structure on small screens */
+  .col-1-sm  { width: calc(8.33%  - var(--column-gap)); }
+  .col-2-sm  { width: calc(16.66% - var(--column-gap)); }
+  .col-3-sm  { width: calc(25%    - var(--column-gap)); }
+  .col-4-sm  { width: calc(33.33% - var(--column-gap)); }
+  .col-5-sm  { width: calc(41.66% - var(--column-gap)); }
+  .col-6-sm  { width: calc(50%    - var(--column-gap)); }
+  .col-7-sm  { width: calc(58.33% - var(--column-gap)); }
+  .col-8-sm  { width: calc(66.66% - var(--column-gap)); }
+  .col-9-sm  { width: calc(75%    - var(--column-gap)); }
+  .col-10-sm { width: calc(83.33% - var(--column-gap)); }
+  .col-11-sm { width: calc(91.66% - var(--column-gap)); }
+  .col-12-sm { width: calc(100%   - var(--column-gap)); }
+
   /* Standard 12 Column Grid */
   @media only screen and (min-width: 768px) {
     .col-1  { width: calc(8.33%  - var(--column-gap)); }
