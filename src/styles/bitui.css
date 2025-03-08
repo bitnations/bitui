@@ -6,19 +6,19 @@
    ========================================================================== */
    @font-face {
     font-family: 'Roboto Mono';
-    src: url("../../public/fonts/RobotoMono-VariableFont_wght.ttf") format('truetype');
+    src: url("../fonts/RobotoMono-VariableFont_wght.ttf") format('truetype');
     font-weight: 100 900; /* Allows any weight from 100 to 900 */
     font-style: normal;
   }
   @font-face {
     font-family: 'Roboto Mono';
-    src: url("../../public/fonts/RobotoMono-Italic-VariableFont_wght.ttf") format('truetype');
+    src: url("../fonts/RobotoMono-Italic-VariableFont_wght.ttf") format('truetype');
     font-weight: 100 900; /* Allows any weight from 100 to 900 */
     font-style: italic;
   }
   @font-face {
     font-family: 'NotoColorEmojiLimited';
-    src: url("../../public/fonts/NotoColorEmoji.ttf") format('truetype');
+    src: url("../fonts/NotoColorEmoji.ttf") format('truetype');
     unicode-range: U+1F600-U+1F64F;
   }
   

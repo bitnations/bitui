@@ -61,6 +61,11 @@
   transform: rotate(180deg);
 }
 
+/* Add this if it doesn't exist already */
+.control-panel.collapsed {
+  transform: translateX(calc(100%));
+}
+
 /* Style controls should have fixed spacing */
 .style-control {
   width: 100%;
