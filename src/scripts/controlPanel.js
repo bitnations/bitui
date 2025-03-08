@@ -220,7 +220,12 @@ function initColorControls() {
       
       // Update color on change
       input.addEventListener('input', () => {
-        document.documentElement.style.setProperty(`--color-${type}`, input.value);
+        // Set the CSS variable with the correct name (--danger, --warning, etc.)
+        document.documentElement.style.setProperty(`--${type}`, input.value, 'important');
+        
+        // Also update the hover variant
+        document.documentElement.style.setProperty(`--${type}-hover`, input.value, 'important');
+        
         hexDisplay.textContent = input.value.toUpperCase();
       });
       
@@ -312,7 +317,11 @@ function cycleColors() {
     // Skip locked colors
     if (isLocked) return;
     
-    document.documentElement.style.setProperty(`--color-${type}`, color);
+    // Set the CSS variable with the correct name (--danger, --warning, etc.)
+    document.documentElement.style.setProperty(`--${type}`, color, 'important');
+    
+    // Also set the hover variant
+    document.documentElement.style.setProperty(`--${type}-hover`, color, 'important');
     
     // Update input and display
     const input = document.getElementById(`${type}-input`);
@@ -326,6 +335,11 @@ function cycleColors() {
       hexDisplay.textContent = color.toUpperCase();
     }
   });
+  
+  // Force a repaint to ensure changes take effect
+  document.body.style.display = 'none';
+  document.body.offsetHeight; // Trigger a reflow
+  document.body.style.display = '';
   
   // Save current index
   localStorage.setItem('colorSchemeIndex', currentIndex.toString());
