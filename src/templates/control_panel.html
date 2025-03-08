@@ -33,8 +33,6 @@
       <div class="tab-container">
         <!-- Styles Tab -->
         <div class="tab-content" id="styles-content">
-          <h3>Styles</h3>
-
           <label for="border-radius">Border Radius</label>
           <span id="border-radius-value">15px</span>
           <input type="range" id="border-radius" min="0" max="50" value="15" class="style-control"
@@ -47,8 +45,9 @@
 
           <label for="font-size">Text Size</label>
           <span id="font-size-value">16px</span>
-          <input type="range" id="font-size" min="12" max="48" step="1" value="16" class="style-control"
+          <input type="range" id="font-size" min="12" max="24" step="1" value="16" class="style-control"
             data-style-property="--font-size-base" data-unit="px">
+          <button class="btn holo" id="reset-defaults">Reset to Styles</button>
         </div>
 
         <!-- Theme Tab -->
@@ -91,16 +90,15 @@
             </div>
           </div>
           <button class="btn holo" id="cycleButton">Cycle Colors</button>
-          <button class="btn confirm" id="applyButton">Apply Colors</button>
-          <button class="btn danger" id="resetColorsButton">Reset Colors</button>
+          <button class="btn holo" id="applyButton">Apply Colors</button>
+          <button class="btn holo" id="resetColorsButton">Reset Colors</button>
         </div>
       </div>
     </div>
 
     <!-- Buttons at the Bottom -->
     <div class="panel-buttons">
-      <button class="btn info" id="download-css">Download</button>
-      <button class="btn holo" id="reset-defaults">Reset to Defaults</button>
+      <button class="btn info" id="download-css">Download bitUI</button>
       👾 <a href="https://github.com/bitnations/bitui" target="_blank">Github</a>
     </div>
   </div>

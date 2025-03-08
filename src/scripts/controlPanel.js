@@ -6,6 +6,7 @@ const DEFAULT_COLORS = {
   confirm: '#4CAF50',
   info: '#2196F3'
 };
+const STYLE_STORAGE_KEY = 'bitui-style-settings';
 
 /**
  * Initializes the theme mode control
@@ -140,15 +141,27 @@ function initTogglePanel() {
  * Initializes the style controls (border radius, column gap, font size)
  */
 function initStyleControls() {
+  // First try to load style settings from localStorage
+  const stylesLoaded = loadStyleSettings();
+  
   const styleControls = document.querySelectorAll('.style-control');
   
   styleControls.forEach(control => {
+    // Skip theme control
+    if (control.id === 'theme-mode') return;
+    
     const property = control.dataset.styleProperty;
     const unit = control.dataset.unit || '';
     const valueDisplay = document.getElementById(`${control.id}-value`);
     
-    // Set initial value
-    updateStyleProperty(property, control.value + unit);
+    // If styles weren't loaded from localStorage, set initial value
+    if (!stylesLoaded) {
+      updateStyleProperty(property, control.value + unit);
+      
+      if (valueDisplay) {
+        valueDisplay.textContent = control.value + unit;
+      }
+    }
     
     // Update on change
     control.addEventListener('input', () => {
@@ -158,6 +171,9 @@ function initStyleControls() {
       if (valueDisplay) {
         valueDisplay.textContent = value;
       }
+      
+      // Save to localStorage
+      saveStyleSettings();
     });
   });
 }
@@ -432,49 +448,37 @@ function initButtons() {
 }
 
 /**
- * Resets all styles to default values
+ * Resets style controls to default values without confirmation
  */
 function resetDefaults() {
-  if (confirm('Reset all styles to default values?')) {
-    // Clear all custom properties set on the document
-    const styles = document.documentElement.style;
-    for (let i = styles.length - 1; i >= 0; i--) {
-      const prop = styles[i];
-      if (prop.startsWith('--')) {
-        styles.removeProperty(prop);
-      }
-    }
+  // Clear only style-related custom properties
+  const styleProperties = ['--border-radius', '--column-gap', '--font-size-base'];
+  styleProperties.forEach(prop => {
+    document.documentElement.style.removeProperty(prop);
+  });
+  
+  // Reset style controls to default values
+  document.querySelectorAll('.style-control').forEach(control => {
+    // Skip theme control
+    if (control.id === 'theme-mode') return;
     
-    // Reset theme
-    document.documentElement.dataset.theme = 'light';
-    
-    // Reset controls to default values
-    document.querySelectorAll('.style-control').forEach(control => {
+    // Only reset controls with style properties
+    if (control.dataset.styleProperty && styleProperties.includes(control.dataset.styleProperty)) {
       control.value = control.defaultValue;
       const valueDisplay = document.getElementById(`${control.id}-value`);
       if (valueDisplay) {
         valueDisplay.textContent = control.value + (control.dataset.unit || '');
       }
-    });
-    
-    // Reset theme mode slider and display
-    const themeControl = document.getElementById('theme-mode');
-    const themeValueDisplay = document.getElementById('theme-mode-value');
-    if (themeControl) {
-      themeControl.value = 0;
+      
+      // Apply the default value
+      const property = control.dataset.styleProperty;
+      const unit = control.dataset.unit || '';
+      document.documentElement.style.setProperty(property, control.value + unit);
     }
-    if (themeValueDisplay) {
-      themeValueDisplay.textContent = 'Light';
-    }
-    
-    // Reset colors and apply them
-    resetColors();
-    applyColors();
-    
-    // Clear localStorage
-    localStorage.removeItem('colorSchemeIndex');
-    localStorage.removeItem(COLOR_STORAGE_KEY);
-  }
+  });
+  
+  // Clear style-related localStorage items
+  localStorage.removeItem(STYLE_STORAGE_KEY);
 }
 
 /**
@@ -540,6 +544,70 @@ function loadColorsFromStorage() {
     }
   } catch (error) {
     console.error('Error loading colors from localStorage:', error);
+  }
+  
+  return false;
+}
+
+/**
+ * Save style settings to localStorage
+ */
+function saveStyleSettings() {
+  try {
+    const styles = {};
+    
+    // Get all style controls
+    document.querySelectorAll('.style-control').forEach(control => {
+      // Skip theme control
+      if (control.id === 'theme-mode') return;
+      
+      const property = control.dataset.styleProperty;
+      if (property) {
+        const unit = control.dataset.unit || '';
+        styles[property] = { value: control.value, unit };
+      }
+    });
+    
+    // Save to localStorage
+    localStorage.setItem(STYLE_STORAGE_KEY, JSON.stringify(styles));
+  } catch (error) {
+    console.error('Error saving style settings to localStorage:', error);
+  }
+}
+
+/**
+ * Load style settings from localStorage
+ */
+function loadStyleSettings() {
+  try {
+    const savedStyles = localStorage.getItem(STYLE_STORAGE_KEY);
+    if (savedStyles) {
+      const styles = JSON.parse(savedStyles);
+      
+      // Apply each style
+      Object.entries(styles).forEach(([property, data]) => {
+        const { value, unit } = data;
+        
+        // Set the CSS variable
+        document.documentElement.style.setProperty(property, value + unit);
+        
+        // Update control if it exists
+        const control = document.querySelector(`.style-control[data-style-property="${property}"]`);
+        if (control) {
+          control.value = value;
+          
+          // Update value display
+          const valueDisplay = document.getElementById(`${control.id}-value`);
+          if (valueDisplay) {
+            valueDisplay.textContent = value + unit;
+          }
+        }
+      });
+      
+      return true;
+    }
+  } catch (error) {
+    console.error('Error loading style settings from localStorage:', error);
   }
   
   return false;
