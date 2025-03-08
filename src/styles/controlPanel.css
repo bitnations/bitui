@@ -190,12 +190,16 @@
 }
 input[type="color"] {
   padding: 0;
-  border: none;
+  border: 1px solid var(--panel-border);
   outline: none;
   box-shadow: none;
   background: none;
   width: 30px !important;
   height: 30px !important;
+}
+input::-webkit-color-swatch {
+  transition: all 0.3s ease;
+  border: none; /* Remove default border */
 }
 
 .lock-btn {
