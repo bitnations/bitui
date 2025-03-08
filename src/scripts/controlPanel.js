@@ -229,7 +229,33 @@ function initColorControls() {
         lockBtn.addEventListener('click', () => {
           const isLocked = lockBtn.textContent === '🔒';
           lockBtn.textContent = isLocked ? '🔓' : '🔒';
-          input.disabled = !isLocked;
+        });
+      }
+      
+      // Add click-to-copy functionality for hex values
+      if (hexDisplay) {
+        hexDisplay.style.cursor = 'pointer'; // Show pointer cursor on hover
+        hexDisplay.title = 'Click to copy'; // Add tooltip
+        
+        hexDisplay.addEventListener('click', () => {
+          // Get the hex value
+          const hexValue = hexDisplay.textContent;
+          
+          // Copy to clipboard
+          navigator.clipboard.writeText(hexValue)
+            .then(() => {
+              // Show brief visual feedback
+              const originalText = hexDisplay.textContent;
+              hexDisplay.textContent = 'Copied!';
+              
+              // Restore original text after a short delay
+              setTimeout(() => {
+                hexDisplay.textContent = originalText;
+              }, 1000);
+            })
+            .catch(err => {
+              console.error('Failed to copy: ', err);
+            });
         });
       }
     }
@@ -279,13 +305,20 @@ function cycleColors() {
   // Apply new color scheme
   const newScheme = colorSchemes[currentIndex];
   Object.entries(newScheme).forEach(([type, color]) => {
+    // Check if color is locked by looking at the lock emoji
+    const lockBtn = document.getElementById(`${type}-lock`);
+    const isLocked = lockBtn && lockBtn.textContent === '🔒';
+    
+    // Skip locked colors
+    if (isLocked) return;
+    
     document.documentElement.style.setProperty(`--color-${type}`, color);
     
     // Update input and display
     const input = document.getElementById(`${type}-input`);
     const hexDisplay = document.getElementById(`${type}-hex`);
     
-    if (input && !input.disabled) {
+    if (input) {
       input.value = color;
     }
     
