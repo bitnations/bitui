@@ -9,6 +9,8 @@ const DEFAULT_COLORS = {
 const STYLE_STORAGE_KEY = 'bitui-style-settings';
 const CONTAINER_STORAGE_KEY = 'bitui-container-settings';
 
+// Essential files list moved to download.js
+
 /**
  * Initializes the theme mode control
  */
@@ -441,6 +443,18 @@ function initButtons() {
     });
   }
   
+  // Download all essential files button
+  const downloadAllBtn = document.getElementById('download-all');
+  if (downloadAllBtn) {
+    if (typeof window.downloadAllFiles === 'function') {
+      downloadAllBtn.addEventListener('click', window.downloadAllFiles);
+    } else {
+      console.error('downloadAllFiles function not found. Make sure download.js is loaded.');
+      downloadAllBtn.disabled = true;
+      downloadAllBtn.title = 'Download functionality not available';
+    }
+  }
+  
   // Reset defaults button
   const resetBtn = document.getElementById('reset-defaults');
   if (resetBtn) {
@@ -452,10 +466,13 @@ function initButtons() {
  * Resets style controls to default values without confirmation
  */
 function resetDefaults() {
+  console.log('Resetting styles to defaults');
+  
   // Clear only style-related custom properties
   const styleProperties = ['--border-radius', '--column-gap', '--font-size-base', '--container-width', '--container-padding'];
   styleProperties.forEach(prop => {
     document.documentElement.style.removeProperty(prop);
+    console.log(`Removed property: ${prop}`);
   });
   
   // Reset style controls to default values
@@ -475,12 +492,24 @@ function resetDefaults() {
       const property = control.dataset.styleProperty;
       const unit = control.dataset.unit || '';
       document.documentElement.style.setProperty(property, control.value + unit);
+      console.log(`Reset control: ${control.id} to ${control.value}${unit}`);
     }
   });
   
   // Clear style-related localStorage items
   localStorage.removeItem(STYLE_STORAGE_KEY);
   localStorage.removeItem(CONTAINER_STORAGE_KEY);
+  console.log('Cleared localStorage items:', STYLE_STORAGE_KEY, CONTAINER_STORAGE_KEY);
+  
+  // Force save empty settings to ensure they're cleared
+  saveStyleSettings();
+  
+  // Force a repaint to ensure changes take effect
+  document.body.style.display = 'none';
+  document.body.offsetHeight; // Trigger a reflow
+  document.body.style.display = '';
+  
+  console.log('Reset completed');
 }
 
 /**
