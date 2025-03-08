@@ -1,295 +1,222 @@
-function hslToHex(h, s, l) {
-  s /= 100;
-  l /= 100;
-  const k = n => (n + h / 30) % 12;
-  const a = s * Math.min(l, 1 - l);
-  const f = n =>
-    l - a * Math.max(-1, Math.min(Math.min(k(n) - 3, 9 - k(n)), 1));
+/**
+ * colors.js - Simple color palette cycling for bitUI
+ * 
+ * Features:
+ * - Cycle through color variations when button is clicked
+ * - Skip locked colors
+ * - Maintain color picker functionality
+ * - Load/save colors from localStorage
+ */
 
-  const r = Math.round(255 * f(0));
-  const g = Math.round(255 * f(8));
-  const b = Math.round(255 * f(4));
+// Color types we're managing
+const COLOR_TYPES = ['danger', 'warning', 'confirm', 'info'];
 
-  const toHex = x => x.toString(16).padStart(2, "0");
-  return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
+// Color palettes - variations of the original colors
+const COLOR_PALETTES = [
+  // Original palette (from bitui.css)
+  {
+    danger: '#E15554',   // rgba(225, 85, 84, 1)
+    warning: '#FFA500',  // rgba(255, 165, 0, 1)
+    confirm: '#3BB273',  // rgba(59, 178, 115, 1)
+    info: '#4D9DE0'      // rgba(77, 157, 224, 1)
+  },
+  // Pastel variation
+  {
+    danger: '#FF9999',
+    warning: '#FFCC99',
+    confirm: '#99DDBB',
+    info: '#99CCFF'
+  },
+  // Deep variation
+  {
+    danger: '#CC3333',
+    warning: '#E69500',
+    confirm: '#2D8A5E',
+    info: '#2D6DA9'
+  },
+  // Muted variation
+  {
+    danger: '#D47777',
+    warning: '#D4A877',
+    confirm: '#77D49A',
+    info: '#77A8D4'
+  }
+];
+
+// Current palette index
+let currentPaletteIndex = 0;
+
+// Storage key
+const STORAGE_KEY = 'bitui-colors';
+
+/**
+ * Check if a color is locked
+ */
+function isColorLocked(type) {
+  const lockBtn = document.getElementById(`${type}-lock`);
+  return lockBtn && lockBtn.textContent === '🔒';
 }
 
-function rgbToHex(rgb) {
-  if (!rgb || typeof rgb !== 'string') return '#000000'; // Default to black if null/undefined/invalid
-  if (rgb.startsWith('#')) return rgb;
-  const match = rgb.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
-  if (!match) return rgb;
-  const [, r, g, b] = match;
-  return `#${parseInt(r).toString(16).padStart(2, '0')}${parseInt(g).toString(16).padStart(2, '0')}${parseInt(b).toString(16).padStart(2, '0')}`;
+/**
+ * Apply a color to CSS and update UI
+ */
+function applyColor(type, color) {
+  // Skip if locked
+  if (isColorLocked(type)) return;
+  
+  // Update CSS variable
+  document.documentElement.style.setProperty(`--${type}`, color);
+  document.documentElement.style.setProperty(`--${type}-hover`, color);
+  
+  // Update hex display 
+  const hexDisplay = document.getElementById(`${type}-hex`);
+  if (hexDisplay) hexDisplay.textContent = color.toUpperCase();
+
+  // Update color input
+  const input = document.getElementById(`${type}-input`);
+  if (input) input.value = color;
+  
+  // Save to localStorage
+  saveColors();
 }
 
-const baseHues = {
-  error: 0,
-  action: 35,
-  success: 120,
-  info: 210
-};
-
-const lockedColors = {
-  error: false,
-  action: false,
-  success: false,
-  info: false
-};
-
-const colorValues = {
-  error: null,
-  'error-hover': null,
-  action: null,
-  'action-hover': null,
-  success: null,
-  'success-hover': null,
-  info: null,
-  'info-hover': null
-};
-
-const manualColors = {};
-let cycleStep = 0;
-
-// Store the base palette for the current cycle step
-let currentPalette = null;
-// Store the initial palette (before any cycling)
-let initialPalette = null;
-
-function cycleHue(baseHue, step) {
-  return (baseHue + step) % 360;
-}
-
-function generateCycledPalette(step) {
-  return {
-    error: hslToHex(cycleHue(baseHues.error, step), 50, 50),
-    'error-hover': hslToHex(cycleHue(baseHues.error, step), 50, 55),
-    action: hslToHex(cycleHue(baseHues.action, step), 50, 50),
-    'action-hover': hslToHex(cycleHue(baseHues.action, step), 50, 55),
-    success: hslToHex(cycleHue(baseHues.success, step), 50, 50),
-    'success-hover': hslToHex(cycleHue(baseHues.success, step), 50, 55),
-    info: hslToHex(cycleHue(baseHues.info, step), 50, 50),
-    'info-hover': hslToHex(cycleHue(baseHues.info, step), 50, 55)
-  };
-}
-
-function applyColorsToUI(generatedColors) {
-  const hexColors = {};
-  Object.entries(generatedColors).forEach(([key, color]) => {
-    const hexColor = rgbToHex(color);
-    hexColors[key] = hexColor;
-    colorValues[key] = hexColor;
-    document.documentElement.style.setProperty(`--${key}`, hexColor);
-  });
-
-  ['error', 'action', 'success', 'info'].forEach(baseKey => {
-    const swatch = document.getElementById(`color-${baseKey}`);
-    const input = document.getElementById(`${baseKey}-input`);
-    const hexDisplay = document.getElementById(`${baseKey}-hex`);
-    const lockBtn = document.getElementById(`${baseKey}-lock`);
-    
-    if (swatch) {
-      swatch.style.backgroundColor = hexColors[baseKey];
-      // Determine if text should be white or black based on background color brightness
-      const brightness = getBrightness(hexColors[baseKey]);
-      swatch.style.color = brightness > 128 ? 'black' : 'white';
+/**
+ * Get the hex color
+ */
+function getHexColor(color) {
+  if (!color) return '#000000';
+  if (color.startsWith('#')) return color;
+  
+  // Handle rgb format
+  if (color.startsWith('rgb')) {
+    const rgbValues = color.match(/\d+/g);
+    if (rgbValues && rgbValues.length >= 3) {
+      const r = parseInt(rgbValues[0]);
+      const g = parseInt(rgbValues[1]);
+      const b = parseInt(rgbValues[2]);
+      return `#${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${b.toString(16).padStart(2, '0')}`;
     }
-    
-    if (input) input.value = hexColors[baseKey];
-    if (hexDisplay) hexDisplay.textContent = hexColors[baseKey];
-    if (lockBtn) lockBtn.textContent = lockedColors[baseKey] ? '🔐' : '🔓';
-  });
-
-  localStorage.setItem('bitui-generated-colors', JSON.stringify(hexColors));
-}
-
-// Helper function to determine brightness of a color
-function getBrightness(hexColor) {
-  const r = parseInt(hexColor.slice(1, 3), 16);
-  const g = parseInt(hexColor.slice(3, 5), 16);
-  const b = parseInt(hexColor.slice(5, 7), 16);
-  return (r * 299 + g * 587 + b * 114) / 1000; // Formula to determine perceived brightness
-}
-
-function updatePalette(cycle = false) {
-  // Initialize initialPalette if it doesn't exist yet
-  if (!initialPalette) {
-    initialPalette = generateCycledPalette(0);
   }
   
-  // Only regenerate the currentPalette when explicitly cycling
-  if (cycle) {
-    cycleStep += 20;
-    currentPalette = generateCycledPalette(cycleStep);
-  } else if (!currentPalette) {
-    // If no current palette exists yet, initialize it
-    currentPalette = {...initialPalette};
-  }
-  
-  const generatedColors = {};
-  
-  ['error', 'action', 'success', 'info'].forEach(key => {
-    if (manualColors[key]) {
-      generatedColors[key] = manualColors[key];
-      // Use the improved hover color calculation for manually selected colors
-      generatedColors[`${key}-hover`] = createHoverColor(manualColors[key]);
-    } else if (lockedColors[key] && colorValues[key]) {
-      generatedColors[key] = colorValues[key];
-      generatedColors[`${key}-hover`] = colorValues[`${key}-hover`];
-    } else {
-      generatedColors[key] = currentPalette[key];
-      generatedColors[`${key}-hover`] = currentPalette[`${key}-hover`];
-    }
-  });
-
-  applyColorsToUI(generatedColors);
+  return '#000000';
 }
 
-// Improved function to create better hover colors
-function createHoverColor(hexColor) {
-  const r = parseInt(hexColor.slice(1, 3), 16);
-  const g = parseInt(hexColor.slice(3, 5), 16);
-  const b = parseInt(hexColor.slice(5, 7), 16);
-  
-  // Convert to HSL
-  const [h, s, l] = rgbToHsl(r, g, b);
-  
-  // For dark colors, make the hover state lighter
-  // For light colors, make the hover state slightly darker
-  // This ensures better contrast and visibility for hover states
-  let newL;
-  if (l < 50) {
-    // For darker colors, brighten by 10-15%
-    newL = Math.min(l + 15, 100);
-  } else {
-    // For lighter colors, darken slightly or add saturation
-    newL = Math.max(l - 5, 0);
-  }
-  
-  // Adjust saturation slightly to make hover state more vibrant
-  const newS = Math.min(s + 5, 100);
-  
-  return hslToHex(h, newS, newL);
-}
-
-// Replace the old adjustLightness function with our improved version
-function adjustLightness(hex, lightness) {
-  return createHoverColor(hex);
-}
-
-function rgbToHsl(r, g, b) {
-  r /= 255; g /= 255; b /= 255;
-  const max = Math.max(r, g, b);
-  const min = Math.min(r, g, b);
-  let h, s, l = (max + min) / 2;
-
-  if (max === min) {
-    h = s = 0;
-  } else {
-    const d = max - min;
-    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-    switch (max) {
-      case r: h = (g - b) / d + (g < b ? 6 : 0); break;
-      case g: h = (b - r) / d + 2; break;
-      case b: h = (r - g) / d + 4; break;
-    }
-    h /= 6;
-  }
-  return [h * 360, s * 100, l * 100];
-}
-
-function toggleLock(key) {
-  lockedColors[key] = !lockedColors[key];
-  
-  if (!lockedColors[key]) {
-    // If we're unlocking, remove any manual color
-    delete manualColors[key];
-  } else {
-    // If we're locking, save the current value
-    manualColors[key] = colorValues[key];
-  }
-  
-  // Just update the UI, don't regenerate colors
-  applyColorsToUI({
-    error: colorValues.error,
-    'error-hover': colorValues['error-hover'],
-    action: colorValues.action,
-    'action-hover': colorValues['action-hover'],
-    success: colorValues.success,
-    'success-hover': colorValues['success-hover'],
-    info: colorValues.info,
-    'info-hover': colorValues['info-hover']
-  });
-}
-
-function initColorCycler() {
-  document.addEventListener("DOMContentLoaded", () => {
-    const cycleButton = document.getElementById("cycleButton");
-    if (!cycleButton) {
-      console.warn("Cycle button not found in the DOM.");
-      return;
-    }
-    cycleButton.addEventListener("click", () => updatePalette(true));
-
-    ['error', 'action', 'success', 'info'].forEach(key => {
-      const swatch = document.getElementById(`color-${key}`);
-      const input = document.getElementById(`${key}-input`);
-      const lockBtn = document.getElementById(`${key}-lock`);
-
-      if (swatch) {
-        // Make the swatch clickable to open color picker
-        swatch.addEventListener('click', (e) => {
-          // Only trigger if not clicking the lock button
-          if (e.target !== lockBtn) {
-            input.click();
-          }
-        });
-      }
-
-      if (input) {
-        // Input is already type="color" from HTML
-        input.addEventListener('input', (e) => {
-          const hex = e.target.value.trim();
-          if (/^#[0-9A-Fa-f]{6}$/.test(hex)) {
-            manualColors[key] = hex;
-            lockedColors[key] = true;
-            updatePalette(false);
-          }
-        });
-      }
-
-      if (lockBtn) {
-        lockBtn.addEventListener('click', (e) => {
-          e.stopPropagation(); // Prevent swatch click event
-          toggleLock(key);
-        });
-      }
+/**
+ * Save colors to localStorage
+ */
+function saveColors() {
+  try {
+    const colors = {};
+    COLOR_TYPES.forEach(type => {
+      const input = document.getElementById(`${type}-input`);
+      colors[type] = input ? input.value : '';
     });
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(colors));
+  } catch (e) {
+    console.error('Error saving colors:', e);
+  }
+}
 
-    const savedColors = localStorage.getItem('bitui-generated-colors');
+/**
+ * Load colors from localStorage
+ */
+function loadColors() {
+  try {
+    const savedColors = localStorage.getItem(STORAGE_KEY);
     if (savedColors) {
       const colors = JSON.parse(savedColors);
-      Object.keys(colors).forEach(key => {
-        colors[key] = rgbToHex(colors[key]);
-        colorValues[key] = colors[key];
+      Object.entries(colors).forEach(([type, color]) => {
+        if (COLOR_TYPES.includes(type) && color) {
+          // Apply directly, bypass lock check
+          document.documentElement.style.setProperty(`--${type}`, color);
+          document.documentElement.style.setProperty(`--${type}-hover`, color);
+          
+          const input = document.getElementById(`${type}-input`);
+          if (input) input.value = color;
+          
+          const hexDisplay = document.getElementById(`${type}-hex`);
+          if (hexDisplay) hexDisplay.textContent = color.toUpperCase();
+        }
       });
-      applyColorsToUI(colors);
-      
-      // Ensure we have a current palette that matches the saved colors
-      currentPalette = {
-        error: colorValues.error,
-        'error-hover': colorValues['error-hover'],
-        action: colorValues.action,
-        'action-hover': colorValues['action-hover'],
-        success: colorValues.success,
-        'success-hover': colorValues['success-hover'],
-        info: colorValues.info,
-        'info-hover': colorValues['info-hover']
-      };
-    } else {
-      updatePalette(false);
+      return true;
     }
+  } catch (e) {
+    console.error('Error loading colors:', e);
+  }
+  return false;
+}
+
+/**
+ * Handle color cycling button
+ */
+function cycleColors() {
+  // Move to next palette
+  currentPaletteIndex = (currentPaletteIndex + 1) % COLOR_PALETTES.length;
+  const newPalette = COLOR_PALETTES[currentPaletteIndex];
+  
+  // Apply each color (skipping locked ones)
+  COLOR_TYPES.forEach(type => {
+    applyColor(type, newPalette[type]);
   });
 }
 
-export { initColorCycler };
+/**
+ * Initialize color functionality
+ */
+export function initColorCycler() {
+  // Setup color pickers
+  COLOR_TYPES.forEach(type => {
+    const input = document.getElementById(`${type}-input`);
+    if (input) {
+      // Ensure inputs are never disabled
+      input.removeAttribute('disabled');
+      
+      // Set up event listener
+      input.addEventListener('input', () => {
+        applyColor(type, input.value);
+      });
+    }
+  });
+  
+  // Setup lock buttons
+  COLOR_TYPES.forEach(type => {
+    const lockBtn = document.getElementById(`${type}-lock`);
+    if (lockBtn) {
+      lockBtn.addEventListener('click', () => {
+        // Toggle emoji
+        const isLocked = lockBtn.textContent === '🔒';
+        lockBtn.textContent = isLocked ? '🔓' : '🔒';
+      });
+    }
+  });
+  
+  // Setup cycle button
+  const cycleButton = document.getElementById('cycleButton');
+  if (cycleButton) {
+    cycleButton.addEventListener('click', cycleColors);
+  }
+  
+  // Load colors from localStorage or set defaults
+  if (!loadColors()) {
+    // Apply the first palette as default
+    COLOR_TYPES.forEach(type => {
+      applyColor(type, COLOR_PALETTES[0][type]);
+    });
+  }
+  
+  // Use a MutationObserver to prevent the disabled attribute
+  COLOR_TYPES.forEach(type => {
+    const input = document.getElementById(`${type}-input`);
+    if (input) {
+      const observer = new MutationObserver(mutations => {
+        mutations.forEach(mutation => {
+          if (mutation.attributeName === 'disabled') {
+            input.removeAttribute('disabled');
+          }
+        });
+      });
+      
+      observer.observe(input, { attributes: true });
+    }
+  });
+}

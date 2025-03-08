@@ -1,72 +1,89 @@
-# bitUI Project
+# bitUI Framework
 
-Welcome to **bitUI**, a modular and lightweight, minimalist UI Kitk built by BitNations. bitUI provides a flexible, customizable, and user-friendly UI solution for developers, inspired by the BitNations ecosystem. This repository serves as both the source code for bitUI and a static website acting as documentation and a landing page for the framework.
+A simple, lightweight CSS framework for creating clean, responsive web layouts with minimal complexity.
 
-## Project Overview
+## Features
 
-bitUI is designed to help developers create modern, responsive, and visually appealing user interfaces with minimal effort. It includes a collection of CSS styles, JavaScript utilities, and HTML templates that you can download, customize, and integrate into your projects. The framework is open-source and free for anyone to use under the MIT License.
+- **Simple 12-column grid system** - Easy to understand row > column > panel structure
+- **Flex columns** - Automatic column sizing based on container width
+- **Panel components** - Consistent content containers with light and dark variants
+- **Four themes** - Light, warm, dim, and dark themes with smooth transitions
+- **Responsive by default** - Mobile-first design that works on all screen sizes
+- **Minimal footprint** - Lightweight with no JavaScript dependencies
+- **Form and button styling** - Clean, consistent form elements and button styles
+- **CSS variables** - Easy customization of colors, spacing, and typography
 
-## Getting Started
+## Quick Start
 
-### Prerequisites
-- A modern web browser
-- A code editor (e.g., Visual Studio Code, Sublime Text)
+1. Add the CSS to your project:
 
-### View the Landing Page
-1. Open `index.html` in a web browser to explore the documentation and landing page.
-2. No additional setup is required for viewing the static site.
+```html
+<link rel="stylesheet" href="src/styles/bitui.css">
+```
 
-### Download bitUI for Use
-1. Visit the landing page (`index.html`) and click the **"Download CSS"** button to get a ZIP file containing:
-   - `bitui.css`: The compiled CSS styles for bitUI.
-   - `demo.html`: A sample HTML file demonstrating bitUI usage.
-   - `LICENSE.txt`: The MIT License governing bitUI’s use.
-2. Extract the ZIP file and use the provided files in your project.
-3. Use the HTML structure and classes (e.g., `.row`, `.col-6`, `.panel`) as shown in `demo.html` to build your UI.
+2. Set a theme (optional, defaults to light):
 
-## Using bitUI
-bitUI provides a simple, class-based system for creating layouts and components. Key features include:
+```html
+<html lang="en" data-theme="dark">
+```
 
-- A responsive grid system (e.g., `.row`, `.col-12`, `.col-6`).
-- Predefined panel styles (e.g., `.panel`, `.panel-light`, `.panel-dark`).
-- CSS variables for easy customization (e.g., `--bg-color`, `--text-color`).
-- Lightweight and modular design for fast loading.
+3. Create your layout:
 
-Refer to the `demo.html` file and the landing page for examples and documentation on usage.
+```html
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <div class="panel dark">
+        <h2>Left Column</h2>
+        <p>Content goes here</p>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="panel light">
+        <h2>Right Column</h2>
+        <p>Content goes here</p>
+      </div>
+    </div>
+  </div>
+</div>
+```
 
-## Project Goals
-1. Develop a lightweight, modular, and extensible UI kit.
-2. Provide a visually appealing and user-friendly interface for web applications.
-3. Ensure compatibility with modern browsers and accessibility standards.
-4. Offer documentation and examples for developers.
+## Grid System
 
-## Contributing
-We welcome contributions to bitUI! Whether you want to report bugs, suggest features, or submit code, here’s how you can help:
+- Use `row` to create a row container
+- Use `col-1` through `col-12` for fixed-width columns
+- Use `col-flex` for auto-adjusting columns
+- Nest rows and columns for complex layouts
 
-1. **Fork the Repository**  
-   Create your own fork of this repository on GitHub.
+## Styling Components
 
-2. **Create a Branch**  
-   Use a descriptive branch name (e.g., `feature/new-component` or `fix/bug-issue`).
+### Typography
 
-3. **Make Changes**  
-   - Follow the project structure and coding conventions (e.g., CSS variables, class naming).
-   - Update documentation (e.g., `README.md`, `index.html`) if necessary.
+```html
+<h1>Heading 1</h1>
+<p class="f-danger">Error message</p>
+<p class="f-heavy">Bold text</p>
+<p class="f-small">Small text</p>
+```
 
-4. **Submit a Pull Request**  
-   - Push your changes to your fork and create a pull request against the main branch.
-   - Include a clear description of your changes and any relevant issue numbers.
+### Alignment
+
+```html
+<div class="flex center">Centered flex container</div>
+<p class="left">Left-aligned text</p>
+<p class="center">Centered text</p>
+<p class="right">Right-aligned text</p>
+```
+
+### Form Elements
+
+```html
+<input type="text" placeholder="Standard input">
+<input type="text" class="danger" placeholder="Error input">
+<button class="btn confirm">Confirm Button</button>
+<button class="btn danger">Delete Button</button>
+```
 
 ## License
-bitUI is licensed under the **MIT License** (`LICENSE`). This means you can freely use, modify, and distribute bitUI for both personal and commercial projects, provided you include the copyright notice and license text in any distributions. See the `LICENSE` file for full details.
 
-## Acknowledgements
-- Inspired by the BitNations ecosystem and community.
-- Built with open-source tools like JSZip for file downloads and standard web technologies (HTML, CSS, JavaScript).
-
-## Support
-If you have questions or need help, please:
-- Open an issue on GitHub.
-- Contact us via [@TheBitG0D](https://x.com/TheBitG0D) on X or visit our website [bitui.co](https://bitui.co).
-
-**Happy coding with bitUI!**
+bitUI is licensed under the MIT License.

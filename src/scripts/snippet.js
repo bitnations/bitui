@@ -1,10 +1,7 @@
-// src/scripts/snippet-loader.js
 document.addEventListener('DOMContentLoaded', async () => {
   const snippetBases = [
     'layout',
     'position',
-    'sticky',
-    'structure',
   ];
 
   for (const base of snippetBases) {
@@ -17,11 +14,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     try {
-      const htmlResponse = await fetch(`../src/components/snippets/${base}.html`);
+      const htmlResponse = await fetch(`../src/snippets/${base}.html`);
       const html = await htmlResponse.text();
-      const reactResponse = await fetch(`../src/components/snippets/${base}-react.html`);
-      const react = await reactResponse.text();
-
       container.className = 'snippet-container';
 
       // Code block
@@ -32,16 +26,6 @@ document.addEventListener('DOMContentLoaded', async () => {
       const toggleContainer = document.createElement('div');
       toggleContainer.className = 'snippet-toggle';
 
-      const htmlBtn = document.createElement('button');
-      htmlBtn.textContent = 'HTML';
-      htmlBtn.className = 'toggle-btn active';
-
-      const reactBtn = document.createElement('button');
-      reactBtn.textContent = 'React';
-      reactBtn.className = 'toggle-btn';
-
-      toggleContainer.appendChild(htmlBtn);
-      toggleContainer.appendChild(reactBtn);
       code.appendChild(toggleContainer);
 
       // Code content (second)
@@ -66,23 +50,6 @@ document.addEventListener('DOMContentLoaded', async () => {
       code.appendChild(copyBtn);
 
       container.appendChild(code);
-
-      // Toggle logic
-      htmlBtn.addEventListener('click', () => {
-        htmlBtn.className = 'toggle-btn active';
-        reactBtn.className = 'toggle-btn';
-        codeContent.textContent = html.trim();
-        code.className = 'snippet-code language-html';
-        Prism.highlightElement(codeContent);
-      });
-
-      reactBtn.addEventListener('click', () => {
-        reactBtn.className = 'toggle-btn active';
-        htmlBtn.className = 'toggle-btn';
-        codeContent.textContent = react.trim();
-        code.className = 'snippet-code language-jsx';
-        Prism.highlightElement(codeContent);
-      });
 
       Prism.highlightElement(codeContent);
     } catch (error) {

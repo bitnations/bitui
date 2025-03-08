@@ -12,9 +12,11 @@
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>bitUI Framework</title>
+  <title>bitUI CSS toolkit</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📱</text></svg>">
   <!-- CSS -->
   <link rel="stylesheet" href="src/styles/bitui.css">
+  <link rel="stylesheet" href="src/styles/controlPanel.css">
   <link rel="stylesheet" href="src/styles/code.css">
   <!-- Zip Library -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
@@ -456,17 +458,15 @@
 
   </main>
 
-  <!-- JS -->
-  <script src="src/scripts/style-controls.js"></script>
-  <script src="src/scripts/download-bitui.js"></script>
-  <!-- Import the JS module and initialize -->
-  <script type="module">
-    import { initColorCycler } from "/src/scripts/colors.js";
-    initColorCycler(); // Call directly after import
-  </script>
-  <!-- Code Snippet -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-  <script src="../src/scripts/snippet-loader.js"></script>
+  <!-- Scripts -->
+  <!-- Storage for user preferences -->
+  <script src="src/scripts/storage.js"></script>
+  <!-- Apply user preferences -->
+  <script src="src/scripts/preferences.js"></script>
+  <!-- Download functionality -->
+  <script src="src/scripts/download.js"></script>
+  <!-- Control Panel -->
+  <script src="src/scripts/controlPanel.js"></script>
 </body>
 
 </html>

@@ -13,7 +13,7 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
 </head>
 <body>
-  <!-- Control Panel -->
+  <!-- Control Panel Template -->
   <div class="control-panel" id="controlPanel">
     <button class="toggle-panel" id="togglePanel">
       <p class="toggle-icon">›</p>
@@ -29,7 +29,7 @@
         <label for="tab-theme">Theme</label>
       </div>
 
-      <!-- Tabs Container (Now Properly Targeted by CSS) -->
+      <!-- Tabs Container -->
       <div class="tab-container">
         <!-- Styles Tab -->
         <div class="tab-content" id="styles-content">
@@ -53,9 +53,6 @@
 
         <!-- Theme Tab -->
         <div class="tab-content" id="theme-content">
-          <h3>Theme</h3>
-
-          <label for="theme-mode">Theme Mode</label>
           <span id="theme-mode-value">Light</span>
           <input type="range" id="theme-mode" min="0" max="100" value="0" step="1" class="style-control"
             data-style-property="--theme-mode">
@@ -72,7 +69,7 @@
           <div class="color-group">
             <div class="color-swatch" id="color-warning">
               <span class="color-name">warning</span>
-              <span class="color-hex" id="warning-hex">#9C27B0</span>
+              <span class="color-hex" id="warning-hex">#FF9800</span>
               <input type="color" class="color-input" id="warning-input">
               <button class="lock-btn" id="warning-lock">🔓</button>
             </div>
@@ -100,19 +97,13 @@
 
     <!-- Buttons at the Bottom -->
     <div class="panel-buttons">
-      <!-- <button class="btn confirm" id="deploy-btn">Deploy</button> -->
       <button class="btn info" id="download-css">Download</button>
       <button class="btn holo" id="reset-defaults">Reset to Defaults</button>
       👾 <a href="https://github.com/bitnations/bitui" target="_blank">Github</a>
     </div>
-
   </div>
 
   <!-- JS -->
-  <script src="src/scripts/style-controls.js"></script>
-  <script src="src/scripts/download-bitui.js"></script>
-  <!-- <script src="src/scripts/deploy.js"></script> -->
-  <!-- Import the JS module and initialize -->
   <script type="module">
     import { initColorCycler } from "/src/scripts/colors.js";
     initColorCycler(); // Call directly after import
@@ -120,7 +111,6 @@
 
   <!-- Code Snippet -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-  <script src="../src/scripts/snippet-loader.js"></script>
 </body>
 
 </html>
