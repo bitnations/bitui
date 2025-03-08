@@ -37,6 +37,7 @@
     /* Typography */
     --font-family-base: 'Roboto Mono', 'NotoColorEmojiLimited', monospace;
     --font-size-base: 16px;
+    --font-weight-base: 400;
     --line-height-base: 1.4;
     /* Default (Light) Theme */
     --bg-color: rgb(251, 251, 251);
@@ -113,6 +114,7 @@
     padding: 0;
     font-family: var(--font-family-base);
     font-size: var(--font-size-base);
+    font-weight: var(--font-weight-base);
     line-height: var(--line-height-base);
     background: var(--bg-color);
     color: var(--text-color);
@@ -158,9 +160,9 @@
   .float-right { float: right; }
   
   /* Typography Utilities */
-  .f-light   { font-weight: 300; }
+  .f-light   { font-weight: 100; }
   .f-regular { font-weight: 400; }
-  .f-heavy   { font-weight: 700; }
+  .f-heavy   { font-weight: 900; }
   .f-small   { font-size: calc(var(--font-size-base) * 0.75); }
   .f-large   { font-size: calc(var(--font-size-base) * 1.25); }
   

@@ -38,15 +38,9 @@
       <div class="row">
         <div class="col-12">
           <div class="panel dark">
-            <p>bitUI is a simple, lightweight HTML + CSS framework for building clean, responsive layouts.
-              It features a <b>flexible 12-column grid</b>, utility classes, and minimal styling.
-            </p>
-            <ul>
-              <li>Adjust the layout with the sliders on the right</li>
-              <li>Download the CSS</li>
-              <li>Drop it into your site</li>
-            </ul>
-            <p><b>Want AI to help?</b> <a href="/llm.txt" target="_blank">llm.txt</a> file.
+            <p>bitUI is a simple CSS toolkit for making websites look nice. The goal is control & simplicity.
+              It has a <b>12-column grid</b>, simple <b>position</b> for elements, and a
+              <code class="language-html">col-flex</code> option that automatically adjusts to parent containers.
             </p>
           </div>
         </div>
@@ -56,11 +50,12 @@
       <div class="row">
         <div class="col-12">
           <div class="panel light">
-            <h1 class="center">The Grid</h1>
+            <h2 class="center">Grid</h2>
             <p>
-              bitUI is a 12-column system using flexbox.
+              12-column system
               <code class="language-html">col-1</code> to <code class="language-html">col-12</code>.
-              Columns go inside <code class="language-html">rows</code>, and panels go inside columns.
+              The recommended structure is:
+              <code class="language-html">row</code> > <code class="language-html">col</code> > <code class="language-html">panel</code>
               You can nest as many <code class="language-html">row</code>, <code class="language-html">col</code>,
               and <code class="language-html">panel</code> elements as needed.
             </p>
@@ -158,9 +153,10 @@
       <div class="row">
         <div class="col-12">
           <div class="panel light">
-            <h1 class="center">Flex</h1>
+            <h2 class="center">Flex</h2>
             <p>
-              Want to just use flex but based on your cols? just use <code class="language-html">col-flex</code>
+              Flex but with your columns. Just make sure
+              <code class="language-html">col-flex</code> is in a <code class="language-html">container</code>.
             </p>
           </div>
         </div>
@@ -205,27 +201,27 @@
           <div class="panel light">
             <h2 class="center">Layout</h2>
             <p>
-              bitUI provides utility classes to align rows, columns, and text.
-              <code class="language-html">row</code> alignment affects columns,
-              while <code class="language-html">col</code> alignment affects text inside.
+              Create complex nested layouts by placing <code class="language-html">row</code> 
+              and <code class="language-html">col</code> elements inside each other.
             </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Example 1: Nesting Layout -->
-      <div class="col-12">
-        <div class="panel dark">
-          <h3 class="center">Nesting</h3>
-          <div class="row">
-            <div class="col-6">
-              <div class="panel light">
-                <p>This nested column (50%) contains content on the left side of the full-width panel.</p>
+            <!-- Example 1: Nesting Layout -->
+            <div class="row">
+              <div class="col-6">
+                <div class="panel dark">
+                  <p>This nested column (50%) contains content on the left side of the full-width panel.</p>
+                </div>
               </div>
-            </div>
-            <div class="col-6">
-              <div class="panel light">
-                <p>This nested column (50%) contains content on the left side of the full-width panel.</p>
+              <div class="col-6">
+                <div class="panel dark">
+                  <p>This nested column (50%) contains content on the right side of the full-width panel.</p>
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="panel light">
+                        <p>This nested column (100%) contained within the 50% right column.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -237,8 +233,8 @@
 
       <!-- Example 2: Center Column -->
       <div class="col-12">
-        <div class="panel dark">
-          <h3 class="center">Position</h3>
+        <div class="panel light">
+          <h2 class="center">Position</h2>
           <p>You can use the <code class="language-html">flex</code> class to position your content.</p>
         </div>
       </div>
@@ -279,18 +275,14 @@
       <div class="row">
         <div class="col-12">
           <div class="panel light">
-            <h1 class="center">Typography</h1>
-            <p>bitUI uses a clean, modern typography system based on the <code
-                class="language-css">var(--font-family-base)</code>.
-              All text adapts dynamically to our theme system.
-            </p>
+            <h2 class="center">Typography</h2>
           </div>
         </div>
       </div>
 
       <div class="row">
-        <div class="col-12">
-          <div class="panel dark center">
+        <div class="col-4">
+          <div class="panel dark left">
             <h1>Header 1</h1>
             <h2>Header 2</h2>
             <h3>Header 3</h3>
@@ -299,41 +291,48 @@
             <h6>Header 6</h6>
           </div>
         </div>
-      </div>
 
-      <div class="row">
-        <div class="col-6">
+        <div class="col-4">
           <div class="panel dark">
-            <p>Paragraph text is styled with a default font-weight of 400. You can modify font weights using utility
-              classes:</p>
-            <p class="f-light">.f-light</p>
-            <p class="f-regular">.f-regular</p>
-            <p class="f-heavy">.f-heavy</p>
+            <div class="row">
+              <div class="col-6">
+                <p class="f-danger">.f-danger</p>
+                <p class="f-confirm">.f-confirm</p>
+                <p class="f-info">.f-info</p>
+                <p class="f-warning">.f-warning</p>
+              </div>
+              <div class="col-6">
+                <p class="f-white" style="background-color: black;">.f-white</p>
+                <p class="f-black" style="background-color: white;">.f-black</p>
+                <p class="f-gray">.f-gray</p>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="col-6">
+
+        <div class="col-4">
           <div class="panel dark">
-            <p>Apply color utilities to text for thematic emphasis:</p>
-            <p class="f-danger">.f-danger – Red text</p>
-            <p class="f-confirm">.f-confirm – Green text</p>
-            <p class="f-info">.f-info – Blue text</p>
-            <p class="f-warning">.f-warning – Purple text</p>
-            <p class="f-white" style="background-color: black;">.f-white – White text</p>
-            <p class="f-black" style="background-color: white;">.f-black – Black text</p>
-            <p class="f-gray">.f-gray – Gray text</p>
+            <div class="row">
+              <div class="col-6">
+                <p class="f-light">.f-light (100)</p>
+                <p class="f-regular">.f-regular (400)</p>
+                <p class="f-heavy">.f-heavy (900)</p>
+              </div>
+              <div class="col-6">
+                <p class="f-small">.f-small (0.75)</p>
+                <p class="f-large">.f-large (1.25)</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+      
 
       <!-- Form Examples -->
       <div class="row">
         <div class="col-12">
           <div class="panel light ">
             <h2 class="center">Forms</h2>
-            <div>
-              <p>Below are examples of form elements styled with bitUI, demonstrating inputs, textareas, selects,
-                buttons, and alerts across different states and themes.</p>
-            </div>
           </div>
         </div>
       </div>
