@@ -1,3 +1,40 @@
+/**
+ * Initializes the theme mode control
+ */
+function initThemeControls() {
+  const themeControl = document.getElementById('theme-mode');
+  const themeValueDisplay = document.getElementById('theme-mode-value');
+  
+  if (themeControl) {
+    themeControl.addEventListener('input', () => {
+      const value = parseInt(themeControl.value);
+      let themeName = 'Light';
+      
+      // Set theme based on slider value
+      if (value < 25) {
+        document.documentElement.dataset.theme = 'light';
+        themeName = 'Light';
+      } else if (value < 50) {
+        document.documentElement.dataset.theme = 'warm';
+        themeName = 'Warm';
+      } else if (value < 75) {
+        document.documentElement.dataset.theme = 'dim';
+        themeName = 'Dim';
+      } else {
+        document.documentElement.dataset.theme = 'dark';
+        themeName = 'Dark';
+      }
+      
+      if (themeValueDisplay) {
+        themeValueDisplay.textContent = themeName;
+      }
+      
+      // Dispatch custom event for theme change
+      document.dispatchEvent(new CustomEvent('themeChanged'));
+    });
+  }
+} 
+
 // Control Panel Loader and Handler
 document.addEventListener('DOMContentLoaded', async () => {
   // 1. Load the control panel template
