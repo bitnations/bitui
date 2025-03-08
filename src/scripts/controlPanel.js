@@ -1,3 +1,12 @@
+// Add this at the top of the file, with other constants
+const COLOR_STORAGE_KEY = 'bitui-custom-colors';
+const DEFAULT_COLORS = {
+  danger: '#FF0000',
+  warning: '#FF9800',
+  confirm: '#4CAF50',
+  info: '#2196F3'
+};
+
 /**
  * Initializes the theme mode control
  */
@@ -163,37 +172,119 @@ function updateStyleProperty(property, value) {
 }
 
 /**
- * Initializes the theme mode control
+ * Cycles through color schemes without applying to the DOM
  */
-function initThemeControls() {
-  const themeControl = document.getElementById('theme-mode');
-  const themeValueDisplay = document.getElementById('theme-mode-value');
+function cycleColors() {
+  const colorSchemes = [
+    { danger: '#FF0000', warning: '#FF9800', confirm: '#4CAF50', info: '#2196F3' }, // Default
+    { danger: '#E91E63', warning: '#9C27B0', confirm: '#3F51B5', info: '#00BCD4' }, // Cool
+    { danger: '#FF5722', warning: '#FFC107', confirm: '#8BC34A', info: '#03A9F4' }, // Warm
+    { danger: '#795548', warning: '#9E9E9E', confirm: '#607D8B', info: '#00BCD4' }  // Muted
+  ];
   
-  if (themeControl) {
-    themeControl.addEventListener('input', () => {
-      const value = parseInt(themeControl.value);
-      let themeName = 'Light';
-      
-      // Set theme based on slider value
-      if (value < 25) {
-        document.documentElement.dataset.theme = 'light';
-        themeName = 'Light';
-      } else if (value < 50) {
-        document.documentElement.dataset.theme = 'warm';
-        themeName = 'Warm';
-      } else if (value < 75) {
-        document.documentElement.dataset.theme = 'dim';
-        themeName = 'Dim';
-      } else {
-        document.documentElement.dataset.theme = 'dark';
-        themeName = 'Dark';
-      }
-      
-      if (themeValueDisplay) {
-        themeValueDisplay.textContent = themeName;
-      }
-    });
-  }
+  // Get current scheme index or start with 0
+  let currentIndex = parseInt(localStorage.getItem('colorSchemeIndex') || '0');
+  currentIndex = (currentIndex + 1) % colorSchemes.length;
+  
+  // Apply new color scheme to the control panel only
+  const newScheme = colorSchemes[currentIndex];
+  Object.entries(newScheme).forEach(([type, color]) => {
+    // Check if color is locked by looking at the lock emoji
+    const lockBtn = document.getElementById(`${type}-lock`);
+    const isLocked = lockBtn && lockBtn.textContent === '🔒';
+    
+    // Skip locked colors
+    if (isLocked) return;
+    
+    // Update the color swatch background
+    const colorSwatch = document.getElementById(`color-${type}`);
+    if (colorSwatch) {
+      colorSwatch.style.backgroundColor = color;
+    }
+    
+    // Update input and display
+    const input = document.getElementById(`${type}-input`);
+    const hexDisplay = document.getElementById(`${type}-hex`);
+    
+    if (input) {
+      input.value = color;
+    }
+    
+    if (hexDisplay) {
+      hexDisplay.textContent = color.toUpperCase();
+    }
+  });
+  
+  // Save current index
+  localStorage.setItem('colorSchemeIndex', currentIndex.toString());
+}
+
+/**
+ * Apply colors to the entire DOM
+ */
+function applyColors() {
+  const colorTypes = ['danger', 'warning', 'confirm', 'info'];
+  
+  // Apply each color from the inputs to the CSS variables
+  colorTypes.forEach(type => {
+    const input = document.getElementById(`${type}-input`);
+    if (input && input.value) {
+      // Set the CSS variable with the correct name
+      document.documentElement.style.setProperty(`--${type}`, input.value, 'important');
+      document.documentElement.style.setProperty(`--${type}-hover`, input.value, 'important');
+    }
+  });
+  
+  // Force a repaint to ensure changes take effect
+  document.body.style.display = 'none';
+  document.body.offsetHeight; // Trigger a reflow
+  document.body.style.display = '';
+  
+  // Save to localStorage
+  saveColorsToStorage();
+}
+
+/**
+ * Reset colors to defaults without confirmation and apply them
+ */
+function resetColors() {
+  const colorTypes = ['danger', 'warning', 'confirm', 'info'];
+  
+  // Reset color inputs to defaults
+  colorTypes.forEach(type => {
+    const defaultColor = DEFAULT_COLORS[type];
+    
+    // Update the color swatch background
+    const colorSwatch = document.getElementById(`color-${type}`);
+    if (colorSwatch) {
+      colorSwatch.style.backgroundColor = defaultColor;
+    }
+    
+    // Update input and display
+    const input = document.getElementById(`${type}-input`);
+    const hexDisplay = document.getElementById(`${type}-hex`);
+    
+    if (input) {
+      input.value = defaultColor;
+    }
+    
+    if (hexDisplay) {
+      hexDisplay.textContent = defaultColor.toUpperCase();
+    }
+    
+    // Set the CSS variable with the correct name
+    document.documentElement.style.setProperty(`--${type}`, defaultColor, 'important');
+    document.documentElement.style.setProperty(`--${type}-hover`, defaultColor, 'important');
+  });
+  
+  // Force a repaint to ensure changes take effect
+  document.body.style.display = 'none';
+  document.body.offsetHeight; // Trigger a reflow
+  document.body.style.display = '';
+  
+  // Reset color scheme index and save to localStorage
+  localStorage.removeItem('colorSchemeIndex');
+  saveColorsToStorage();
 }
 
 /**
@@ -202,29 +293,41 @@ function initThemeControls() {
 function initColorControls() {
   const colorTypes = ['danger', 'warning', 'confirm', 'info'];
   
+  // First try to load colors from localStorage
+  const colorsLoaded = loadColorsFromStorage();
+  
   colorTypes.forEach(type => {
     const input = document.getElementById(`${type}-input`);
     const hexDisplay = document.getElementById(`${type}-hex`);
     const lockBtn = document.getElementById(`${type}-lock`);
     
     if (input && hexDisplay) {
-      // Get current color from CSS
-      const currentColor = getComputedStyle(document.documentElement)
-        .getPropertyValue(`--color-${type}`).trim();
-      
-      // Set initial color input value
-      if (currentColor) {
+      // If colors weren't loaded from localStorage, set from CSS or defaults
+      if (!colorsLoaded) {
+        // Get current color from CSS
+        let currentColor = getComputedStyle(document.documentElement)
+          .getPropertyValue(`--${type}`).trim();
+        
+        // Use default if not found
+        if (!currentColor) {
+          currentColor = DEFAULT_COLORS[type];
+          // Set the CSS variable
+          document.documentElement.style.setProperty(`--${type}`, currentColor, 'important');
+          document.documentElement.style.setProperty(`--${type}-hover`, currentColor, 'important');
+        }
+        
+        // Set initial color input value
         input.value = convertCssColorToHex(currentColor);
         hexDisplay.textContent = input.value.toUpperCase();
       }
       
-      // Update color on change
+      // Update color on change (only updates the control panel, not the DOM)
       input.addEventListener('input', () => {
-        // Set the CSS variable with the correct name (--danger, --warning, etc.)
-        document.documentElement.style.setProperty(`--${type}`, input.value, 'important');
-        
-        // Also update the hover variant
-        document.documentElement.style.setProperty(`--${type}-hover`, input.value, 'important');
+        // Update the color swatch background
+        const colorSwatch = document.getElementById(`color-${type}`);
+        if (colorSwatch) {
+          colorSwatch.style.backgroundColor = input.value;
+        }
         
         hexDisplay.textContent = input.value.toUpperCase();
       });
@@ -271,6 +374,18 @@ function initColorControls() {
   if (cycleButton) {
     cycleButton.addEventListener('click', cycleColors);
   }
+  
+  // Initialize apply colors button
+  const applyButton = document.getElementById('applyButton');
+  if (applyButton) {
+    applyButton.addEventListener('click', applyColors);
+  }
+  
+  // Initialize reset colors button
+  const resetColorsButton = document.getElementById('resetColorsButton');
+  if (resetColorsButton) {
+    resetColorsButton.addEventListener('click', resetColors);
+  }
 }
 
 /**
@@ -290,59 +405,6 @@ function convertCssColorToHex(color) {
   
   // If already hex or other format, return as is
   return color;
-}
-
-/**
- * Cycles through color schemes
- */
-function cycleColors() {
-  const colorSchemes = [
-    { danger: '#FF0000', warning: '#FF9800', confirm: '#4CAF50', info: '#2196F3' }, // Default
-    { danger: '#E91E63', warning: '#9C27B0', confirm: '#3F51B5', info: '#00BCD4' }, // Cool
-    { danger: '#FF5722', warning: '#FFC107', confirm: '#8BC34A', info: '#03A9F4' }, // Warm
-    { danger: '#795548', warning: '#9E9E9E', confirm: '#607D8B', info: '#00BCD4' }  // Muted
-  ];
-  
-  // Get current scheme index or start with 0
-  let currentIndex = parseInt(localStorage.getItem('colorSchemeIndex') || '0');
-  currentIndex = (currentIndex + 1) % colorSchemes.length;
-  
-  // Apply new color scheme
-  const newScheme = colorSchemes[currentIndex];
-  Object.entries(newScheme).forEach(([type, color]) => {
-    // Check if color is locked by looking at the lock emoji
-    const lockBtn = document.getElementById(`${type}-lock`);
-    const isLocked = lockBtn && lockBtn.textContent === '🔒';
-    
-    // Skip locked colors
-    if (isLocked) return;
-    
-    // Set the CSS variable with the correct name (--danger, --warning, etc.)
-    document.documentElement.style.setProperty(`--${type}`, color, 'important');
-    
-    // Also set the hover variant
-    document.documentElement.style.setProperty(`--${type}-hover`, color, 'important');
-    
-    // Update input and display
-    const input = document.getElementById(`${type}-input`);
-    const hexDisplay = document.getElementById(`${type}-hex`);
-    
-    if (input) {
-      input.value = color;
-    }
-    
-    if (hexDisplay) {
-      hexDisplay.textContent = color.toUpperCase();
-    }
-  });
-  
-  // Force a repaint to ensure changes take effect
-  document.body.style.display = 'none';
-  document.body.offsetHeight; // Trigger a reflow
-  document.body.style.display = '';
-  
-  // Save current index
-  localStorage.setItem('colorSchemeIndex', currentIndex.toString());
 }
 
 /**
@@ -405,29 +467,80 @@ function resetDefaults() {
       themeValueDisplay.textContent = 'Light';
     }
     
-    // Reset color inputs
-    const colorTypes = ['danger', 'warning', 'confirm', 'info'];
-    const defaultColors = {
-      danger: '#FF0000',
-      warning: '#FF9800',
-      confirm: '#4CAF50',
-      info: '#2196F3'
-    };
+    // Reset colors and apply them
+    resetColors();
+    applyColors();
     
+    // Clear localStorage
+    localStorage.removeItem('colorSchemeIndex');
+    localStorage.removeItem(COLOR_STORAGE_KEY);
+  }
+}
+
+/**
+ * Save current colors to localStorage
+ */
+function saveColorsToStorage() {
+  try {
+    const colors = {};
+    const colorTypes = ['danger', 'warning', 'confirm', 'info'];
+    
+    // Get current colors from inputs or CSS variables
     colorTypes.forEach(type => {
       const input = document.getElementById(`${type}-input`);
-      const hexDisplay = document.getElementById(`${type}-hex`);
-      
-      if (input) {
-        input.value = defaultColors[type];
-      }
-      
-      if (hexDisplay) {
-        hexDisplay.textContent = defaultColors[type].toUpperCase();
+      if (input && input.value) {
+        colors[type] = input.value;
+      } else {
+        // Fallback to computed style
+        const color = getComputedStyle(document.documentElement)
+          .getPropertyValue(`--${type}`).trim();
+        colors[type] = color || DEFAULT_COLORS[type];
       }
     });
     
-    // Reset color scheme index
-    localStorage.removeItem('colorSchemeIndex');
+    // Save to localStorage
+    localStorage.setItem(COLOR_STORAGE_KEY, JSON.stringify(colors));
+  } catch (error) {
+    console.error('Error saving colors to localStorage:', error);
   }
+}
+
+/**
+ * Load colors from localStorage
+ */
+function loadColorsFromStorage() {
+  try {
+    const savedColors = localStorage.getItem(COLOR_STORAGE_KEY);
+    if (savedColors) {
+      const colors = JSON.parse(savedColors);
+      const colorTypes = ['danger', 'warning', 'confirm', 'info'];
+      
+      // Apply each color
+      colorTypes.forEach(type => {
+        if (colors[type]) {
+          // Set the CSS variable
+          document.documentElement.style.setProperty(`--${type}`, colors[type], 'important');
+          document.documentElement.style.setProperty(`--${type}-hover`, colors[type], 'important');
+          
+          // Update input and display if they exist
+          const input = document.getElementById(`${type}-input`);
+          const hexDisplay = document.getElementById(`${type}-hex`);
+          
+          if (input) {
+            input.value = colors[type];
+          }
+          
+          if (hexDisplay) {
+            hexDisplay.textContent = colors[type].toUpperCase();
+          }
+        }
+      });
+      
+      return true;
+    }
+  } catch (error) {
+    console.error('Error loading colors from localStorage:', error);
+  }
+  
+  return false;
 } 

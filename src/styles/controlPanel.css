@@ -198,6 +198,7 @@ input[type="color"] {
   height: 30px !important;
 }
 input::-webkit-color-swatch {
+  transition: all 0.3s ease;
   border: none; /* Remove default border */
 }
 
