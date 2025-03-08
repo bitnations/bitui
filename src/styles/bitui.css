@@ -1,0 +1,632 @@
+/* ==========================================================================
+   bitUI Framework
+   ========================================================================== */
+
+/* Font Imports
+   ========================================================================== */
+   @font-face {
+    font-family: 'Roboto Mono';
+    src: url("../../public/fonts/RobotoMono-VariableFont_wght.ttf") format('truetype');
+    font-weight: 100 900; /* Allows any weight from 100 to 900 */
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Roboto Mono';
+    src: url("../../public/fonts/RobotoMono-Italic-VariableFont_wght.ttf") format('truetype');
+    font-weight: 100 900; /* Allows any weight from 100 to 900 */
+    font-style: italic;
+  }
+  @font-face {
+    font-family: 'NotoColorEmojiLimited';
+    src: url("../../public/fonts/NotoColorEmoji.ttf") format('truetype');
+    unicode-range: U+1F600-U+1F64F;
+  }
+  
+  /* Root Variables
+     ========================================================================== */
+  :root {
+    /* Layout */
+    --nav-padding: 0px; /* Height of the navbar */
+    --container-width: 90vw;
+    --container-min-width:  25rem; /* Prevents content from getting too narrow */
+    --container-max-width: 75rem; /* 65rem equivalent at 16px base font size */
+    --column-gap: 0.5rem; /* Default column spacing */
+    --border-radius: 15px;
+    --panel-padding-x: 25px; /* Horizontal panel padding */
+    --panel-padding-y: 15px; /* Vertical panel padding */
+    /* Typography */
+    --font-family-base: 'Roboto Mono', 'NotoColorEmojiLimited', monospace;
+    --font-size-base: 16px;
+    --line-height-base: 1.4;
+    /* Default (Light) Theme */
+    --bg-color: rgb(251, 251, 251);
+    --text-color: rgb(77, 77, 77);
+    --heading-color: rgb(46, 46, 46);
+    --panel-bg: rgb(255, 255, 255);
+    --panel-dark-bg: rgb(245, 245, 245);
+    --panel-border: rgb(230, 230, 230);
+    /* Colors */
+    --danger: rgba(225, 85, 84, 1);
+    --danger-hover: rgba(225, 123, 123, 1);
+    --warning: rgba(255, 165, 0, 1);
+    --warning-hover: rgba(255, 185, 0, 1);
+    --confirm: rgba(59, 178, 115, 1);
+    --confirm-hover: rgba(59, 178, 115, 0.85);
+    --info: rgba(77, 157, 224, 1);
+    --info-hover: rgba(77, 163, 234, 1);
+  }
+  /* Warm Theme */
+  [data-theme="warm"] {
+    --bg-color: rgb(247, 238, 220); /* Pale Sand */
+    --text-color: rgb(90, 75, 58); /* Soft Umber */
+    --heading-color: rgb(70, 57, 42); /* Deep Taupe */
+    --panel-bg: rgb(255, 248, 231); /* Cosmic Latte */
+    --panel-dark-bg: rgb(233, 222, 202); /* Faded Beige */
+    --panel-border: #D6C4AE; /* Pale Taupe */
+    --danger: #D04F47; /* Muted Coral */
+    --danger-hover: #D76C6C;
+    --warning: #E89C3C; /* Burnt Sienna */
+    --warning-hover: #F0B45C;
+    --confirm: #5A9F60; /* Olive Green */
+    --confirm-hover: #6CAF77;
+    --info: #6698C8; /* Muted Azure */
+    --info-hover: #74A5D3;
+  }
+  /* Dim Theme */
+  [data-theme="dim"] {
+    --bg-color: rgb(24, 35, 46); /* Gunmetal Blue */
+    --text-color: rgb(196, 201, 208); /* Cloud Gray */
+    --heading-color: rgb(208, 213, 220); /* Soft Silver */
+    --panel-bg: rgb(37, 54, 70); /* Deep Slate */
+    --panel-dark-bg: rgb(31, 44, 58); /* Slate Blue */
+    --panel-border: rgb(60, 76, 94); /* Steel Gray */
+    --danger: #C24C4C; /* Deep Red */
+    --danger-hover: #D56B6B;
+    --warning: #D8882F; /* Rustic Gold */
+    --warning-hover: #E89A45;
+    --confirm: #368B68; /* Forest Green */
+    --confirm-hover: #4E9C7D;
+    --info: #4A85BF; /* Steel Blue */
+    --info-hover: #5A92CC;
+  }
+  /* Dark Theme */
+  [data-theme="dark"] {
+    --bg-color: rgb(0, 0, 0);
+    --text-color: rgb(255, 255, 255);
+    --heading-color: rgb(179, 179, 179);
+    --panel-bg: rgb(16, 16, 16);
+    --panel-dark-bg: rgb(0, 0, 0);
+    --panel-border: rgb(51, 51, 51);
+    --danger: #A63C3C; /* Dark Crimson */
+    --danger-hover: #B85858;
+    --warning: #CC7A15; /* Deep Amber */
+    --warning-hover: #D98D30;
+    --confirm: #2D7559; /* Jade */
+    --confirm-hover: #3E8B6F;
+    --info: #3F76A8; /* Midnight Blue */
+    --info-hover: #4C84B5;
+  }
+  
+  /* Base Styles */
+  html, body {
+    margin: 0 auto;
+    padding: 0;
+    font-family: var(--font-family-base);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-base);
+    background: var(--bg-color);
+    color: var(--text-color);
+    overflow-x: hidden;
+  }
+  
+  /* Transitions */
+  html, body, .panel {
+    transition: background-color, border-color 0.3s;
+  }
+  
+  /* Form */
+  form {
+    padding: 15px 0;
+  }
+  
+  /* This is to prevent the page from overflowing React */
+  #root {
+    height: 100vh;
+  }
+  
+  /* Typography */
+  h1, h2, h3, h4, h5, h6, p { 
+    color: var(--heading-color);
+  }
+  
+  /* Links */
+  a {
+    text-decoration: none;
+    color: var(--info);
+  }
+  
+  a:hover, a:visited {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  /* Text Alignment */
+  .left    { text-align: left; }
+  .right   { text-align: right; }
+  .center  { text-align: center; margin-left: auto; margin-right: auto; }
+  .justify { text-align: justify; }
+  .float-right { float: right; }
+  
+  /* Typography Utilities */
+  .f-light   { font-weight: 300; }
+  .f-regular { font-weight: 400; }
+  .f-heavy   { font-weight: 700; }
+  .f-small   { font-size: calc(var(--font-size-base) * 0.75); }
+  .f-large   { font-size: calc(var(--font-size-base) * 1.25); }
+  
+  /* Font Colors */
+  .f-white { color: white; }
+  .f-black { color: rgba(0, 0, 0, 1); }
+  .f-danger { color: var(--danger); }
+  .f-orange { color: var(--orange); }
+  .f-confirm { color: var(--confirm); }
+  .f-info { color: var(--info); }
+  .f-warning { color: var(--warning); }
+  .f-gray { color: gray; }
+  
+  /* Page Layout */
+  .content {
+    padding-top: var(--nav-padding); /* This is to account for the navbar */
+  }
+  
+  /* Base container styles */
+  .container {
+    margin-left: auto;
+    margin-right: auto;
+    width: min(var(--container-width), var(--container-max-width));
+    max-width: var(--container-max-width);
+    min-width: var(--container-min-width);
+    /* Add container query support for browsers that support it */
+    container-type: inline-size;
+    container-name: main-container;
+  }
+  
+  /* Rows */
+  .row {
+    position: relative;
+    width: 100%;
+  }
+  
+  .row::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* Flex */
+  .flex {
+    width: 100%;
+    display: flex;
+  }
+
+  .flex.left {
+    justify-content: flex-start;
+  }
+  
+  .flex.center {
+    justify-content: center;
+  }
+  
+  .flex.right {
+    justify-content: flex-end;
+  }
+  
+  /* Base column styles */
+  [class^="col-"] {
+    float: left;
+    margin: calc(var(--column-gap) / 2);
+  }
+  
+  /* Mobile-first approach: all columns are full width by default */
+  .col-1, .col-2, .col-3, .col-4, .col-5, .col-6,
+  .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
+    width: calc(100% - var(--column-gap));
+  }
+  
+  /* Standard 12 Column Grid */
+  @media only screen and (min-width: 768px) {
+    .col-1  { width: calc(8.33%  - var(--column-gap)); }
+    .col-2  { width: calc(16.66% - var(--column-gap)); }
+    .col-3  { width: calc(25%    - var(--column-gap)); }
+    .col-4  { width: calc(33.33% - var(--column-gap)); }
+    .col-5  { width: calc(41.66% - var(--column-gap)); }
+    .col-6  { width: calc(50%    - var(--column-gap)); }
+    .col-7  { width: calc(58.33% - var(--column-gap)); }
+    .col-8  { width: calc(66.66% - var(--column-gap)); }
+    .col-9  { width: calc(75%    - var(--column-gap)); }
+    .col-10 { width: calc(83.33% - var(--column-gap)); }
+    .col-11 { width: calc(91.66% - var(--column-gap)); }
+    .col-12 { width: calc(100%   - var(--column-gap)); }
+  }
+  
+  /* Simple Flex Like Grid */
+  /* col-flex must be in a container */
+  .col-flex {
+    width: calc(100% - var(--column-gap));
+    box-sizing: border-box;
+  }
+  /* Col Flex Breakpoints */
+  @container main-container (min-width: 50rem) { /* 800px */
+    .col-flex { width: calc(50% - var(--column-gap)); }
+  }
+  @container main-container (min-width: 75rem) { /* 1200px */
+    .col-flex { width: calc(33.33% - var(--column-gap)); }
+  }
+  @container main-container (min-width: 100rem) { /* 1600px */
+    .col-flex { width: calc(25% - var(--column-gap)); }
+  }
+  @container main-container (min-width: 125rem) { /* 2000px */
+    .col-flex { width: calc(20% - var(--column-gap)); }
+  }
+  @container main-container (min-width: 150rem) { /* 2400px */
+    .col-flex { width: calc(16.66% - var(--column-gap)); }
+  }
+  @container main-container (min-width: 175rem) { /* 2800px */
+    .col-flex { width: calc(14.28% - var(--column-gap)); }
+  }
+  @container main-container (min-width: 200rem) { /* 3200px */
+    .col-flex { width: calc(12.5% - var(--column-gap)); }
+  }
+  @container main-container (min-width: 225rem) { /* 3600px */
+    .col-flex { width: calc(11.11% - var(--column-gap)); }
+  }
+  @container main-container (min-width: 250rem) { /* 4000px */
+    .col-flex { width: calc(10% - var(--column-gap)); }
+  }
+  @container main-container (min-width: 275rem) { /* 4400px */
+    .col-flex { width: calc(9.09% - var(--column-gap)); }
+  }
+  @container main-container (min-width: 300rem) { /* 4800px */
+    .col-flex { width: calc(8.33% - var(--column-gap)); }
+  }
+  
+  /* Panels */
+  .panel {
+    padding: var(--panel-padding-y) var(--panel-padding-x);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--panel-border);
+    box-sizing: border-box;
+  }
+  
+  .panel.dark {
+    background: var(--panel-dark-bg);
+  }
+  
+  .panel.light {
+    background: var(--panel-bg);
+  }
+  
+  .locked {
+    opacity: 0.5;
+  }
+  
+  .legal {
+    bottom: 0;
+    font-size: 12px;
+    opacity: 0.5;
+  }
+  
+  /* Common Input / Textarea / Select Styles */
+  input,
+  textarea,
+  select {
+    border: 2px solid var(--panel-border);
+    border-radius: var(--border-radius);
+    font-family: var(--font-family-base);
+    font-size: var(--font-size-base);
+    margin: 10px 0;
+    padding: 25px 15px;
+    height: 2.5em;
+    width: 100% !important;
+    box-sizing: border-box;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s, background-color 0.3s;
+  }
+  
+  /* Light Theme */
+  [data-theme="light"] input,
+  [data-theme="light"] textarea,
+  [data-theme="light"] select {
+    background: rgb(255, 255, 255); /* Light Gray for contrast */
+    color: rgb(77, 77, 77);
+  }
+  
+  /* Warm Theme */
+  [data-theme="warm"] input,
+  [data-theme="warm"] textarea,
+  [data-theme="warm"] select {
+    background: rgb(255, 254, 248);
+    color: rgb(90, 75, 58);
+  }
+  
+  /* Dim Theme */
+  [data-theme="dim"] input,
+  [data-theme="dim"] textarea,
+  [data-theme="dim"] select {
+    background: rgb(15, 20, 28); /* Darker Navy Gray */
+    color: rgb(196, 201, 208);
+  }
+  
+  /* Dark Theme */
+  [data-theme="dark"] input,
+  [data-theme="dark"] textarea,
+  [data-theme="dark"] select {
+    background: rgb(20, 20, 20); /* Deep Gray */
+    color: rgb(255, 255, 255);
+  }
+  
+  /* Focus Styles - Soft Glow for Visibility */
+  input:focus,
+  textarea:focus,
+  select:focus {
+    border-color: var(--info);
+    box-shadow: 0 0 4px rgba(77, 157, 224, 0.4); /* Soft blue glow */
+  }
+
+  input[type="range"]:focus {
+    box-shadow: none;
+  }
+  
+  /* Disabled Input / Textarea / Select */
+  input:disabled,
+  textarea:disabled,
+  select:disabled {
+    border-color: var(--panel-border);
+    cursor: not-allowed;
+    opacity: 0.6; /* Slight dimming to indicate disabled state */
+  }
+  
+  /* Light Theme - Keep contrast while indicating disabled */
+  [data-theme="light"] input:disabled,
+  [data-theme="light"] textarea:disabled,
+  [data-theme="light"] select:disabled {
+    background: rgb(240, 240, 240); /* Slight gray tint */
+    color: rgb(160, 160, 160);
+  }
+  
+  /* Warm Theme - Soft muted beige */
+  [data-theme="warm"] input:disabled,
+  [data-theme="warm"] textarea:disabled,
+  [data-theme="warm"] select:disabled {
+    background: rgb(240, 235, 220); /* Muted sand */
+    color: rgb(150, 130, 110);
+  }
+  
+  /* Dim Theme - Darker muted navy */
+  [data-theme="dim"] input:disabled,
+  [data-theme="dim"] textarea:disabled,
+  [data-theme="dim"] select:disabled {
+    background: rgb(12, 16, 22); /* Deep blue-gray */
+    color: rgb(120, 130, 140);
+  }
+  
+  /* Dark Theme - Muted deep gray */
+  [data-theme="dark"] input:disabled,
+  [data-theme="dark"] textarea:disabled,
+  [data-theme="dark"] select:disabled {
+    background: rgb(25, 25, 25); /* Slightly brighter than normal dark */
+    color: rgb(110, 110, 110);
+  }
+  
+  label {
+    user-select: none;
+  }
+  
+  /* Textarea Adjustments */
+  textarea {
+    width: calc(100% - 30px);
+    padding: 15px;
+    height: auto;
+    resize: vertical;
+    border-radius: var(--border-radius);
+  }
+  
+  /* Select Arrow */
+  select {
+    padding: 0 15px;
+    text-align: left;
+  }
+  
+  /* Placeholder Styles */
+  ::placeholder {
+    color: rgb(77, 77, 77);
+    opacity: 0.5;
+  }
+  
+  /* Form States (danger / confirm / Disabled) */
+  input.danger,
+  textarea.danger,
+  select.danger {
+    border: 1px solid var(--danger);
+  }
+  
+  input.danger::placeholder,
+  textarea.danger::placeholder,
+  select.danger::placeholder {
+    color: var(--danger);
+    opacity: 0.8;
+  }
+  
+  input.confirm,
+  textarea.confirm,
+  select.confirm {
+    border: 1px solid var(--confirm);
+  }
+  
+  input.confirm::placeholder,
+  textarea.confirm::placeholder,
+  select.confirm::placeholder {
+    color: var(--confirm);
+    opacity: 0.8;
+  }
+  
+  /* Number Input */
+  .number-input {
+    width: 100px;
+  }
+  
+  /* Radios & Checkboxes */
+  input[type="radio"],
+  input[type="checkbox"] {
+    width: auto !important;
+    height: auto !important;
+    margin: 0 0.5em 0 0;
+    border: none;
+    cursor: pointer;
+  }
+  
+  input[type="radio"].danger,
+  input[type="checkbox"].danger {
+    outline: 1px solid var(--danger);
+  }
+  
+  input[type="radio"].confirm,
+  input[type="checkbox"].confirm {
+    outline: 1px solid var(--confirm);
+  }
+  
+  /* Alerts */
+  .alert {
+    top: 0;
+    left: 0;
+    position: relative;
+    margin: 5px auto 0;
+    text-align: center;
+    padding: 15px;
+    border-radius: var(--border-radius);
+    animation: fade-in 1s ease-out;
+    background: var(--panel-bg);
+    color: var(--text-color);
+  }
+  
+  .alert-confirm {
+    background: var(--confirm);
+    color: white;
+  }
+  
+  .alert-notice {
+    background: var(--info);
+    color: white;
+  }
+  
+  .alert-danger {
+    background: var(--danger);
+    color: white;
+  }
+  
+  /* Dismiss Button Inside Alerts */
+  .dismiss-btn {
+    float: right;
+    color: inherit;
+    cursor: pointer;
+    transition: opacity 0.3s;
+  }
+  
+  .dismiss-btn:hover {
+    opacity: 0.5;
+  }
+  
+  /* Fade Animation for Alerts */
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+  
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Buttons */
+  .btn {
+    color: white;
+    padding: 15px;
+    margin: 5px auto 0;
+    cursor: pointer;
+    user-select: none;
+    border-radius: var(--border-radius);
+    font-family: var(--font-family-base);
+    font-size: var(--font-size-base);
+    text-align: center;
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, 0);
+    box-sizing: border-box;
+  }
+  
+  .btn.disabled {
+    cursor: not-allowed;
+    background-color: var(--panel-dark-bg);
+    border: 1px solid var(--panel-border);
+    color: gray;
+  }
+  
+  /* Dark theme overrides */
+  [data-theme="dark"] .btn.holo,
+  [data-theme="dim"] .btn.holo {
+    background: var(--panel-dark-bg);
+    color: var(--text-color);
+    border: 1px solid var(--panel-border);
+  }
+  
+  [data-theme="dark"] .btn.holo:hover,
+  [data-theme="dim"] .btn.holo:hover {
+    background: var(--panel-bg);
+  }
+  
+  /* Light theme overrides */
+  [data-theme="light"] .btn.holo,
+  [data-theme="warm"] .btn.holo {
+    background: var(--panel-bg);
+    color: var(--text-color);
+    border: 1px solid var(--panel-border);
+  }
+  
+  [data-theme="light"] .btn.holo:hover,
+  [data-theme="warm"] .btn.holo:hover {
+    background: var(--panel-dark-bg);
+  }
+  
+  /* Button Hovers */
+  .btn.confirm {
+    background: var(--confirm);
+  }
+  
+  .btn.confirm:hover {
+    background: var(--confirm-hover);
+  }
+  
+  .btn.info {
+    background: var(--info);
+  }
+  
+  .btn.info:hover {
+    background: var(--info-hover);
+  }
+  
+  .btn.danger {
+    background: var(--danger);
+  }
+  
+  .btn.danger:hover {
+    background: var(--danger-hover);
+  }
+  
+  .btn.warning {
+    background: var(--warning);
+  }
+  
+  .btn.warning:hover {
+    background: var(--warning-hover);
+  }

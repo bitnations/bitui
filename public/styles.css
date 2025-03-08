@@ -1,23 +1,56 @@
 /* ==========================================================================
-   bitUI Framework - Core Styles
-   ========================================================================== */
+  bitUI Framework - Core Styles
+  ========================================================================== */
+
+/* Font Imports
+  ========================================================================== */
+  @font-face {
+  font-family: 'Roboto Mono';
+  src: url("../../public/fonts/RobotoMono-VariableFont_wght.ttf") format('truetype');
+  font-weight: 100 900; /* Allows any weight from 100 to 900 */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto Mono';
+  src: url("../../public/fonts/RobotoMono-Italic-VariableFont_wght.ttf") format('truetype');
+  font-weight: 100 900; /* Allows any weight from 100 to 900 */
+  font-style: italic;
+}
+
+@font-face {
+    font-family: 'NotoColorEmojiLimited';
+    src: url("../../public/fonts/NotoColorEmoji.ttf") format('truetype');
+    unicode-range: U+1F600-U+1F64F;
+}
 
 /* Root Variables
-   ========================================================================== */
+    ========================================================================== */
 :root {
     /* Colors */
-    --error: rgba(225, 85, 84, 1);
-    --error-hover: rgba(225, 123, 123, 1);
-    --action: rgba(255, 165, 0, 1);
-    --action-hover: rgba(255, 185, 0, 1);
+    --danger: rgba(225, 70, 72, 1);         /* Crimson Red */
+    --danger-hover: rgba(225, 110, 115, 1); /* Soft Coral */
+    --warning: rgba(255, 160, 0, 1);        /* Deep Amber */
+    --warning-hover: rgba(255, 180, 0, 1);  /* Gold Sunset */
+    --confirm: rgba(50, 170, 105, 1);       /* Jade Green */
+    --confirm-hover: rgba(50, 170, 105, 0.85); /* Muted Jade */
+    --info: rgba(70, 145, 220, 1);          /* Ocean Blue */
+    --info-hover: rgba(70, 155, 230, 1);    /* Bright Azure */
+
+    /* --danger: rgba(225, 85, 84, 1);
+    --danger-hover: rgba(225, 123, 123, 1);
+    --warning: rgba(255, 165, 0, 1);
+    --warning-hover: rgba(255, 185, 0, 1);
     --success: rgba(59, 178, 115, 1);
     --success-hover: rgba(59, 178, 115, 0.85);
     --info: rgba(77, 157, 224, 1);
-    --info-hover: rgba(77, 163, 234, 1);
+    --info-hover: rgba(77, 163, 234, 1); */
+    
     /* Layout */
-    --container-width: 50%; /* Default: 50% */
-    --container-min-width: 600px; /* Prevents content from getting too narrow */
-    --container-max-width: 100%;
+    --nav-padding: 60px; /* Height of the navbar */
+    --container-width: 90vw; /* Default: 50% */
+    --container-min-width: 375px; /* Prevents content from getting too narrow */
+    --container-max-width: 65rem;;
     --column-gap: 0.5rem; /* Default column spacing */
     --border-radius: 15px;
     --spacing-unit: 20px;  /* Space between panels */
@@ -66,6 +99,11 @@
   --panel-border: rgb(51, 51, 51);
 }
 
+/* This is to prevent the page from overflowing React */
+#root {
+  height: 100vh;
+}
+
 /* Base Styles */
 html, body {
   margin: 0 auto;
@@ -108,8 +146,8 @@ a:hover, a:visited { text-decoration: none; color: inherit;}
 
 /* Page Layout */
 .content {
-  height: 100vh;
-  overflow-y: scroll;
+  height: calc(100vh - var(--nav-padding));
+  padding-top: var(--nav-padding);
 }
 /* Base container styles */
 .container {
@@ -123,23 +161,6 @@ a:hover, a:visited { text-decoration: none; color: inherit;}
 section {
   margin: 0 0 var(--spacing-unit) 0;
 }
-
-/* Between 1024px and 720px, stop shrinking */
-@media (max-width: 1024px) {
-  :root {
-    --container-width: 80%; /* Keep a wider layout */
-    --container-min-width: 80%; /* Prevents it from being too small */
-  }
-}
-
-/* At 720px and below, switch to 90vw */
-@media (max-width: 720px) {
-  .container {
-    width: 90vw;
-    min-width: 390px;
-  }
-}
-
 /* Rows */
 .row {
   position: relative;
@@ -162,85 +183,76 @@ section {
   justify-content: flex-end;
 }
 
-
 /* Base column styles */
 [class^="col-"] {
   float: left;
   margin: calc(var(--column-gap) / 2);
-  width: calc(100% - var(--column-gap));
 }
-
-/* Small screen column sizes */
-.col-1-sm  { width: calc(8.33%  - var(--column-gap)); }
-.col-2-sm  { width: calc(16.66% - var(--column-gap)); }
-.col-3-sm  { width: calc(25%    - var(--column-gap)); }
-.col-4-sm  { width: calc(33.33% - var(--column-gap)); }
-.col-5-sm  { width: calc(41.66% - var(--column-gap)); }
-.col-6-sm  { width: calc(50%    - var(--column-gap)); }
-.col-7-sm  { width: calc(58.33% - var(--column-gap)); }
-.col-8-sm  { width: calc(66.66% - var(--column-gap)); }
-.col-9-sm  { width: calc(75%    - var(--column-gap)); }
-.col-10-sm { width: calc(83.33% - var(--column-gap)); }
-.col-11-sm { width: calc(91.66% - var(--column-gap)); }
-.col-12-sm { width: calc(100%   - var(--column-gap)); }
-
-/* Responsive breakpoints */
-@media only screen and (min-width: 45em) { /* 720px */
-  .col-1  { width: calc(8.33%  - var(--column-gap)); }
-  .col-2  { width: calc(16.66% - var(--column-gap)); }
-  .col-3  { width: calc(25%    - var(--column-gap)); }
-  .col-4  { width: calc(33.33% - var(--column-gap)); }
-  .col-5  { width: calc(41.66% - var(--column-gap)); }
-  .col-6  { width: calc(50%    - var(--column-gap)); }
-  .col-7  { width: calc(58.33% - var(--column-gap)); }
-  .col-8  { width: calc(66.66% - var(--column-gap)); }
-  .col-9  { width: calc(75%    - var(--column-gap)); }
-  .col-10 { width: calc(83.33% - var(--column-gap)); }
-  .col-11 { width: calc(91.66% - var(--column-gap)); }
-  .col-12 { width: calc(100%   - var(--column-gap)); }
-}
-
-/* Adjust spacing dynamically for small screens */
-@media (max-width: 720px) {
-  :root {
-    --column-gap: 0.25rem; /* Reduce column gap for tighter mobile layouts */
+  
+  /* Mobile-first approach: all columns are full width by default */
+  .col-1, .col-2, .col-3, .col-4, .col-5, .col-6,
+  .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
+    width: calc(100% - var(--column-gap));
   }
-}
-
-/* Sticky Component */
-.sticky-wrapper {
-  display: flex;
-  min-height: 100vh;
-}
-.sticky {
-  position: sticky;
-  top: calc(var(--column-gap) / 2);
-  height: calc(100vh - var(--column-gap));;
-  overflow-y: auto;
-}
-
+  
+  /* Responsive grid system with breakpoints */
+  /* Small screens (mobile): default 100% width */
+  /* Medium screens (tablets): 8-column grid */
+  @media only screen and (min-width: 720px) {
+    .col-1  { width: calc(12.5%  - var(--column-gap)); } /* 1/8 */
+    .col-2  { width: calc(25%    - var(--column-gap)); } /* 2/8 */
+    .col-3  { width: calc(37.5%  - var(--column-gap)); } /* 3/8 */
+    .col-4  { width: calc(50%    - var(--column-gap)); } /* 4/8 */
+    .col-5  { width: calc(62.5%  - var(--column-gap)); } /* 5/8 */
+    .col-6  { width: calc(75%    - var(--column-gap)); } /* 6/8 */
+    .col-7  { width: calc(87.5%  - var(--column-gap)); } /* 7/8 */
+    .col-8, .col-9, .col-10, .col-11, .col-12 { width: calc(100% - var(--column-gap)); } /* 8/8 */
+  }
+  
+  /* Large screens (desktops): 12-column grid */
+  @media only screen and (min-width: 1100px) {
+    .col-1  { width: calc(8.33%  - var(--column-gap)); }  /* 1/12 */
+    .col-2  { width: calc(16.66% - var(--column-gap)); }  /* 2/12 */
+    .col-3  { width: calc(25%    - var(--column-gap)); }  /* 3/12 */
+    .col-4  { width: calc(33.33% - var(--column-gap)); }  /* 4/12 */
+    .col-5  { width: calc(41.66% - var(--column-gap)); }  /* 5/12 */
+    .col-6  { width: calc(50%    - var(--column-gap)); }  /* 6/12 */
+    .col-7  { width: calc(58.33% - var(--column-gap)); }  /* 7/12 */
+    .col-8  { width: calc(66.66% - var(--column-gap)); }  /* 8/12 */
+    .col-9  { width: calc(75%    - var(--column-gap)); }  /* 9/12 */
+    .col-10 { width: calc(83.33% - var(--column-gap)); }  /* 10/12 */
+    .col-11 { width: calc(91.66% - var(--column-gap)); }  /* 11/12 */
+    .col-12 { width: calc(100%   - var(--column-gap)); }  /* 12/12 */
+  }
 /* Font Styles */
 .f-white {
   color: white;
 }
+
 .f-black {
-  color: rgba(0,0,0,1);
+  color: rgba(0, 0, 0, 1);
 }
-.f-error {
-  color: var(--error);
+
+.f-danger {
+  color: var(--danger);
 }
+
 .f-orange {
   color: var(--orange);
 }
+
 .f-success {
   color: var(--success);
 }
+
 .f-info {
   color: var(--info);
 }
-.f-action {
-  color: var(--action);
+
+.f-warning {
+  color: var(--warning);
 }
+
 .f-gray {
   color: gray;
 }
@@ -252,79 +264,88 @@ section {
   border: 1px solid var(--panel-border);
   box-sizing: border-box;
 }
+
 .panel.dark {
   background: var(--panel-dark-bg);
 }
+
 .panel.light {
   background: var(--panel-bg);
 }
+
 .locked {
- opacity: 0.5;
+  opacity: 0.5;
 }
 
 .legal {
-  bottom:0;
- font-size: 12px;
- opacity: 0.5;
+  bottom: 0;
+  font-size: 12px;
+  opacity: 0.5;
 }
 
 /* Code blocks */
 pre {
-    margin: 0;
-    padding: 15px;
-    border-radius: var(--border-radius);
-    background: #2d2d2d !important;
+  margin: 0;
+  padding: 15px;
+  border-radius: var(--border-radius);
+  background: #2d2d2d !important;
 }
 
 pre code {
-    font-family: var(--font-family-base);
-    font-size: 14px;
-    line-height: 1.4;
+  font-family: var(--font-family-base);
+  font-size: 14px;
+  line-height: 1.4;
 }
 
 /* Adjust Prism.js theme colors for dark mode */
 .control-panel pre[class*="language-"] {
-    margin: 0;
-    background: #2d2d2d;
+  margin: 0;
+  background: #2d2d2d;
 }
 
 .token.comment {
-    color: #6a9955;
+  color: #6a9955;
 }
 
 /* Add spacing between example blocks */
 #examples .panel:not(:last-child) {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 /* Code block container */
 .code-block {
-    position: relative;
+  position: relative;
 }
 
 /* Copy button */
 .copy-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    padding: 5px 10px;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: var(--border-radius);
-    color: #fff;
-    font-size: 12px;
-    cursor: pointer;
-    transition: all 0.2s ease;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 5px 10px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--border-radius);
+  color: #fff;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
 .copy-btn:hover {
-    background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.2);
 }
 
 /* Success state */
 .copy-btn.success {
-    background: var(--success);
-    border-color: var(--success);
+  background: var(--success);
+  border-color: var(--success);
+}
+
+pre {
+  background-color: var(--panel-dark-bg) !important;
+  border: 1px solid var(--panel-border) !important;
+  border-radius: var(--border-radius) !important;
 }
 
 pre[class*=language-] {
@@ -335,13 +356,14 @@ pre[class*=language-] {
   border-radius: var(--border-radius) !important;
 }
 
-code[class*=language-], pre[class*=language-] {
+code[class*=language-],
+pre[class*=language-] {
   text-shadow: none !important;
   color: var(--text-color) !important;
 }
 
 :not(pre)>code[class*=language-] {
-  background-color: var(--bg-color) !important; 
+  background-color: var(--bg-color) !important;
 }
 
 /* Common Input / Textarea / Select Styles */
@@ -358,8 +380,8 @@ select {
   width: 100% !important;
   box-sizing: border-box;
   outline: none;
-  background: var(--panel-bg);
-  color: var(--text-color);
+  background: rgb(251, 251, 251);
+  color: rgb(77, 77, 77);
   transition: border-color 0.3s, box-shadow 0.3s, background-color 0.3s;
 }
 
@@ -387,27 +409,28 @@ select:focus {
 select {
   padding: 0 15px;
   text-align: left;
-   /* Removes default arrow in some browsers */
-  appearance: none;
+  /* Removes default arrow in some browsers */
+  /* appearance: none; */
 }
 
 /* Placeholder Styles */
 ::placeholder {
-  color: var(--text-color);
+  color: rgb(77, 77, 77);
+  ;
   opacity: 0.5;
 }
 
-/* Form States (Error / Success / Disabled) */
-input.error,
-textarea.error,
-select.error {
-  border: 1px solid var(--error);
+/* Form States (danger / Success / Disabled) */
+input.danger,
+textarea.danger,
+select.danger {
+  border: 1px solid var(--danger);
 }
 
-input.error::placeholder,
-textarea.error::placeholder,
-select.error::placeholder {
-  color: var(--error);
+input.danger::placeholder,
+textarea.danger::placeholder,
+select.danger::placeholder {
+  color: var(--danger);
   opacity: 0.8;
 }
 
@@ -448,9 +471,9 @@ input[type="checkbox"] {
   cursor: pointer;
 }
 
-input[type="radio"].error,
-input[type="checkbox"].error {
-  outline: 1px solid var(--error);
+input[type="radio"].danger,
+input[type="checkbox"].danger {
+  outline: 1px solid var(--danger);
 }
 
 input[type="radio"].success,
@@ -460,8 +483,11 @@ input[type="checkbox"].success {
 
 /* Alerts */
 .alert {
+  top: 0;
+  left: 0;
+  position: relative;
   margin: 5px auto 0;
-  text-align: left;
+  text-align: center;
   padding: 15px;
   border-radius: var(--border-radius);
   animation: fade-in 1s ease-out;
@@ -479,8 +505,8 @@ input[type="checkbox"].success {
   color: white;
 }
 
-.alert-error {
-  background: var(--error);
+.alert-danger {
+  background: var(--danger);
   color: white;
 }
 
@@ -502,6 +528,7 @@ input[type="checkbox"].success {
     opacity: 0;
     transform: translateY(-10px);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0);
@@ -523,23 +550,27 @@ input[type="checkbox"].success {
   border: 1px solid rgba(0, 0, 0, 0);
   box-sizing: border-box;
 }
+
 .btn.disabled {
   cursor: not-allowed;
   background-color: var(--panel-dark-bg);
   border: 1px solid var(--panel-border);
   color: gray;
 }
+
 /* Dark theme overrides */
-[data-theme="dark"] .btn.holo, 
+[data-theme="dark"] .btn.holo,
 [data-theme="dim"] .btn.holo {
   background: var(--panel-dark-bg);
   color: var(--text-color);
   border: 1px solid var(--panel-border);
 }
+
 [data-theme="dark"] .btn.holo:hover,
 [data-theme="dim"] .btn.holo:hover {
   background: var(--panel-bg);
 }
+
 /* Light theme overrides */
 [data-theme="light"] .btn.holo,
 [data-theme="warm"] .btn.holo {
@@ -547,203 +578,41 @@ input[type="checkbox"].success {
   color: var(--text-color);
   border: 1px solid var(--panel-border);
 }
+
 [data-theme="light"] .btn.holo:hover,
 [data-theme="warm"] .btn.holo:hover {
   background: var(--panel-dark-bg);
 }
+
 /* Button Hovers */
-.btn.success { background: var(--success); }
-.btn.success:hover { background: var(--success-hover); }
-.btn.info { background: var(--info); }
-.btn.info:hover { background: var(--info-hover); }
-.btn.error { background: var(--error); }
-.btn.error:hover { background: var(--error-hover); }
-.btn.action { background: var(--action); }
-.btn.action:hover { background: var(--action-hover); }
-
-/* ************** */
-/* Control Panel */
-/* ************ */
-
-/* Outer panel container: allows "overflow: visible" so the toggle can stick out */
-.control-panel {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: calc(280px - 30px);
-  height: calc(100vh - 30px);
-  padding: 15px;
-  background: var(--panel-bg);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-  margin: 0 !important;
-  font-size: 14px !important;
-  overflow: visible;
-  user-select: none;
-  transition: background-color, transform 0.3s ease;
+.btn.success {
+  background: var(--success);
 }
 
-.panel-content {
-  height: 100%;
-  overflow-y: auto;
+.btn.success:hover {
+  background: var(--success-hover);
 }
 
-.toggle-panel {
-  position: absolute;
-  left: -30px;
-  top: 20px;
-  width: 30px;
-  height: 60px;
-  background: var(--panel-bg);
-  border: none;
-  border-radius: 15px 0 0 15px;
-  box-shadow: -3px 0 5px -1px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: -3px 0px 5px -1px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.btn.info {
+  background: var(--info);
 }
 
-.toggle-icon {
-  font-size: 20px;
-  transition: transform 0.3s ease;
+.btn.info:hover {
+  background: var(--info-hover);
 }
 
-/* Panel closed state */
-.control-panel.closed {
-  transform: translateX(280px);
+.btn.danger {
+  background: var(--danger);
 }
 
-.control-panel.closed .toggle-icon {
-  transform: rotate(180deg);
+.btn.danger:hover {
+  background: var(--danger-hover);
 }
 
-/* Style controls should have fixed spacing */
-.style-control {
-  width: 100%;
-  /* margin: 10px 0 !important; */
+.btn.warning {
+  background: var(--warning);
 }
 
-.style-control + span {
-  display: inline-block;
-  width: 100%;
-  font-size: 0.9em;
-  color: var(--info);
-  margin: 0 !important;
-}
-
-/* Control panel internal spacing should be fixed */
-.control-panel .row {
-  margin: 0 !important;
-}
-
-.control-panel [class^="col-"] {
-  padding: 5px !important;
-  margin: 0 !important;
-}
-
-.control-panel .panel-title {
-  padding: 10px 0 !important;
-  margin: 0 !important;
-  font-size: 18px !important;
-}
-
-.control-panel label {
-  font-size: 14px !important;
-}
-
-.control-panel span {
-  font-size: 12px !important;
-}
-/* BUTTONS */
-
-.control-panel .btn {
-  font-size: 14px !important;
-  margin-bottom: 15px;
-}
-
-/* Form padding */
-.control-panel input[type="range"] {
-  padding: 0 !important;
-  margin: 0 !important;
-}
-
-.control-panel input {
-  font-size: 14px !important;
-  margin: 0 !important;
-}
-
-/* Color Pallet */
-.color-swatch {
-  width: 48%;
-  height: 50px;
-  line-height: 50px;
-  display: inline-block;
-  padding: 5px 0;
-  text-align: left;
-  margin: 5px 0;
-  text-align: center;
-  font-weight: bold;
-  color: white;
-}
-
-/* Tabs */
-.tabs {
-  display: flex;
-  justify-content: space-around;
-}
-
-/* Hide only the radio inputs for tabs */
-.tabs-wrapper input[type="radio"] {
-  display: none;
-}
-
-.tabs label {
-  flex: 1;
-  text-align: center;
-  padding: 10px;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: bold;
-  border-bottom: 2px solid var(--panel-border);
-  transition: all 0.2s ease-in-out;
-}
-
-.tabs label:hover {
-  background: var(--panel-dark-bg);
-}
-
-/* Active Tab Styling */
-#tab-styles:checked ~ .tabs label[for="tab-styles"],
-#tab-theme:checked ~ .tabs label[for="tab-theme"] {
-  border-bottom-color: var(--info-hover);
-  color: var(--info);
-  font-weight: bold;
-}
-
-/* Hide tab content by default */
-.tab-content {
-  display: none;
-  padding: 15px;
-}
-
-/* Ensure content shows properly when checked */
-#tab-styles:checked ~ .tab-container #styles-content,
-#tab-theme:checked ~ .tab-container #theme-content {
-  display: block;
-}
-
-/* Ensure buttons stay at the bottom */
-.panel-buttons {
-  position: absolute;
-  bottom: 15px;
-  width: 90%;
-  text-align: center;
+.btn.warning:hover {
+  background: var(--warning-hover);
 }
