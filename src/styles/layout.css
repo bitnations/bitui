@@ -1,0 +1,11 @@
+/* Page Layout */
+.content {
+  padding-top: var(--nav-padding); /* This is to account for the navbar */
+  padding-bottom: var(--nav-padding); /* Add some space at the bottom */
+}
+/* Footer */
+.legal {
+  bottom: 0;
+  font-size: 12px;
+  opacity: 0.5;
+}

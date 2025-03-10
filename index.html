@@ -13,11 +13,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>bitUI CSS toolkit</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📱</text></svg>">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📱</text></svg>">
   <!-- CSS -->
-  <link rel="stylesheet" href="src/styles/bitui.css">
+  <link rel="stylesheet" href="src/styles/main.css">
   <link rel="stylesheet" href="src/styles/controlPanel.css">
-  <link rel="stylesheet" href="src/styles/code.css">
   <!-- Zip Library -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
   <!-- Code Snippet -->
@@ -50,186 +50,416 @@
         </div>
       </div>
 
-      <!-- Col Grid -->
+      <!-- Unified Grid -->
       <div class="row">
         <div class="col-12">
           <div class="panel light">
-            <h2 class="center">Grid</h2>
-            <p>
-              12-column system
-              <code class="language-html">col-1</code> to <code class="language-html">col-12</code>.
-            </p>
+            <h2 class="center">Unified Grid System</h2>
+            <p>One system to rule them all - columns, auto grid, and masonry</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Traditional Column Grid -->
+      <div class="row">
+        <div class="col-12">
+          <div class="panel light">
+            <h3>1. Trad Grid</h3>
+            <p>Uses 12 column system with <code>.row</code> and <code>.col-*</code> classes for precise control</p>
           </div>
         </div>
       </div>
 
       <div class="row">
-        <div class="col-1">
-          <div class="panel dark">
-            <span>1</span>
-          </div>
-        </div>
-        <div class="col-11">
-          <div class="panel dark">
-            <span>11</span>
-          </div>
+        <div class="col-12">
+          <div class="panel dark">col-12</div>
         </div>
       </div>
 
       <div class="row">
-        <div class="col-2">
-          <div class="panel dark">
-            <span>2</span>
-          </div>
+        <div class="col-6">
+          <div class="panel dark">col-6</div>
         </div>
-        <div class="col-10">
-          <div class="panel dark">
-            <span>10</span>
-          </div>
+        <div class="col-6">
+          <div class="panel dark">col-6</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-4">
+          <div class="panel dark">col-4</div>
+        </div>
+        <div class="col-4">
+          <div class="panel dark">col-4</div>
+        </div>
+        <div class="col-4">
+          <div class="panel dark">col-4</div>
         </div>
       </div>
 
       <div class="row">
         <div class="col-3">
-          <div class="panel dark">
-            <span>3</span>
+          <div class="panel dark">col-3</div>
+        </div>
+        <div class="col-3">
+          <div class="panel dark">col-3</div>
+        </div>
+        <div class="col-3">
+          <div class="panel dark">col-3</div>
+        </div>
+        <div class="col-3">
+          <div class="panel dark">col-3</div>
+        </div>
+      </div>
+
+      <!-- Column Positioning -->
+      <div class="row">
+        <div class="col-12">
+          <div class="panel light">
+            <h4>1.1 Column Positioning</h4>
+            <p>Position smaller columns left, center, or right on the page</p>
           </div>
         </div>
-        <div class="col-9">
+      </div>
+
+      <!-- Center a column using .center -->
+      <div class="row">
+        <div class="col-3 center">
           <div class="panel dark">
-            <span>9</span>
+            <code class="language-html">col-3 center</code>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right-align a column using .right -->
+      <div class="row">
+        <div class="col-3 right">
+          <div class="panel dark center">
+            <code class="language-html">col-3 right</code>
+          </div>
+        </div>
+      </div>
+
+      <!-- Center columns using row.center -->
+      <div class="row center">
+        <div class="col-3">
+          <div class="panel dark">
+            <code class="language-html">row center</code>
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="panel dark">
+            <code class="language-html">row center</code>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right-align columns using row.right -->
+      <div class="row right">
+        <div class="col-3">
+          <div class="panel dark center">
+            <code class="language-html">row right</code>
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="panel dark center">
+            <code class="language-html">row right</code>
+          </div>
+        </div>
+      </div>
+
+      <!-- Panel content alignment -->
+      <div class="row">
+        <div class="col-12">
+          <div class="panel light">
+            <h4>1.2 Panel Content Alignment</h4>
+            <p>Align content within panels using the same classes, ex: <code class="language-html">panel center</code>
+            </p>
           </div>
         </div>
       </div>
 
       <div class="row">
         <div class="col-4">
-          <div class="panel dark">
-            <span>4</span>
+          <div class="panel dark left">
+            <h4>Left-aligned panel</h4>
+            <p>Content aligns to the left</p>
           </div>
         </div>
-        <div class="col-8">
-          <div class="panel dark">
-            <span>8</span>
+        <div class="col-4">
+          <div class="panel dark center">
+            <h4>Center-aligned panel</h4>
+            <p>Content centers in the panel</p>
           </div>
         </div>
-      </div>
-
-      <div class="row">
-        <div class="col-5">
-          <div class="panel dark">
-            <span>5</span>
-          </div>
-        </div>
-        <div class="col-7">
-          <div class="panel dark">
-            <span>7</span>
+        <div class="col-4">
+          <div class="panel dark right">
+            <h4>Right-aligned panel</h4>
+            <p>Content aligns to the right</p>
           </div>
         </div>
       </div>
 
-      <div class="row">
-        <div class="col-6">
-          <div class="panel dark">
-            <span>6</span>
-          </div>
-        </div>
-        <div class="col-6">
-          <div class="panel dark">
-            <span>6</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-12">
-          <div class="panel dark">
-            <span>12</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Code Example -->
-      <div class="row">
-        <div class="col-12">
-          <div id="snippet-columns"></div>
-        </div>
-      </div>
-
-      <!-- Flex-Box Grid -->
+      <!-- Auto Grid -->
       <div class="row">
         <div class="col-12">
           <div class="panel light">
-            <h2 class="center">Flex</h2>
-            <p>
-              Flex but with your columns. Just make sure
-              <code class="language-html">col-flex</code> is in a <code class="language-html">container</code>.
+            <h3>2. Auto Grid</h3>
+            <p>Uses <code class="language-html">grid</code> (auto-fill by default) for responsive, automatically sized
+              columns</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="panel dark">
+          <h4>Auto Grid Item</h4>
+          <p>These columns automatically adjust based on available width</p>
+        </div>
+
+        <div class="panel dark">
+          <h4>Auto Grid Item</h4>
+          <p>These columns automatically adjust based on available width</p>
+        </div>
+
+        <div class="panel dark">
+          <h4>Auto Grid Item</h4>
+          <p>These columns automatically adjust based on available width</p>
+        </div>
+
+        <div class="panel dark">
+          <h4>Auto Grid Item</h4>
+          <p>These columns automatically adjust based on available width</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <div class="panel light">
+            <h4>2.1 Auto Grid fit</h4>
+            <p>Uses <code class="language-html"> grid fit</code> for responsive, automatically sized columns that expand
+              to fill the container
             </p>
           </div>
         </div>
       </div>
 
-      <div class="row">
-        <div class="col-flex">
-          <div class="panel dark">
-            <p>These columns will flex to fill the width of the container.</p>
-          </div>
+      <div class="grid fit">
+        <div class="panel dark">
+          <h4>Auto Grid Item</h4>
+          <p>These columns automatically adjust based on available width</p>
         </div>
-        <div class="col-flex">
-          <div class="panel dark">
-            <p>These columns will flex to fill the width of the container.</p>
-          </div>
+
+        <div class="panel dark">
+          <h4>Auto Grid Item</h4>
+          <p>These columns automatically adjust based on available width</p>
         </div>
-        <div class="col-flex">
-          <div class="panel dark">
-            <p>These columns will flex to fill the width of the container.</p>
-          </div>
+
+        <div class="panel dark">
+          <h4>Auto Grid Item</h4>
+          <p>These columns automatically adjust based on available width</p>
         </div>
-        <div class="col-flex">
-          <div class="panel dark">
-            <p>These columns will flex to fill the width of the container.</p>
-          </div>
-        </div>
-        <div class="col-flex">
-          <div class="panel dark">
-            <p>These columns will flex to fill the width of the container.</p>
-          </div>
-        </div>
-        <div class="col-flex">
-          <div class="panel dark">
-            <p>These columns will flex to fill the width of the container.</p>
-          </div>
+
+        <div class="panel dark">
+          <h4>Auto Grid Item</h4>
+          <p>These columns automatically adjust based on available width</p>
         </div>
       </div>
 
-      <!-- Code Snippet: Flex -->
+      <!-- Fixed Column Grid -->
       <div class="row">
         <div class="col-12">
-          <div id="snippet-flex"></div>
+          <div class="panel light">
+            <h3>3. Fixed Column Grid</h3>
+            <p>Uses <code class="language-html">grid cols-*</code> for a specific number of columns</p>
+          </div>
         </div>
       </div>
 
+      <div class="grid cols-3">
+        <div>
+          <div class="panel dark">
+            <h4>3-Column Grid</h4>
+            <p>Always 3 columns (responsive at breakpoints)</p>
+          </div>
+        </div>
+        <div>
+          <div class="panel dark">
+            <h4>3-Column Grid</h4>
+            <p>Always 3 columns (responsive at breakpoints)</p>
+          </div>
+        </div>
+        <div>
+          <div class="panel dark">
+            <h4>3-Column Grid</h4>
+            <p>Always 3 columns (responsive at breakpoints)</p>
+          </div>
+        </div>
+        <div>
+          <div class="panel dark">
+            <h4>3-Column Grid</h4>
+            <p>Always 3 columns (responsive at breakpoints)</p>
+          </div>
+        </div>
+        <div>
+          <div class="panel dark">
+            <h4>3-Column Grid</h4>
+            <p>Always 3 columns (responsive at breakpoints)</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Masonry Grid - Fill Dense (Original Masonry) -->
+      <div class="row">
+        <div class="col-12">
+          <div class="panel light">
+            <h3>4. Masonry Grid - Fill Dense (Original Masonry)</h3>
+            <p>Uses <code class="language-html">grid dense</code> (auto-fill by default) for traditional masonry layout
+              with dense packing
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid dense">
+        <div class="tall">
+          <div class="panel dark">
+            <h4>Tall Item</h4>
+            <p>This item spans 2 rows with <code>.tall</code></p>
+            <p>The panel now fills the entire grid item height automatically</p>
+          </div>
+        </div>
+        <div>
+          <div class="panel dark">
+            <h4>Normal Item</h4>
+            <p>Standard grid item</p>
+          </div>
+        </div>
+        <div>
+          <div class="panel dark">
+            <h4>Normal Item</h4>
+            <p>Standard grid item</p>
+          </div>
+        </div>
+        <div class="wide">
+          <div class="panel dark">
+            <h4>Wide Item</h4>
+            <p>This item spans 2 columns with <code>.wide</code></p>
+          </div>
+        </div>
+        <div>
+          <div class="panel dark">
+            <h4>Normal Item</h4>
+            <p>Standard grid item</p>
+          </div>
+        </div>
+        <div class="large">
+          <div class="panel dark">
+            <h4>Large Item</h4>
+            <p>This item spans 2 columns and 2 rows with <code>.large</code></p>
+            <p>The panel fills the entire grid item area automatically</p>
+          </div>
+        </div>
+        <div>
+          <div class="panel dark">
+            <h4>Normal Item</h4>
+            <p>Standard grid item</p>
+          </div>
+        </div>
+        <div>
+          <div class="panel dark">
+            <h4>Normal Item</h4>
+            <p>Standard grid item</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Masonry Grid - Fit Dense (Adaptive Masonry) -->
+      <div class="row">
+        <div class="col-12">
+          <div class="panel light">
+            <h3>5. Masonry Grid - Fit Dense (Adaptive Masonry)</h3>
+            <p>Uses <code class="language-html">grid fit dense</code> for masonry layout that adapts to content with
+              dense packing</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid fit dense">
+        <div class="tall">
+          <div class="panel dark">
+            <h4>Tall Item</h4>
+            <p>This item spans 2 rows with <code>.tall</code></p>
+            <p>The panel now fills the entire grid item height automatically</p>
+          </div>
+        </div>
+        <div>
+          <div class="panel dark">
+            <h4>Normal Item</h4>
+            <p>Standard grid item</p>
+          </div>
+        </div>
+        <div>
+          <div class="panel dark">
+            <h4>Normal Item</h4>
+            <p>Standard grid item</p>
+          </div>
+        </div>
+        <div class="wide">
+          <div class="panel dark">
+            <h4>Wide Item</h4>
+            <p>This item spans 2 columns with <code>.wide</code></p>
+          </div>
+        </div>
+        <div>
+          <div class="panel dark">
+            <h4>Normal Item</h4>
+            <p>Standard grid item</p>
+          </div>
+        </div>
+        <div class="large">
+          <div class="panel dark">
+            <h4>Large Item</h4>
+            <p>This item spans 2 columns and 2 rows with <code>.large</code></p>
+            <p>The panel fills the entire grid item area automatically</p>
+          </div>
+        </div>
+        <div>
+          <div class="panel dark">
+            <h4>Normal Item</h4>
+            <p>Standard grid item</p>
+          </div>
+        </div>
+        <div>
+          <div class="panel dark">
+            <h4>Normal Item</h4>
+            <p>Standard grid item</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Structure -->
       <div class="row">
         <div class="col-12">
           <div class="panel light">
             <h2 class="center">Structure</h2>
-            <p>
-              <code class="language-html">container</code> > 
+            <p><code class="language-html">container</code> > 
               <code class="language-html">row</code> > 
-              <code class="language-html">col</code> > 
-              <code class="language-html">your content</code>.
-              Use <code class="language-html">panel</code> class for basic style.
+              <code class="language-html">col</code> > your content. 
+              Use <code class="language-html">panel</code> or <code class="language-html">panel dark</code> for basic style.
+              
             </p>
           </div>
         </div>
       </div>
-      
-      <!-- Code Example -->
+
+      <!-- Code Snippet: Structure -->
       <div class="row">
         <div class="col-12">
           <div id="snippet-structure"></div>
         </div>
       </div>
+
 
       <!-- Layout -->
       <div class="row">
@@ -237,7 +467,7 @@
           <div class="panel light">
             <h2 class="center">Layout</h2>
             <p>
-              Create nested layouts by placing <code class="language-html">row</code> 
+              Create nested layouts by placing <code class="language-html">row</code>
               and <code class="language-html">col</code> elements inside each other.
               You can nest as many <code class="language-html">row</code>, <code class="language-html">col</code>,
               and <code class="language-html">panel</code> elements as needed.
@@ -270,49 +500,6 @@
       <div class="row">
         <div class="col-12">
           <div id="snippet-layout"></div>
-        </div>
-      </div>
-
-      <!-- Example 2: Center Column -->
-      <div class="col-12">
-        <div class="panel light">
-          <h2 class="center">Position</h2>
-          <p>You can use the <code class="language-html">flex</code> class to position your content.</p>
-        </div>
-      </div>
-
-      <!-- Code Snippet: Center Column -->
-      <div class="flex left">
-        <div class="col-4 left">
-          <div class="panel dark">
-            <h3>Left Column</h3>
-            <p>This column left justified using <code class="language-html">class="flex left";</code></p>
-          </div>
-        </div>
-      </div>
-
-      <div class="flex center">
-        <div class="col-4 left">
-          <div class="panel dark">
-            <h3>Centered Column</h3>
-            <p>This column is centered using <code class="language-html">class="flex center";</code></p>
-          </div>
-        </div>
-      </div>
-
-      <div class="flex right">
-        <div class="col-4 left">
-          <div class="panel dark">
-            <h3>Right Column</h3>
-            <p>This column right justified using <code class="language-html">class="flex right";</code></p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Code Example -->
-      <div class="row">
-        <div class="col-12">
-          <div id="snippet-position"></div>
         </div>
       </div>
 
@@ -371,7 +558,7 @@
           </div>
         </div>
       </div>
-      
+
 
       <!-- Form Examples -->
       <div class="row">
@@ -484,7 +671,8 @@
             <button class="btn info">Info Button</button>
             <button class="btn danger">danger Button</button>
             <button class="btn warning">warning Button</button>
-            <p class="center">Holo or disabled buttons appear better in a <code class="language-css">panel light</code></p>
+            <p class="center">Holo or disabled buttons appear better in a <code class="language-css">panel light</code>
+            </p>
             <div class="row">
               <div class="col-12">
                 <div class="panel light">
@@ -496,10 +684,9 @@
           </div>
         </div>
       </div>
-
-      <div class="legal center">BitNations, LLC © 2025</div>
-
+    </div>
   </main>
+  <div class="legal center">BitNations, LLC © 2025</div>
 
   <!-- Scripts -->
   <!-- Storage for user preferences -->

@@ -1,0 +1,171 @@
+/* ==========================================================================
+   Unified Grid System
+   ========================================================================== */
+
+/* Container - Sets max width and centers content */
+.container {
+  width: 100%;
+  max-width: var(--container-width);
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* Row - Forces a new line and clears floats */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 calc(-1 * var(--column-gap) / 2);
+}
+
+/* Column System - Traditional 12-column grid */
+[class^="col-"] {
+  padding: 0 calc(var(--column-gap) / 2);
+  margin-bottom: var(--column-gap);
+  box-sizing: border-box;
+}
+
+/* Column positioning utilities - for flex containers */
+[class^="col-"].center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+[class^="col-"].right {
+  margin-left: auto;
+}
+
+[class^="col-"].left {
+  margin-right: auto;
+}
+
+/* Mobile-first approach: all columns are full width by default */
+.col-1, .col-2, .col-3, .col-4, .col-5, .col-6,
+.col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
+  width: 100%;
+}
+
+/* Retain col sizes in mobile */
+.col-1-sm  { width: 8.33%  ; }
+.col-2-sm  { width: 16.66% ; }
+.col-3-sm  { width: 25%    ; }
+.col-4-sm  { width: 33.33% ; }
+.col-5-sm  { width: 41.66% ; }
+.col-6-sm  { width: 50%    ; }
+.col-7-sm  { width: 58.33% ; }
+.col-8-sm  { width: 66.66% ; }
+.col-9-sm  { width: 75%    ; }
+.col-10-sm { width: 83.33% ; }
+.col-11-sm { width: 91.66% ; }
+.col-12-sm { width: 100%   ; }
+
+/* Desktop column widths */
+@media only screen and (min-width: 768px) {
+  .col-1  { width: 8.33%  ; }
+  .col-2  { width: 16.66% ; }
+  .col-3  { width: 25%    ; }
+  .col-4  { width: 33.33% ; }
+  .col-5  { width: 41.66% ; }
+  .col-6  { width: 50%    ; }
+  .col-7  { width: 58.33% ; }
+  .col-8  { width: 66.66% ; }
+  .col-9  { width: 75%    ; }
+  .col-10 { width: 83.33% ; }
+  .col-11 { width: 91.66% ; }
+  .col-12 { width: 100%   ; }
+}
+
+/* Unified Grid System - For auto and masonry layouts */
+.grid {
+  display: grid;
+  grid-gap: var(--column-gap);
+  margin-bottom: var(--column-gap);
+  width: 100%;
+  /* Default to fill */
+  grid-template-columns: repeat(auto-fill, minmax(var(--min-item-width), 1fr));
+}
+
+/* Auto-fill grid - creates as many columns as will fit (explicit class) */
+.grid.fill {
+  grid-template-columns: repeat(auto-fill, minmax(var(--min-item-width), 1fr));
+}
+
+/* Auto-fit grid - creates columns that expand to fit content */
+.grid.fit {
+  grid-template-columns: repeat(auto-fit, minmax(var(--min-item-width), 1fr));
+}
+
+/* Dense packing for masonry-like layouts */
+.grid.dense {
+  grid-auto-flow: dense;
+  grid-auto-rows: auto;
+}
+
+/* Fixed column count variants */
+.grid.cols-1 { grid-template-columns: 1fr; }
+.grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+.grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+.grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
+.grid.cols-5 { grid-template-columns: repeat(5, 1fr); }
+.grid.cols-6 { grid-template-columns: repeat(6, 1fr); }
+
+/* Responsive column counts */
+@media only screen and (max-width: 1200px) {
+  .grid.cols-6 { grid-template-columns: repeat(4, 1fr); }
+  .grid.cols-5 { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media only screen and (max-width: 992px) {
+  .grid.cols-6, .grid.cols-5, .grid.cols-4 { grid-template-columns: repeat(2, 1fr); }
+  .grid.cols-3 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media only screen and (max-width: 576px) {
+  .grid.cols-6, .grid.cols-5, .grid.cols-4, .grid.cols-3, .grid.cols-2 { grid-template-columns: 1fr; }
+}
+
+/* Item sizing classes for grid layouts */
+.wide {
+  grid-column: span 2;
+}
+
+.tall {
+  grid-row: span 2;
+}
+
+.large {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+/* Make panels fill their grid items */
+.grid > * > .panel {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+@media only screen and (max-width: 576px) {
+  .grid-item-wide, .grid-item-large {
+    grid-column: span 1;
+  }
+}
+
+/* Utility classes */
+.equal-height { align-items: stretch; }
+.equal-height > * { height: 100%; }
+
+/* Alignment utilities for grid and flex */
+.align-start { align-items: start; }
+.align-center { align-items: center; }
+.align-end { align-items: end; }
+.justify-start { justify-content: start; }
+.justify-center { justify-content: center; }
+.justify-end { justify-content: end; }
+.justify-between { justify-content: space-between; }
+.justify-around { justify-content: space-around; }
+
+/* Row alignment utilities */
+.row.center { justify-content: center; }
+.row.right { justify-content: flex-end; }
+.row.left { justify-content: flex-start; }
+.row.space-between { justify-content: space-between; }
+.row.space-around { justify-content: space-around; }

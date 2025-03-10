@@ -9,6 +9,10 @@ pre {
   border-radius: var(--border-radius) !important;
 }
 
+.snippet-code {
+  position: relative !important;
+}
+
 pre code {
   font-family: var(--font-family-base);
   font-size: 14px;

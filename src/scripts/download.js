@@ -5,7 +5,10 @@
 // Files to include in the zip
 const FILES_TO_INCLUDE = [
   '/index.html',
-  '/src/styles/bitui.css',
+  '/src/styles/grid.css',
+  '/src/styles/layout.css',
+  '/src/styles/components.css',
+  '/src/styles/forms.css',
   '/src/styles/code.css',
   '/src/styles/controlPanel.css',
   '/src/scripts/storage.js',
