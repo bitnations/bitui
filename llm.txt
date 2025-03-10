@@ -3,23 +3,24 @@ bitUI Framework Documentation
 
 Overview
 --------
-bitUI is a simple, lightweight CSS framework for creating clean, responsive web layouts. It provides a straightforward approach to building websites with minimal complexity. The framework focuses on control and simplicity through a clean grid system, panel components, and utility classes.
+bitUI is a simple, lightweight CSS framework for creating clean, responsive web layouts. It provides a straightforward approach to building websites with minimal complexity. The framework focuses on control and simplicity through a unified grid system, panel components, and utility classes.
 
 Core Concepts
 ------------
 
-1. Grid System
-   - Uses a standard 12-column grid layout (col-1 through col-12)
-   - Basic structure: row > col > panel
+1. Unified Grid System
+   - Traditional 12-column grid with row > col structure
+   - Auto grid for responsive, automatically sized columns
+   - Fixed column grid with specific column counts (cols-1 through cols-6)
+   - Masonry grid layouts with dense packing options
    - Mobile-first approach where all columns become full-width on small screens
-   - Responsive breakpoint at 768px for desktop layouts
-   - Supports nesting of rows and columns for complex layouts
+   - Responsive breakpoints for different screen sizes
 
-2. Flex Columns
-   - Special 'col-flex' class that automatically adjusts based on container width
-   - Uses CSS container queries to determine optimal column width
-   - Breakpoints from 50rem to 300rem, automatically adjusting columns from 2 to 12
-   - Perfect for card layouts, galleries, or any repeating content
+2. Grid Item Sizing
+   - Standard column classes: col-1 through col-12 for traditional grid
+   - Special sizing classes for grid layouts: .wide, .tall, .large
+   - Auto-fill and auto-fit options for different responsive behaviors
+   - Dense packing for masonry-style layouts
 
 3. Panels
    - Container elements for content with consistent padding and styling
@@ -34,7 +35,8 @@ Core Concepts
    - Smooth transitions between theme changes
 
 5. Layout & Positioning
-   - Flex utility classes: 'flex left', 'flex center', 'flex right' for horizontal alignment
+   - Column positioning: .center, .right, .left for individual columns
+   - Row alignment: row.center, row.right, row.left for groups of columns
    - Text alignment classes: 'left', 'right', 'center', 'justify'
    - Containers have auto margins and responsive width constraints
 
@@ -56,11 +58,6 @@ Core Concepts
    - Hover effects for interactive feedback
    - Adapts to theme colors automatically
 
-9. Alerts
-   - Message styling with confirm, notice, and danger variants
-   - Fade-in animation for smooth appearance
-   - Includes dismiss button styling
-
 CSS Variables
 ------------
 The framework uses CSS variables for easy customization:
@@ -70,8 +67,10 @@ The framework uses CSS variables for easy customization:
 - Colors: --bg-color, --text-color, --heading-color, --panel-bg, --panel-dark-bg, --panel-border
 - Semantic colors: --danger, --warning, --confirm, --info (with hover variants)
 
-Usage Example
+Usage Examples
 ------------
+
+Traditional Column Grid:
 ```html
 <div class="container">
   <div class="row">
@@ -88,24 +87,35 @@ Usage Example
       </div>
     </div>
   </div>
-  
-  <div class="row">
-    <div class="col-12">
-      <div class="panel light">
-        <h2 class="center">Flex Columns Example</h2>
-        <div class="row">
-          <div class="col-flex">
-            <div class="panel dark">Content 1</div>
-          </div>
-          <div class="col-flex">
-            <div class="panel dark">Content 2</div>
-          </div>
-          <div class="col-flex">
-            <div class="panel dark">Content 3</div>
-          </div>
-        </div>
-      </div>
-    </div>
+</div>
+```
+
+Auto Grid:
+```html
+<div class="grid">
+  <div>
+    <div class="panel dark">Auto Grid Item 1</div>
+  </div>
+  <div>
+    <div class="panel dark">Auto Grid Item 2</div>
+  </div>
+  <div>
+    <div class="panel dark">Auto Grid Item 3</div>
+  </div>
+</div>
+```
+
+Masonry Grid:
+```html
+<div class="grid dense">
+  <div class="tall">
+    <div class="panel dark">Tall Item</div>
+  </div>
+  <div>
+    <div class="panel dark">Normal Item</div>
+  </div>
+  <div class="wide">
+    <div class="panel dark">Wide Item</div>
   </div>
 </div>
 ```
@@ -116,4 +126,6 @@ Implementation Notes
 2. All styling is handled through CSS only
 3. Responsive design principles are applied throughout
 4. The framework is extremely lightweight compared to alternatives
-5. Compatible with modern browsers that support CSS Variables and container queries
+5. Compatible with modern browsers that support CSS Grid and CSS Variables
+6. Uses CSS @import to organize styles into separate files
+7. Requires a local HTTP server when working locally (e.g., python3 -m http.server)
