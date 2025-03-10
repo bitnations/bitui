@@ -1,10 +1,7 @@
 document.addEventListener('DOMContentLoaded', async () => {
   const snippetBases = [
     'structure',
-    'columns',
     'layout',
-    'position',
-    'flex',
   ];
 
   for (const base of snippetBases) {
