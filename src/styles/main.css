@@ -38,7 +38,7 @@ bitUI Framework
 --nav-padding: 60px; /* Height of the navbar */
 --container-width: 90vw;
 --container-min-width:  25rem; /* Prevents content from getting too narrow */
---container-max-width: 110rem; /* 65rem equivalent at 16px base font size */
+--container-max-width: 65rem; /* 65rem equivalent at 16px base font size */
 --min-item-width: 250px; /* Minimum width for grid items */
 --column-gap: 0.5rem; /* Default column spacing */
 --border-radius: 15px;

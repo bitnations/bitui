@@ -5,7 +5,8 @@
 /* Container - Sets max width and centers content */
 .container {
   width: 100%;
-  max-width: var(--container-width);
+  width: var(--container-width);
+  max-width: var(--container-max-width);
   margin: 0 auto;
   box-sizing: border-box;
 }
